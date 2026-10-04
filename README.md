@@ -731,9 +731,9 @@ Contents at v0.13, unchanged from v0.12:
 | Source | Specimens | Notes |
 |---|---|---|
 | Seeds: Wyatt, a New England broadside, Santos | 3 | Whoso List, Snow Crust, Small Branch |
-| Rodman, One Hundred American Poems (1948), OCR (optical character recognition) corpus | 11 | Attribution repaired by script |
-| Stand Up Poetry: An Expanded Anthology (2002), OCR corpus | 10 | Lineation damaged; Kowit and two reprinted poems excluded |
-| In Fortune's Twilight (1900), JSON (JavaScript Object Notation) lines | 10 | Author unidentified |
+| Rodman, One Hundred American Poems (1948), optical character recognition corpus | 11 | Attribution repaired by script |
+| Stand Up Poetry: An Expanded Anthology (2002), optical character recognition corpus | 10 | Lineation damaged; Kowit and two reprinted poems excluded |
+| In Fortune's Twilight (1900), JavaScript Object Notation lines | 10 | Author unidentified |
 | Santos, McGrath, Vuong, three recent books | 5 | None from McGrath |
 | Beckett, seventeen poems of the 1930s and 1940s | 9 | Grammar as the carrier |
 | Hồ Xuân Hương in John Balaban's translation | 9 | The device inventory's calibration case for the Nôm opt-in |
@@ -1127,11 +1127,6 @@ Trial firewall. The rule that a trial is a contrast trial and never the poet's n
 Triangulated commentary. The sidecar field where each voice with something distinct to say speaks in its own person and the disagreement stands.
 
 Voice zone. A section of output a voice module declares and renders in its own person. The default register governs everything outside it.
-
-Acronyms:
-
-- JSON: JavaScript Object Notation.
-- OCR: optical character recognition.
 
 ![Coolly Skeptical](./avatar/avatar-cholo-coolly-skeptical.png)
 
