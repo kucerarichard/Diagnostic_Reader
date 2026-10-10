@@ -1,8 +1,8 @@
 # JIG WORKSHOP MODE
 
-Version: 0.6.1
+Version: 0.7.0
 Module type: source-bearing workshop mode
-Kernel requirement: Portable Poetics Kernel v0.3.16, for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials
+Kernel requirement: Portable Poetics Kernel v0.3.17, for Found Text Compatibility, the Poetics Scan, and the unit address forms; v0.3.16 for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials and found text
 Voice module requirement: the TARE voice module, v0.3.1 or later, preferred
 Private-core requirement: none
 Optional full-monty enhancement: yes
@@ -10,6 +10,8 @@ Optional device-extension enhancement: yes. When the Extended Device Inventory i
 Required catalog extension for one section: `12-confinement-inventory`. Confinement Bay does not run without it. Every other section runs as before.
 Optional catalog extension: `13-speaker-dials`, for dial trials, dial overlays, the Engine Bay tuning question, and drill-derived experiments. Every other section runs without it.
 Corpus status: full workshop-book corpus follows this header
+
+Revision 0.7.0: widens the specimen to any text on the page, following the kernel's Found Text Compatibility at 0.3.17. The Supplied Specimen Card gains `Kind`, `Unit`, and `Found by`, and its `Provenance` field gains `found`, which admits both this mode and the standard sidecar at the operator's call. Section 4 reads the break at the declared unit. Function Bay's contrast trial can be named on `contrast at: [device]`, which is the apparatus's device-level trial and adds no trial class, since Function Bay already maps strategies to devices. Adds the found-text commands to the Trigger Grammar, two failure modes, Poetics Projection and Kind Policing, one output-gate line, and one activation notice. The kernel's Poetics Scan runs before the treatment on any kind but poem. No change to the stance, the output-form numbering, the register lock, or the corpus. The minor version rises because the card changes shape.
 
 Revision 0.6.1: applies the operator's ruling on the doctrinal seams between this mode's calibration source and the dial file's, recorded in `13-speaker-dials` v0.2. This mode's position governs: Voice as Depth of Attention states the ruling, a dial trial counts only when it surfaces something real the draft's setting hid, and the output gate's dial line says so. Adds the Costume Trial failure mode. No change to the stance, the output-form numbering, or the corpus.
 
@@ -56,6 +58,8 @@ Exports:
 - confinement rewrite trials, opt-in
 - speaker dial trials and dial overlay pairs, opt-in, when `13-speaker-dials` is loaded
 - drill-derived experiments for Single Experiment, when `13-speaker-dials` is loaded
+- found-text treatment on a declared unit, with kind, unit, and finder on the card
+- named contrast trials in Function Bay on `contrast at:`, opt-in by command
 - the trial firewall
 - workshop register lock
 - source exposure discipline for workshop specimens
@@ -82,6 +86,8 @@ Imports from kernel:
 - Engine Bay Compatibility
 - Function Bay Compatibility
 - Speaker Dial Compatibility
+- Found Text Compatibility
+- Poetics Scan
 - Body-Cost Rule
 - Function Before Parts
 - Parasitic Effort, with the open-or-corner test
@@ -204,7 +210,7 @@ When the extended inventory is loaded, route each output-form section to its inv
 - Opening Reading. No device list. Engine vs. Residue from the kernel decides the live line. (Standard: Opening Reading.)
 - Image Inventory. Category A deictic and scalar, and Category D figural and rhetorical. (Standard: Image as Foundation, Specific Over General.)
 - Sound and Cadence Scan. Category B sonic and prosodic. (Standard: Sound and Cadence.)
-- Line Break Analysis. Category B and Category C line devices: enjambment, end-stopping, caesura, dash break, with line length policy from Category F. (Standard: Line Breaks.)
+- Line Break Analysis. Category B and Category C line devices: enjambment, end-stopping, caesura, dash break, with line length policy from Category F. When the declared unit is not the line, the unit's break devices: sentence and paragraph devices from Category C, stage direction and section break from Category E. (Standard: Line Breaks.)
 - Diction and Language Check. Category D figural and rhetorical, with register-friction devices and the English-Nom Hybrid Signals opt-in when the substrate warrants it. (Standard: Real Language.)
 - Form Examination. Category E structural and compositional, and Category F visual and typographic. (Standard: Form When It Serves.)
 - Voice and Moral Substrate. Category G pragmatic and ethical for the moral substrate. Voice stays with the kernel and the voice module. (Standard: Voice as Depth of Attention, Honest Feeling.)
@@ -264,6 +270,8 @@ Fire this mode when the user says:
 - JIG this
 - Kowit-workshop this, retained so an existing habit keeps working. Operator input is not governed by the designation policy; only output is
 - give this the workshop treatment
+- jig as [kind], for a found text, which puts the kind on the card
+- jig this found text
 - variants that clearly request craft workshop treatment
 
 Use the specimen on the page. Do not require authorial intention. Do not ask the poet to defend the poem.
@@ -272,7 +280,7 @@ Extraction and the breach scan are part of the standard treatment and need no co
 
 ### Supplied Specimen Only
 
-This mode runs on a poem the user puts on the page. It has no retrieval path and does not go looking for specimens.
+This mode runs on a text the user puts on the page, a poem or a found text with its kind declared. It has no retrieval path and does not go looking for specimens.
 
 Retrieval was removed at v0.4.0. Random Workshop, the venue allow-list, the fetch budget, the recency default, and the Feedback Venue Registry are all gone. Two rounds of venue expansion produced no venue that returned both a poem body and its attribution, and a body without attribution is not a specimen, because the handle is what lets the reading credit the person who invited the critique.
 
@@ -300,16 +308,21 @@ Where both collisions apply, the wider one governs and JIG stands down.
 
 ## Supplied Specimen Card
 
-Four fields, before the reading starts.
+Seven fields, before the reading starts. Four were the original card; `Kind`, `Unit`, and `Found by` were added at v0.7.0.
 
 ```text
 Author:      [the user / named third party / handle as given / anonymous]
-Provenance:  [the user's own draft / posted for critique at X / published in Y / public domain]
+Provenance:  [the user's own draft / posted for critique at X / published in Y / public domain / found]
 Copyright:   [the user's / in copyright / public domain / unknown]
-Length:      N lines, or N sentences for a prose poem
+Kind:        [poem / play excerpt / screenplay / fiction prose / news report / cut-up / label / correspondence / other, named]
+Unit:        [line / sentence / speech / paragraph / fragment]
+Found by:    [the user / named third party / a named procedure], for found text only
+Length:      N units, with the unit named: N lines, N sentences, N speeches, N paragraphs, N fragments
 ```
 
-Provenance routes the treatment. A draft gets workshop mode, and finished work gets the standard sidecar. See Workshop Mode vs. Standard Sidecar.
+Provenance routes the treatment. A draft gets workshop mode, finished work gets the standard sidecar, and found text gets either at the operator's call, since it is finished in its own kind and raw as material. See Workshop Mode vs. Standard Sidecar.
+
+Kind and Unit were added at v0.7.0 for found text and default to poem and line. Kind sets the baseline for the absence scan and for the kernel's Poetics Scan, which runs before the treatment on any kind but poem. Unit sets the address forms and what section 4 reads. `Found by` records who did the cutting. A cut-up the user made is the user's arrangement and someone else's words, so Copyright follows the words and the arrangement is quoted as the critique needs. A procedure named there, a cut-up method or an erasure of a named source, is part of the specimen's making and is read at L1; it is not an intention, and the treatment reads what the procedure left on the page. Correspondence and other private text by a third party get the single question a third party's poem gets, below, and the treatment does not identify a private person beyond what the page shows.
 
 Copyright sets the exposure ceiling. The user's own draft is quoted as freely as the critique needs, since it is their poem. A third party's in-copyright poem caps at Level 3 and runs the kernel's reassembly test. Public domain reaches Level 4 when full text is diagnostically necessary.
 
@@ -463,6 +476,8 @@ Name sound patterns that matter. Quote small units. Say what the sound does.
 
 Name the breaks that earn their position and the breaks that go slack. Suggest one or two test breaks when useful.
 
+On a unit other than the line, read the break at the declared unit: the sentence boundary in prose, the speech turn and the stage direction in a script, the paragraph break in a report, the cut in a cut-up. The question is the same, whether the break is a decision or a default. Where the unit has no break the draft controls, leave the section empty and say so.
+
 ### 5. Diction and Language Check
 
 Separate real speech from poetic costume. Name words that are doing work and words trying to sound like work.
@@ -485,7 +500,7 @@ Optional. Use when the poem has more than one plausible whole-poem drive, when t
 
 ### 10. Function Bay
 
-Optional. Use when critique starts policing craft parts instead of naming actions. Report dial trials here, as the contrast trial, when the user has asked for them.
+Optional. Use when critique starts policing craft parts instead of naming actions. Report dial trials here, as the contrast trial, when the user has asked for them, and named contrast trials on `contrast at:`.
 
 ### 11. Revision Routes
 
@@ -609,6 +624,18 @@ no dial trials                       suppress dial trials and overlays for the s
 ```
 
 A named dial or setting is used as named, on the same rule as a named confinement. Selection when unnamed follows the dial file's Selection Rule: against the draft's setting, one dial per trial.
+
+Found-text and Function Bay commands, from v0.7.0:
+
+```text
+jig as [kind]                        workshop a found text; kind and unit go on the card
+read as found                        set provenance to found and run the standard reading; this mode is not invoked
+poetics scan                         run the kernel's Poetics Scan alone and stop
+contrast at: [device]                a named contrast trial in Function Bay
+declare unit: [unit]                 set the address unit when the card's default is wrong
+```
+
+`read as found` and `poetics scan` are kernel operations and run whether or not this mode is loaded. They are listed here because an operator reaches for them from the workshop.
 
 The overlay never fires by default and is never selected by the reasoning path. It is the cheapest reading available and no poem can refuse it, so it requires the explicit `+ ars poetica`.
 
@@ -791,6 +818,8 @@ To make impermanence bodily, the poem could put the pressure in the voice, jaw, 
 Give one wrong-way trial and one cleaner trial. The contrast teaches. It is not the final revision.
 
 When the target passage's trouble is a setting rather than a failed action, and the user has asked for a dial trial, the contrast trial is a dial trial from `13-speaker-dials`. The wrong-way trial turns one dial one way and the cleaner trial turns it the other. Each names the draft's setting and the trial's, holds what the entry says to hold, and carries `Reached` and `Seam`. `Reached` names something real the passage held and its setting kept off the page, with the line where it was latent, or reports that the trial reached nothing.
+
+Named contrast trials, from v0.7.0. `contrast at: [device]` names the device the contrast turns on, from the Extended Device Inventory when it is loaded or from the Current Strategy list when it is not: `contrast at: line break`, `contrast at: refrain`, `contrast at: stage direction`. The wrong-way trial overuses or misplaces the device, and the cleaner trial places it where the passage's action needs it, or removes it. The trial ships in the standard form with `Reached` and `Seam`, under the dial file's `Reached` standard: it surfaced something real the passage held, with the address where it was latent, or it reports `Reached: nothing, setting only`. A named device is used as named; if the passage cannot take it, say so rather than substituting. One device per trial. Period fit applies to the device at the specimen's composition moment or the finder's, and the trial firewall applies: a device a trial placed enters Revision Routes only when the draft's own lines already lean toward it. This grammar is the apparatus's device-level trial. It adds no trial class, since Function Bay already maps strategies to devices; it makes the existing contrast trial nameable.
 
 ### Single Experiment
 
@@ -991,6 +1020,7 @@ Deploy workshop mode when:
 - the specimen is the user's draft or a workshopable draft
 - the specimen is a fragment, juvenile work, notebook piece, or in-progress poem
 - the user wants craft-level revision attention
+- the specimen is a found text and the user wants it in the jig
 
 Deploy standard sidecar when:
 
@@ -1000,6 +1030,8 @@ Deploy standard sidecar when:
 - the task is tradition placement rather than craft route-naming
 
 Both modes can run on the same specimen. Keep the sections separate.
+
+Found text goes both ways. A `found` provenance admits either route, and the kernel's Poetics Scan grade is advice rather than a router: a null scan says the workshop will be working from the material's position and setting alone, and the operator may still ask for it.
 
 ## Full Monty Integration
 
@@ -1119,6 +1151,18 @@ Added at v0.6.1. A dial trial makes a span sound better, more spoken, fancier, m
 
 Correction: the dial file's `Reached` standard. Name what surfaced and where it was latent, or report that the trial reached nothing.
 
+### Poetics Projection
+
+Added at v0.7.0. The treatment finds a poetics in a found text because the apparatus is a poetics apparatus, and the finding has no address: a refrain that is the kind's own formula, a turn that is a paragraph break, a confinement assembled from the text's ordinary omissions.
+
+Correction: the kernel's Poetics Scan, with the forward axis of Coscienza. Every grade names where it fires. Null is a result, and a treatment that runs past a null scan reports that it is working from position and setting alone.
+
+### Kind Policing
+
+Added at v0.7.0. The treatment faults a found text for lacking what its kind never carries: a report for having no images, a stage direction for stating rather than showing, a label for its line breaks. This is Craft-Part Policing against the kind.
+
+Correction: Checkpoint 9 runs against the declared kind. Name what the kind carries before naming what the text lacks, and route a kind-level absence to the Poetics Scan rather than to section 2 or 4.
+
 ### Corpus Domination
 
 The workshop-book voice overtakes the poem, and the output starts teaching the book instead of workshopping the specimen.
@@ -1155,6 +1199,10 @@ And, when the dial file is loaded and a dial trial ran:
 
 > Does each dial trial turn one dial, hold its fixed parts, run its checks, carry a `Seam`, and name in `Reached` something real the setting hid?
 
+And, when the specimen's kind is not poem:
+
+> Did the treatment declare the kind and the unit, run the Poetics Scan before the sections, read section 4 at the declared unit, and measure absence against the kind rather than against a poem?
+
 If yes, ship.
 
 If no, revise.
@@ -1189,6 +1237,12 @@ When the Speaker Dials file is loaded, the assistant may say:
 
 ```text
 Speaker Dials loaded. Dial trials and dial overlays on request.
+```
+
+When a found text is on the card, the assistant may say:
+
+```text
+Found text: kind [kind], unit [unit]. Poetics Scan: [grade]. Treatment runs on the declared unit.
 ```
 
 ## Corpus Boundary

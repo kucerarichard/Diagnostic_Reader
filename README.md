@@ -2,7 +2,7 @@
 
 # Diagnostic Reader
 
-Operator's guide to the Diagnostic Reader, a poetics apparatus that runs on a language model loaded with the files in this bundle. Its standard mode is the diagnostic reading. You put a poem on the page, and the kernel reads it: critic voices take the zones they claim, voices with nothing to say stand down, and the device inventory names devices when it's loaded. A style mode, a scan mode, and the JIG workshop extend the reading. The confinement catalog and the speaker dials serve the workshop. This file covers the parts, the load order, how to invoke each mode, the output policy, and the open work.
+Operator's guide to the Diagnostic Reader, a poetics apparatus that runs on a language model loaded with the files in this bundle. Its standard mode is the diagnostic reading. You put a text on the page, a poem or any found text with its kind declared, and the kernel reads it: critic voices take the zones they claim, voices with nothing to say stand down, and the device inventory names devices when it's loaded. On a found text the Poetics Scan runs first and grades what stands up. A style mode, a scan mode, and the JIG workshop extend the reading. The confinement catalog and the speaker dials serve the workshop. This file covers the parts, the load order, how to invoke each mode, the output policy, and the open work.
 
 This README is apparatus-internal. It names calibration sources, which output never does. Don't paste its tables into a reading.
 
@@ -14,6 +14,7 @@ This README is apparatus-internal. It names calibration sources, which output ne
 | VISE style mode | A closing verdict in propulsive cadence, riding a voice | `VISE verdict, PLUMB spine.` |
 | Scan Mode | A specimen carrying a named device, then a sidecar on it | `Scan canon A for apostrophe` |
 | JIG workshop | A twelve-section craft treatment of a draft, with Confinement Bay, optional rewrite trials, and optional dial trials | `workshop this specimen` |
+| Poetics Scan | A grade of what stands up in a text, overt, covert, latent, or null, with an address for each | `poetics scan` / `read as found` |
 
 Catalog work, adding confinements to `12-confinement-inventory`, is the standing maintenance job. The catalog holds 194 entries from 57 specimens.
 
@@ -27,10 +28,10 @@ Core and policy:
 
 | Stem | Version | Role | Load when |
 |---|---|---|---|
-| `0-poetics-boot-hollow` | 0.13 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
-| `0a-portable-poetics-kernel` | 0.3.16 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts | Always, first |
-| `0c-voice-designations` | 0.5 | Designation set, leak tiers, calibration-collision rule for voices, modes, and calibrated extensions | Always, with any voice, mode, or `13` |
-| `0b-voice-slot-registry` | 0.5 | Slot matrix, voice test, candidate log, reopen conditions | Only when slot status is in question |
+| `0-poetics-boot-hollow` | 0.17 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
+| `0a-portable-poetics-kernel` | 0.3.18 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan | Always, first |
+| `0c-voice-designations` | 0.7 | Designation set, leak tiers, calibration-collision rule for voices, modes, and calibrated extensions, take versus specimen | Always, with any voice, mode, or `13` |
+| `0b-voice-slot-registry` | 0.6 | Slot matrix, voice test, candidate log, reopen conditions | Only when slot status is in question |
 | `0d-apparatus-provenance` | 0.3 | History and rationale. Loaded by nothing | Never; read for background |
 | `voice-volitional-map` | 0.2 | The five voices' aims, completion tests, and failures in one table | Never; read for background |
 
@@ -44,21 +45,22 @@ Voices and modes:
 | `3-perloff-voice-module` | 0.3.1 | RETICLE voice | Procedural or avant-garde specimens |
 | `5-hersh-voice-module` | 0.1 | DATUM voice | A specimen's account of itself against a record; needs `11` |
 | `4-gonzo-mode` | 0.3.1 | VISE style mode; rides any voice | On request |
-| `3a-workshop` | 0.6.1 | JIG workshop mode | Workshop requests |
+| `3a-workshop` | 0.7.0 | JIG workshop mode, with found-text treatment and named contrast trials | Workshop requests |
 
 Extensions and notes:
 
 | Stem | Version | Role | Load when |
 |---|---|---|---|
-| `7-device-inventory-extended` | 0.2 | 189 devices in Categories A to G, the Hermetic re-sort (H), training corpus (I), specimen clusters (J), and Scan Mode (K). Replaces the kernel's lite inventory while loaded | Any reading that needs device-level naming; Scan Mode; workshop; device names for `13` |
+| `7-device-inventory-extended` | 0.4 | 192 devices in Categories A to G, the Hermetic re-sort (H), training corpus (I), specimen clusters (J), and Scan Mode (K). Replaces the kernel's lite inventory while loaded | Any reading that needs device-level naming; Scan Mode; workshop; device names for `13` |
 | `7a-nom-function-battery` | 0.2 | Five function-level tests built from the inventory's Nôm and English-simulation entries. Runs on every specimen while loaded | Double-surface or script-friction questions; needs `7` |
-| `8-frye-extraction` | 0.5 | Radical of presentation, paired fallacy guards, and melos and opsis channel separation. No voice zone | Rendering and reception questions |
+| `8-frye-extraction` | 0.6 | Radical of presentation, paired fallacy guards, and melos and opsis channel separation. No voice zone | Rendering and reception questions; by default for any specimen whose kind is not poem |
 | `9-casanova-extraction` | 0.6 | Seven tools and one directive on a work's position in international literary space, gated by a crossing test. No voice zone | A positional claim that changes what the page shows |
 | `10-monadology-foundations` | 0.2 | Leibniz foundations for three house disciplines. Fires nothing | When those foundations are in question |
 | `11-provenance-grading-extension` | 0.1 | P0 to P5 claim ladder | DATUM; auditing catalog stakes |
 | `compartmentalization-engine` | 0.1 | An engine type and a constrained opt-in lens | A poem built around a wound it walls off rather than resolves |
-| `12-confinement-inventory` | 0.13 | Confinement catalog | Confinement Bay; catalog work |
-| `13-speaker-dials` | 0.2 | Speaker dial catalog: nine dials, four checks, trial forms, eleven experiments | Workshop dial trials; needs kernel 0.3.16 and `3a` |
+| `12-confinement-inventory` | 0.16 | Confinement catalog | Confinement Bay; catalog work |
+| `13-speaker-dials` | 0.3 | Speaker dial catalog: nine dials, four checks, trial forms, eleven experiments | Workshop dial trials; needs kernel 0.3.16 and `3a` |
+| `14-attridge-staten-extraction` | 0.2 | Fourteen reading operations from a dialogue between two critics, with a refusal ledger. No voice zone | Any reading that wants its tools; fires on warrant |
 
 The stems use the kernel's File Reference Rule: references name the unversioned stem, file names carry the version, and you resolve each stem against what's on disk.
 
@@ -82,7 +84,7 @@ Not in this bundle: `0-poetics-boot`, the original private core, which loads as 
 
 The boot calls itself the apparatus's only complete inventory. At v0.13 it disagrees with this bundle in three places:
 
-- It lists `8-frye-extraction`, `9-casanova-extraction`, `10-monadology-foundations`, and the Compartmentalization Engine module as referenced and not held. All four are here.
+- It lists `9-casanova-extraction`, `10-monadology-foundations`, and the Compartmentalization Engine module as referenced and not held. All three are here. `8-frye-extraction` was registered at boot v0.14.
 - It doesn't register `7a-nom-function-battery`, `0d-apparatus-provenance`, `voice-volitional-map`, or the Gilson plugin. No apparatus file references `7a`.
 - Its plugin registry gives Small Branch as `full-monty-santos-small-branch-example`. The file on disk is `full-monty-santos-small-branch-v0.2`.
 
@@ -95,7 +97,7 @@ The boot's load order:
 1. Load `0a-portable-poetics-kernel`.
 2. Load `0c-voice-designations`.
 3. Load `0b-voice-slot-registry` if slot status matters.
-4. Load the extensions the task needs: `7` for device names, `11` for DATUM, `12` for Confinement Bay, `13` for dial trials.
+4. Load the extensions the task needs: `7` for device names, `11` for DATUM, `12` for Confinement Bay, `13` for dial trials, `8` for any specimen whose kind is not poem.
 5. Load the voice modules.
 6. Load modes last, since VISE and JIG both ride a voice.
 7. Load plugins only when source-bearing calibration is needed.
@@ -105,7 +107,7 @@ The order is tolerant. A file that arrives later applies from the next turn.
 
 **Warning:** load `0c-voice-designations` before any voice module. Without it, every voice labels its output with its calibration source's name, and the apparatus is out of policy from the first verdict.
 
-Hard dependencies: `5` needs `11`. `7a` needs `7`. Confinement Bay needs `12`. Dial trials need `13`, which needs kernel 0.3.16 and names its devices from `7` at 0.2 or later.
+Hard dependencies: `5` needs `11`. `7a` needs `7`. Confinement Bay needs `12`. Dial trials need `13`, which needs kernel 0.3.16 and names its devices from `7` at 0.2 or later. Found-text treatment in the workshop needs kernel 0.3.17.
 
 Minimal sets by task:
 
@@ -119,6 +121,8 @@ Minimal sets by task:
 | Scan Mode | `0a`, `0c`, `7` |
 | Workshop | `0a`, `0c`, `3-kowit`, `3a`, `12`, and `7` for device names |
 | Workshop with dial trials | The workshop set plus `13` |
+| Found-text reading | `0a`, `0c`, `7`, `8`, and the voice modules the specimen calls for |
+| Found-text workshop | The workshop set plus `8` |
 | Catalog extraction | `0a`, `0c`, `11`, `12`, and `3a` for the Bay's field contract |
 
 A missing file switches off what depends on it, and the apparatus says so rather than rebuilding the file's contents from memory. Without `7` a reading uses the kernel's lite device bins. Without a voice module, that voice appears as a compressed note in the default register or stays absent.
@@ -149,6 +153,8 @@ Add TARE as counter-voice.                       a second voice in a zone anothe
 DATUM verdict on the poem and its note.          omission audit of the poet's account against the page
 Run the Hermetic chamber reading.                Section H lens, where the poem's structure warrants it
 Full battery report.                             all five Nôm battery grades, non-triggers included
+Read as found. Kind: label. Unit: line.          a found text as specimen; the Poetics Scan runs first
+Poetics scan.                                    the scan alone, with its grade and addresses, then stop
 ```
 
 Operator input isn't governed by the designation policy, so `Rother verdict` and `ASSAY verdict` reach the same voice. Output carries the designation either way. A reading names its specimen in full; the policy masks who supplies the register, never who wrote the poem.
@@ -264,7 +270,7 @@ Every reading passes ten checks before it ships:
 | 3 Coscienza | Is the apparatus over-crediting or under-crediting awareness? |
 | 4 Hypothesis Closure | Have live hypotheses been resolved under the closure rule? |
 | 5 Source Exposure | Does the reading quote only what it needs? |
-| 6 Decoration vs. Diagnosis | Does each named term reveal a mechanism the reader would otherwise miss? |
+| 6 Decoration vs. Diagnosis | Does each named term reveal a mechanism the reader would otherwise miss? Did the effect each named device carries register in reading order, before the scan named it? |
 | 7 Voice and Extension Calibration | Does voiced output obey its module, speak in voice rather than report, and carry a designation? |
 | 8 Default Register | Does the unvoiced prose obey the default register? |
 | 9 Weak Signal and Absence | What is faint here that does heavy work, and what is missing that this kind of poem would carry? |
@@ -273,6 +279,39 @@ Every reading passes ten checks before it ships:
 The kernel's output gate closes the run:
 
 > Did the reading name the mechanism, pressure point, evidence, live uncertainty, and source exposure choice in plain terms?
+
+### Found Text
+
+The specimen need not be a poem. A play excerpt, a screenplay page, fiction or newspaper prose, a cut-up, a label, or a stretch of correspondence enters on the same terms, and the apparatus runs the same operations on it; where a kernel procedure says poem, read specimen. The kernel's Found Text Compatibility asks the specimen card for two declarations the procedures need. Kind names what the text presents itself as and sets the baseline for the absence scan, so a report is measured against reports. Unit names what an address counts and sets the address forms:
+
+```text
+Sp 4         speech 4, in a play or script
+SD 2         stage direction 2, counted separately
+P3           paragraph 3; P3 s2 is its second sentence
+Hd / Dl / By headline, dateline, byline
+Frag 7       fragment 7, in a cut-up or found assembly
+```
+
+Request a reading of found text with its kind:
+
+```text
+Read as found. Kind: news report. Unit: paragraph. [source, date, edition]
+
+[text]
+```
+
+Before the voices read it, the Poetics Scan grades what stands up, with an address for every grade:
+
+| Grade | Meaning | Evidence |
+|---|---|---|
+| Overt | Devices fire on the page with period fit | Device inventory |
+| Covert | A pattern exceeds what the kind requires, and removing it leaves the kind's purpose intact | Weak Signal, then Engine vs. Residue run against the kind |
+| Latent | No device fires; a position with a knowledge limit, or a setting doing cover, exists with no surface using it | Confinement extraction, dial page test |
+| Null | Nothing stands up. The scan reports it and stops | A completed result |
+
+`poetics scan` runs the pass alone. A grade without an address is Poetics Projection, and the forward axis of Coscienza is the guard. A found text has two composition moments, the source's and the finder's; Period Fit names which one a device belongs to, and Coscienza reads the page's awareness at both without attributing either. Register Is Not Referent fires by default on report kinds. Load `8` for found text: radical of presentation is the first field a play and a label differ on, and a found text read as a poem has changed radical by construction.
+
+A found text's provenance is `found`, which admits both the standard reading and the workshop; you choose the route. A found-text reading is also distinct from a voice's non-poem take, which addresses a subject with no text on the page; `0c` states the test.
 
 ### Voices
 
@@ -297,10 +336,12 @@ Which voice takes the verdict:
 - One voice per zone. A voice stays inactive when another holds the zone, unless you ask for it as counter-voice.
 - A voice whose calibration source wrote the specimen stands down, recorded as a jurisdiction note with no stated cause.
 
-In triangulation, each voice with something distinct to say speaks in its own person under its designation, and the disagreement stands unsmoothed. A loaded voice with nothing to say holds silent or leaves a compressed note. The shape, with the voiced prose left out:
+In triangulation, the commentary opens with one line of common ground in the default register, what every deployed voice agrees is given on the page, with an address; a triangulation in which nothing is agreed says so, and that is a finding. Then each voice with something distinct to say speaks in its own person under its designation, and the disagreement stands unsmoothed against the common ground. A loaded voice with nothing to say holds silent or leaves a compressed note. The shape, with the voiced prose left out:
 
 ```text
 ### Triangulated Commentary
+
+Common ground: [what every voice agrees is on the page, with an address]
 
 PLUMB
 [first person: what the system cost, at ground level]
@@ -360,11 +401,11 @@ Without `7`, the Device Inventory field draws on the kernel's lite bins: Frame, 
 | B | Sonic and prosodic | 30 |
 | C | Syntactic and sentence | 30 |
 | D | Figural and rhetorical | 33, of which 4 are Nôm or English-simulation |
-| E | Structural and compositional | 31 |
+| E | Structural and compositional | 33 |
 | F | Visual and typographic | 20, of which 5 are Nôm, simulation, or wildcard |
-| G | Pragmatic and ethical | 21 |
+| G | Pragmatic and ethical | 22 |
 
-Period fit applies to every named device, and bins stay empty when nothing fires; forced fill fails Checkpoint 6. The Nôm and English-simulation entries stay behind the English-Nom Hybrid Signals opt-in. Section H, the Hermetic or Alchemical Chamber Reading, re-sorts the devices into vessels, seals, valves, and transmuters. It fires on the specimen's structural warrant, and a request runs it only where that warrant exists. Its prompt:
+v0.3 added three devices for found text: stage direction and dateline in E, attribution formula in G. Period fit applies to every named device, and bins stay empty when nothing fires; forced fill fails Checkpoint 6. From kernel 0.3.18 a device is credited only where the effect it names registered in reading order before the scan named it; the scan finds, the question credits. The Nôm and English-simulation entries stay behind the English-Nom Hybrid Signals opt-in. Section H, the Hermetic or Alchemical Chamber Reading, re-sorts the devices into vessels, seals, valves, and transmuters. It fires on the specimen's structural warrant, and a request runs it only where that warrant exists. Its prompt:
 
 > Identify the chamber. What V devices define it? What S devices close it? What Va devices regulate its breathing? What T devices are running inside it? What is the chamber producing as output that it did not contain at input?
 
@@ -381,6 +422,14 @@ Frye Extraction: [tool name] applied.
 ```
 
 `9-casanova-extraction` adds a position note only when it can name the textual feature the position explains. A position note with no feature attached is cut.
+
+`14-attridge-staten-extraction` carries fourteen reading operations from a book-length dialogue between two critics: a consequence sweep that demotes a hypothesis on loose fit, an activated-association test, a physical-first reading order, a scene-of-utterance reconstruction with a null case, figure reversal with a locking criterion, a convention discount, a shorn-of-context test with three knowledge tiers, a ban on translating a poem into the doctrine behind it, a presupposition sweep, a coasting map, a connective map, a blockage-or-release test for obscurity, an inverse-stringency rule for resistant texts, and a translation test for structural elements. Each fires on warrant and writes into a field the kernel already has:
+
+```text
+Reading Discipline: [tool name] applied.
+```
+
+The extraction's source also occasioned two kernel seams at 0.3.18, the reading-order question at Checkpoint 6 and the common-ground line in triangulation, which run whether or not the extraction is loaded. Every tool in the file is a brake, and from its 0.2 the file says so: the kernel's crediting machinery governs wherever a tool meets it, and no tool may refuse a finding that has an address.
 
 `7a-nom-function-battery` runs five tests silently on every specimen and reports fires at point grade or above inside the sidecar. Its grades are systemic fire, point fire, faint, and non-trigger. `Full battery report` reports all five with page evidence:
 
@@ -492,24 +541,30 @@ workshop this specimen
 workshop mode
 JIG this
 give this the workshop treatment
+jig as news report
 ```
 
-It runs only on a poem you supply. Asked for a random poem, it says it has no retrieval and asks you to paste one. The treatment opens with a specimen card:
+It runs only on a text you supply. Asked for a random poem, it says it has no retrieval and asks you to paste one. The treatment opens with a specimen card:
 
 ```text
 Author:      [the user / named third party / handle as given / anonymous]
 Provenance:  [the user's own draft / posted for critique at X / published in Y / public domain]
 Copyright:   [the user's / in copyright / public domain / unknown]
-Length:      N lines, or N sentences for a prose poem
+Kind:        [poem / play excerpt / screenplay / fiction prose / news report / cut-up / label / correspondence / other]
+Unit:        [line / sentence / speech / paragraph / fragment]
+Found by:    [the user / named third party / a named procedure], for found text
+Length:      N units, with the unit named
 ```
 
-Provenance routes the request: a draft gets the workshop, finished work gets the sidecar. Copyright sets the exposure ceiling. Your own draft is quoted as freely as the critique needs; a third party's in-copyright poem caps at Level 3. If you supply someone else's poem without provenance, JIG asks once.
+Provenance routes the request: a draft gets the workshop, finished work gets the sidecar, and found text gets either at your call. Kind and Unit default to poem and line. Copyright sets the exposure ceiling. Your own draft is quoted as freely as the critique needs; a third party's in-copyright poem caps at Level 3. If you supply someone else's poem without provenance, JIG asks once.
 
 The treatment has twelve sections: Opening Reading, Image Inventory, Sound and Cadence Scan, Line Break Analysis, Diction and Language Check, Form Examination, Voice and Moral Substrate, Confinement Bay, Engine Bay, Function Bay, Revision Routes, and Workshop Verdict. With the TARE module loaded, TARE speaks the verdict. Every treatment closes on the same question:
 
 > What is the poem honest enough to say, and where is it still pretending to be a poem?
 
 The three bays descend in scale. Confinement Bay works at condition scale, on what the poem is able to know. Engine Bay works at poem scale, on what drives it, and names the Defamiliarization and Compartmentalization Engines when the draft supports them. Function Bay works at passage scale, on what one passage performs, and ends with one experiment. Confinement Bay's extraction and breach scan are standard. Engine Bay, Function Bay, and every kind of trial are optional, and an omitted section is left as an honest gap rather than renumbered away.
+
+Function Bay's contrast trial can be named on `contrast at: [device]`, which turns the contrast on one device from the inventory: the wrong-way trial overuses or misplaces it, and the cleaner trial places it where the passage's action needs it. It ships in the trial form with `Reached` and `Seam`, and it is the apparatus's device-level trial without being a third trial class. On a found text the sections run at the declared unit, and section 4 reads the break at that unit.
 
 ### Confinement Bay
 
@@ -726,7 +781,7 @@ The list commands draw on the catalog's two index tables. These rows are the pri
 
 cf-ap-04 is the catalog's most-rediscovered primitive; see Confinement Recurrence.
 
-Contents at v0.13, unchanged from v0.12:
+Contents at v0.16, unchanged since v0.12:
 
 | Source | Specimens | Notes |
 |---|---|---|
@@ -740,7 +795,7 @@ Contents at v0.13, unchanged from v0.12:
 
 That comes to 57 composites and 137 primitives. By axis the split is thirteen upward, seventeen sideways, twelve inward, and fifteen outward. Entries hold at Level 0 throughout, and none carries its source's wording.
 
-v0.13 extracted nothing. It admitted dial settings as a second class of overlay and deferred a `carrier` field, because back-filling 194 entries needs every specimen's text on the page.
+v0.13 extracted nothing. It admitted dial settings as a second class of overlay and deferred a `carrier` field, because back-filling 194 entries needs every specimen's text on the page. v0.14 extracted nothing either, and deferred admission of non-verse specimens; see Outstanding. v0.15 added the prior-entry clause and the Prufrock convergence notes. v0.16 recorded Jackfruit as a recurrence of cf-rs-02 and cf-ob-03 rather than extracting it.
 
 ## Adding Entries
 
@@ -953,7 +1008,7 @@ Consistency work:
 
 Policy gaps:
 
-9. `0c-voice-designations` has no rule for a specimen reprinted inside a calibration corpus. The catalog excludes such specimens under its Section F alone.
+9. Closed at `0c` 0.7 and catalog 0.15. The catalog's Section F now governs reprinted specimens in both directions, with a prior-entry clause for specimens already extracted, and `0c` points to it. See the boot's Closed list.
 10. Entries drawn from a calibration source's own poems have no consumer. Kowit's "Hell" and "I Attend a Poetry Reading" are on the page in the stand-up corpus and remain unextracted.
 11. The registry's clause-3 question waits on an operator call: whether a voice candidate's corpus must include at least one worked poem reading.
 
@@ -967,6 +1022,18 @@ Catalog and dials:
 Inventory:
 
 16. The boot's registry disagrees with this bundle. See Registry Gaps.
+
+Found text:
+
+17. Admission of non-verse specimens to the confinement catalog is deferred at v0.14. Confinement Bay extracts from a found text at runtime; the catalog does not take the entries, because its recurrence findings measure whole poems. A second corpus, a `kind` field, or continued exclusion is the operator's call.
+18. Three found-text devices entered `7` at v0.3: stage direction, dateline, attribution formula. Noticed and not added: the speaker cue, the byline, the caption.
+19. The kernel's unit address forms (`Sp`, `SD`, `P`, `Hd`, `Dl`, `By`, `Frag`) are unaudited against the reassembly test, and the ceiling on a long prose specimen has not been set.
+
+Extraction 14:
+
+20. The tools of `14` are unexercised on a live specimen. The first readings to load it should say, per tool, whether it changed the reading or relabelled a finding.
+21. The Prufrock entries, cf-pr-01 to cf-pr-05, are frozen against revision in any session where `14` is loaded, under the catalog's prior-entry clause. Not a defect; a standing condition to know about before editing them.
+22. The activation notices of `8` and `9` name their sources in output, against the rule `0c` states for extensions and that `14` follows. Operator's call whether to bring them under it.
 
 ### Closed
 
@@ -1028,6 +1095,8 @@ Checkpoint Gate. The ten checks every reading passes before it ships.
 
 Composite. A catalog entry describing one specimen's whole confinement. It isn't combinable.
 
+Common ground. The line that opens Triangulated Commentary, stating in the default register what every deployed voice agrees is on the page, with an address. It records agreement and closes nothing.
+
 Confinement. An imposed pattern of absence that makes something unknowable. Compare constraint, which is elected.
 
 Contrast trial. Function Bay's pair of a wrong-way trial and a cleaner trial. Rewrite trials and dial trials share its footing, and none of them is a revision route.
@@ -1060,15 +1129,19 @@ Engine vs. Residue. The test of which feature collapses the poem when removed.
 
 Experiment. An operation the poet runs on the poet's own draft, stated in workshop speech. The dial file's ex-01 to ex-11 are drawn from its source's drills.
 
-Extraction. Two senses. Confinement extraction produces catalog entries. Critic extractions are files that carry a source's tools without a voice zone: `8`, `9`, and `13`.
+Extraction. Two senses. Confinement extraction produces catalog entries. Critic extractions are files that carry a source's tools without a voice zone: `8`, `9`, `13`, and `14`.
 
 Fold. What position and surface force the material into together. It's the level that doesn't transfer.
+
+Found text. Any specimen whose kind is not poem: a play excerpt, a script, prose, a cut-up, a label, correspondence. Its provenance is `found`, which admits both the sidecar and the workshop.
 
 Full monty plugin. A private, source-bearing calibration file for one poem or one critic's book.
 
 Full Monty State. Whether a full monty plugin is loaded: absent, present, multi, or conflicted. The default is absent.
 
 Genopersistation. The layers by which a poem persists: L0 artifact surface, L1 compositional making, L2 institutional support, L3 reception management.
+
+Kind. What a specimen presents itself as, declared on the card. It sets the baseline for the absence scan and the Poetics Scan. Defaults to poem.
 
 Knowledge test. The requirement that something be unavailable to the speaker, not merely unsaid.
 
@@ -1082,6 +1155,8 @@ Minimal runtime. The kernel's six-line reading.
 
 Mixed Log. The record of live hypotheses, each closed only by evidence under the closure rule.
 
+Named contrast trial. Function Bay's contrast trial with its device named on `contrast at:`. The apparatus's device-level trial; it adds no trial class.
+
 Overlay. A rule that adds a requirement to a confinement trial and removes nothing knowable: the ars poetica overlay or a dial setting. One per trial.
 
 P0 to P5. The provenance ladder, from on the page to absence recorded.
@@ -1092,11 +1167,15 @@ Period Fit. The check that a frame was available when the poem was written; late
 
 Phase Tensions. The three modes of a poem's strain: Failed System, Intentional Glitch, Transparent Argument.
 
+Poetics Scan. The kernel's pre-reading pass that grades what stands up in a text as overt, covert, latent, or null, each at an address. Null is a completed result.
+
 Pressure point. The line, phrase, image, turn, silence, or seam whose removal would cost the poem most. Every reading names one.
 
 Primitive. A combinable catalog entry isolating one operation from a specimen.
 
 Reached. The line on every trial that names what the trial got to. For a dial trial, it names a real thing the draft held and the line where it was latent, or reports `nothing, setting only`.
+
+Reading-order question. Checkpoint 6's second question, from kernel 0.3.18: whether the effect a named device carries registered in reading order before the scan named it. The scan finds devices; this decides which are credited.
 
 Refusal ceiling. At most one refusal primitive per trial. The refusal primitives are cf-sc-02, cf-sb-04, cf-wa-04, cf-pr-02, cf-me-03, and cf-eb-02.
 
@@ -1114,7 +1193,7 @@ Sidecar. The full diagnostic reading format.
 
 Speaker. The poem's speaking presence. New vocabulary uses `speaker`, because `voice` already names a critic register.
 
-Specimen. A poem on the page with its attribution.
+Specimen. A text on the page with its attribution. A poem by default; any kind when declared.
 
 Spine. The voice a VISE verdict rides, named in its label.
 
@@ -1122,9 +1201,13 @@ Stake. The catalog field recording what a confinement cost and what won't transf
 
 Stand-down. A voice or mode, or an extension's operations, declining a specimen. It's recorded as a jurisdiction note without a stated cause.
 
+Take. A voice's commentary on a subject with no text on the page, licensed for ASSAY, PLUMB, DATUM, and VISE. Distinct from a specimen reading of a found text.
+
 Trial firewall. The rule that a trial is a contrast trial and never the poet's next draft.
 
 Triangulated commentary. The sidecar field where each voice with something distinct to say speaks in its own person and the disagreement stands.
+
+Unit. What an address counts: line, sentence, speech, paragraph, or fragment. Declared on the card; defaults to line.
 
 Voice zone. A section of output a voice module declares and renders in its own person. The default register governs everything outside it.
 

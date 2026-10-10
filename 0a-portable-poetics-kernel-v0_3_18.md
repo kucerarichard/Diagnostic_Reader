@@ -1,11 +1,19 @@
 # Portable Poetics Kernel
 
-Version: 0.3.16  
+Version: 0.3.18  
 Status: standalone loadable  
 Private-core requirement: none  
 Source policy: no full private-core poems
 
 ## Revision Notes
+
+### 0.3.18
+
+Installs two seams occasioned by `14-attridge-staten-extraction`, a critic extraction from a book-length dialogue on reading poems at the level of their making. Checkpoint 6 gains a second question: whether the effect a named device carries registered in reading order before the scan named it. The device inventory finds devices and this question decides which are credited, so that a scan of the full inventory does not become the post-reading dissection one definition of overinterpretation names. Triangulated Commentary gains a common-ground line: one line in the default register, with an address, stating what every deployed voice agrees is given on the page, before the voices split. The line records agreement and closes nothing; a triangulation in which nothing is agreed states that, and it is a finding. `7-device-inventory-extended` v0.4 carries the matching line for the scan. No change to any other checkpoint, dimension, directive, or format. Backward-compatible with consumers that declare Portable Poetics Kernel v0.3.
+
+### 0.3.17
+
+Widens the specimen from a poem to any text on the page, occasioned by an operator instruction to read found text: a play excerpt, a script, fiction or newspaper prose, a cut-up, a label. The widening is small because the apparatus reads mechanisms, and `poem` was a label at most of the sites where it appears. At four sites the word changed a result, and each gets an edit. Address gains unit forms for speeches, stage directions, paragraphs, headlines, datelines, bylines, and fragments, and the counting convention now names the unit. Checkpoint 9 runs the absence scan against the text's declared kind rather than against poems. Period Fit and Coscienza each gain a two-moments note, since a found text has the source's composition moment and the finder's selection moment, and the apparatus reads the page's awareness at both without attributing either. Adds a Poetics Scan, a pre-reading pass that grades what stands up in a text as overt, covert, latent, or null, mapped to machinery the kernel already holds; null is a completed result. Adds Found Text Compatibility, a pointer on the model of the bay contracts: the consuming module's specimen card declares kind and unit, Register Is Not Referent fires by default on report kinds, Rendering Conditions expects heavy renderings, and a found provenance admits both the sidecar and the workshop. Register Is Not Referent carries a matching note. The distinction between a voice's non-poem take and a specimen reading of a found text is stated in `0c-voice-designations` v0.6. Backward-compatible with consumers that declare Portable Poetics Kernel v0.3.
 
 ### 0.3.16
 
@@ -306,6 +314,8 @@ Coscienza also applies to the apparatus. During framework design, ask:
 
 > Where am I softening my awareness of what the framework is doing?
 
+Two moments, from 0.3.17. A found text has the awareness its source shows and the awareness its finder's selection shows, and the two can disagree: a cut-up produces patterns its source never held, and a label read as a poem carries an attention its writer never spent. Both axes run on the page. The forward axis bars crediting the source with the finder's pattern or the finder with the source's. The reverse axis bars excusing a pattern as accident because it arrived by cutting. Where the finder's procedure is declared on the specimen card, selection counts as awareness shown, since what was kept is on the page. Where it is not, the pattern is read as the page's and attributed to no one.
+
 
 ## Coscienza Provenance
 
@@ -554,6 +564,8 @@ If yes, call it engine. If unclear, keep engine as the default until the counter
 
 If the frame is later, mark it as retrospective.
 
+A found text has two composition moments, the source's and the finder's, and a device can be native to either. Name which moment the device belongs to. A device native to neither is retrospective.
+
 ### Checkpoint 3: Coscienza
 
 > Is the apparatus over-crediting or under-crediting awareness?
@@ -576,7 +588,9 @@ If paraphrase preserves the mechanism, paraphrase. If exact wording is required,
 
 > Does each named term reveal a mechanism the reader would otherwise miss?
 
-Cut terms that dress the analysis.
+> Did the effect each named device carries register in reading order, before the scan named it?
+
+Cut terms that dress the analysis. The two questions run together, from 0.3.18. The device inventory finds devices; a device is credited when the effect it names was present in the reading before the inventory supplied the name. A device whose effect appears only in the scan is reported as a finding about the scan, and it does not enter the Device Inventory field or the Poetics Scan's overt grade. The inventory names what was felt and does not manufacture it.
 
 ### Checkpoint 7: Voice and Extension Calibration
 
@@ -608,9 +622,9 @@ Trial text is outside this checkpoint. See Register Prohibitions.
 
 ### Checkpoint 9: Weak Signal and Absence
 
-> What is faint here that does heavy work, and what is missing that this kind of poem would carry?
+> What is faint here that does heavy work, and what is missing that this kind of text would carry?
 
-Run the absence scan, treat a persistent unaccounted nag as a candidate signal, and locate any weak signal in the text or discard it.
+Run the absence scan, treat a persistent unaccounted nag as a candidate signal, and locate any weak signal in the text or discard it. On a specimen whose kind is not poem, the baseline is the kind declared on the specimen card, and the Poetics Scan's grade is read before an absence is called a defect.
 
 ### Checkpoint 10: Rendering
 
@@ -805,6 +819,8 @@ When provenance is unshown, keep the real-referent and invented-referent reading
 Reverse-axis corollary:
 
 > A poem that wears the authority of fact and withholds its source has made two charged choices, to borrow the authority and to withhold its basis. Under the reverse axis the absent attribution is an accountable feature of the poem, not a gap in the apparatus's evidence.
+
+Report kinds, from 0.3.17. On a specimen whose declared kind is a news report, a notice, a log, or another report form, the directive fires by default rather than on warrant, because documentary manner is the kind's own register and the apparatus would otherwise read every such text as true. The reverse-axis corollary applies as written: a report that withholds its source has made the two charged choices whatever its kind. The attribution formula, in the Extended Device Inventory's Category G, is the device the directive most often fires on.
 
 ### Transparent Ugliness
 
@@ -1036,18 +1052,25 @@ Prefer a middle instance when the mechanism recurs. Take the opening or closing 
 
 Two parts. The specimen address names which text, and the internal address names where in it.
 
-State the counting convention once per reading, because `L7` means nothing if two readers count differently. The default: number from the first line of the body, count every line carrying text, do not count the title, do not count blank lines between stanzas.
+State the counting convention once per reading, because `L7` means nothing if two readers count differently. The default: number from the first line of the body, count every line carrying text, do not count the title, do not count blank lines between stanzas. Name the unit with the convention when the unit is not the line, since a found text's card declares one and the forms below depend on it.
 
 Internal address forms:
 
 ```text
 L7           line 7
 S3L2         stanza 3, line 2
-Sent 4       sentence 4, for prose poems
+Sent 4       sentence 4, for a prose poem or a short prose text
 L12-13       a span
 L12/13       the junction between two lines, for break claims
 L7 medial    position within a line: opening, medial, close
 L7 w4        the fourth word of line 7
+Sp 4         speech 4, in a play or script; count every speech, do not count stage directions
+SD 2         stage direction 2, counted separately from speeches
+P3           paragraph 3, in prose; do not count a headline, byline, or dateline
+P3 s2        sentence 2 of paragraph 3
+Hd           the headline; Dl the dateline; By the byline
+Frag 7       fragment 7, in a cut-up or found assembly, in the order the page presents them; state the convention when the page gives no order
+Sp 4/5       the junction between two speeches, for turn-taking claims; P3/4 likewise for paragraphs
 ```
 
 Specimen address fields for a supplied specimen are author, provenance, copyright status, and length. Consuming modules define the card; this section defines only the internal address.
@@ -1192,7 +1215,7 @@ Use this form when no private core sidecar governs the task. A full monty plugin
 ## [Specimen Title]
 
 ### Provenance
-Date, source, author, making context, and source status. Include only facts that bear on the reading.
+Date, source, author, making context, and source status. Include only facts that bear on the reading. For a found text, kind and unit, the finder, and the Poetics Scan grade; the sidecar has no separate card, so this field carries them.
 
 ### Architecture
 The poem's structural shape in mechanism terms.
@@ -1228,7 +1251,7 @@ Classify as Failed System, Intentional Glitch, Transparent Argument, or open sta
 Name any calibration directive that fires: floor-origin, steganographic surface, sayability, seam pressure, anti-laundering engine, transparent ugliness, complaint loop, body-cost, cult-gating, plain speech, function before parts, parasitic effort, access honesty, rendering-load, or others added by modules.
 
 ### Triangulated Commentary
-Deploy only voices that have something distinct to say. An active voice module may use full prose license inside its declared zone, and under Voice Rendering Mode a bound voice speaks in its own person here rather than being reported about: render each loaded voice in the first person under its own name-label, let counter-voices answer in their own register, and keep the disagreement unsmoothed. Voices without loaded modules appear as compressed notes in the default register, or stay absent.
+Open with one line of common ground in the default register: what every deployed voice agrees is given on the page, with an address. The disagreement that follows is mapped against it. A triangulation in which nothing is agreed states that, and it is a finding. Then deploy only voices that have something distinct to say. An active voice module may use full prose license inside its declared zone, and under Voice Rendering Mode a bound voice speaks in its own person here rather than being reported about: render each loaded voice in the first person under its own name-label, let counter-voices answer in their own register, and keep the disagreement unsmoothed. Voices without loaded modules appear as compressed notes in the default register, or stay absent.
 
 ### Final Classification
 Type, operating mode, infrastructure, pressure point, resonant line, and diagnostic lesson.
@@ -1333,6 +1356,43 @@ A speaker dial is a dimension of how a poem's speaker talks, along which every d
 Dial trials run inside the existing bays: as a contrast trial at passage scale in Function Bay, as a tuning question in Engine Bay, and as an overlay on a Confinement Bay trial, run as a pair so that the seam can separate the change of carrier from the confinement.
 
 Dial entries live in `13-speaker-dials`, on the same terms as the device inventory and the confinement catalog. A dial trial is a contrast trial and never a revision route. The importing carve-out in Engine Constraints extends to it on identical terms.
+
+## Found Text Compatibility
+
+A specimen is a text on the page with its attribution, and the text need not be a poem. A play excerpt, a screenplay page, a passage of fiction or newspaper prose, a cut-up, a label, a notice, and a stretch of correspondence enter on the terms a poem does, and the apparatus reads them with the same operations. Where a procedure in this kernel says poem, read specimen. The procedures were written for poems and run unchanged on any text, and a global rename would break cross-references in every consumer. The kernel changes nothing in its procedures for found text. It asks the consuming module's specimen card for two declarations the procedures need.
+
+Kind names what the text presents itself as: poem, play excerpt, screenplay, fiction prose, news report, cut-up, label, correspondence, or another named kind. Kind sets the baseline for Checkpoint 9, since an absence is measured against what the kind carries. Unit names what an address counts: line, sentence, speech, paragraph, or fragment. Unit sets the address forms in Located Quote and the length field on the card.
+
+Three defaults follow from kind. Register Is Not Referent fires by default on report kinds, because documentary manner is the kind's own register and proves nothing about its referent. Rendering Conditions expects a heavy rendering, since found text arrives as a photographed label, an OCR column, or a formatted script page, and emits its note on the usual terms. Where `8-frye-extraction` is loaded, radical of presentation is the first field to fill, because a play and a label differ there before they differ anywhere else, and a found text read as a poem has changed radical by construction.
+
+A found text is finished in its own kind and raw as poetic material, so the card's provenance takes a third value, found, which admits both the standard reading and the workshop. The standard reading reads the text as finished in its kind, and voices stand up or stand down on the specimen's properties as they always have. The workshop treats the text as material and runs its sections on the declared unit. The operator chooses the route. The consuming modules define the card.
+
+Found text does not change the exposure ladder. A cut-up the user made is the user's arrangement, and the words in it keep their source's rights, so quotation of the arrangement is quotation of the source. The reassembly test and the default ceiling apply to in-copyright prose and scripts as they apply to poems. Read the ceiling proportionally on a short text and against an absolute count on a long one: a quarter of a column is too much and a quarter of a label is nothing.
+
+A specimen reading of a found text and a voice's non-poem take are different operations. The take addresses a subject with no text on the page; the reading addresses a text. `0c-voice-designations` states the test. The Poetics Scan below decides whether a poetics stands up in the text at all.
+
+## Poetics Scan
+
+A pre-reading pass that grades what stands up in a text before the voices do. It runs by default on any specimen whose kind is not poem, on command for a poem, and it is the whole of the operation when the command is `poetics scan`.
+
+Prompt:
+
+> What in this text is doing poetic work at a located address, and is that work overt, covert, latent, or absent?
+
+Four grades. Each maps to machinery this kernel already holds, and each requires an address.
+
+- Overt. Devices fire on the page with period fit. The text declares a poetics or carries one a reader notices. Evidence: the device inventory, at whatever resolution is loaded.
+- Covert. A pattern exceeds what the kind requires, and removing it leaves the kind's own purpose intact. A report that runs a refrain, a notice with a turn, a recipe built as an inventory poem. Evidence: Weak Signal for the pattern, then Engine vs. Residue run against the kind and not against a poem. If removal collapses the kind's purpose, the pattern is the kind's engine and no poetics is credited.
+- Latent. No device fires, and the text holds a speaker position with a knowledge limit, or sits at a dial setting that keeps something off the page, with no surface using either. A trial could make it audible; the page has not. Evidence: Confinement Bay extraction and the dial page test where their files are loaded, the Stance and Pressure dimensions where they are not.
+- Null. Nothing stands up. The scan reports it and stops. Null is a completed result on the footing of a stand-down, and a reading that proceeds past it as if it had found something is reading its own apparatus.
+
+Report the grade, the addresses, and the machinery that supplied the evidence, in the default register:
+
+```text
+Poetics Scan: covert. Refrain at P2 s1, P5 s1, P9 s1, in excess of the report's purpose; removal leaves the report standing. Confinement extraction available in the workshop on request.
+```
+
+The forward axis of Coscienza is the guard. A poetics apparatus will find a poetics in any text if it is allowed to look without an address, and a grade that cannot name where it fires is Poetics Projection, which the workshop names as a failure mode. A latent grade is not a promise. It says a trial could reach something, and the trial's `Reached` line decides whether it did.
 
 ## Voice Slot Matrix
 

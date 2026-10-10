@@ -1,6 +1,12 @@
 # CONFINEMENT INVENTORY
 
-Version: 0.13
+Version: 0.16
+
+Revision 0.16: changes no entries. Records Jackfruit, held at v0.12 as a variant of River Snail, as a recurrence in Section D: it runs cf-rs-02, speakable figure, and cf-ob-03, fated test, together, and is the fated test's second case from the same poet. Amends the Candidate Log's held row to match. Occasioned by an operator question about which of the selection's poems answers an eighteenth-century apostrophe to a sick flower; the catalog records the operations and not the reply, and the specimen that would carry the other side is excluded under Section F.
+
+Revision 0.15: changes no entry's structural fields. Adds a prior-entry clause to Section F for the case of a specimen already in the catalog that a newly adopted calibration corpus reprints and reads, occasioned by `14-attridge-staten-extraction`, whose source reads the Prufrock specimen extracted here at v0.4. The entries stand, since the convergence between their reading and the source's is independent and predates the source's adoption; each of cf-pr-01 through cf-pr-05 gains a Convergence field recording this; and the entries are not revised in any session where the extraction is loaded. No further entries are extracted from the specimen. The other eight poems the source reprints are excluded from selection on Section F's ordinary terms. `0c-voice-designations` v0.7 points here for the reprinted-specimen case, which closes the boot's Outstanding item on it.
+
+Revision 0.14: changes no entries. Adds a Candidate Log row deferring admission of non-verse specimens, following the kernel's widening of the specimen at 0.3.17 and the workshop's found-text treatment at 0.7.0. Confinement Bay runs extraction and trials on a found text at runtime, because the bay is the consumer and the knowledge test is a test of position, which any text has. Admission of a non-verse specimen as a catalog entry is deferred, because the recurrence findings rest on a corpus of whole poems and a mixed corpus would change what they measure. The deferral is the operator's call and is recorded in the boot's Outstanding list.
 
 Revision 0.13: admits a second class of overlay, the speaker dial settings held in `13-speaker-dials`. A dial setting adds a requirement and removes nothing knowable, so it meets Section C's definition. It changes the carrier, the means by which a trial delivers what its confinement allows, which the Provenance notes below have recorded corpus by corpus without a field. Section D settles the overlay cap: a dial overlay counts against it, and runs as a pair with the same trial without it. Adds two Candidate Log rows. No entry changes, and no `carrier` field is added; see the Candidate Log.
 
@@ -718,6 +724,8 @@ imposed by:       a room in which the question has no admissible form; a hearer 
 **Device cluster.** A (addressee position, first/second-person management, pronoun shift), B (refrain, end rhyme), C (interrogation, conditionals), E (dramatic monologue, open ending), G (self-implication, withholding).
 
 **Stand-down.** None.
+
+**Convergence.** `14-attridge-staten-extraction` reprints and reads this specimen. The entry was extracted at catalog v0.4, before that extension existed, and stands under Section F's prior-entry clause: the convergence with the source's reading is independent, the entry is not revised in any session where the extension is loaded, and no further entries are extracted from the specimen.
 
 ### cf-ph-01 philomela composite
 
@@ -3046,6 +3054,8 @@ rights ceiling: Level 4 available, held at Level 0
 
 **Stand-down.** None.
 
+**Convergence.** `14-attridge-staten-extraction` reprints and reads this specimen. The entry was extracted at catalog v0.4, before that extension existed, and stands under Section F's prior-entry clause: the convergence with the source's reading is independent, the entry is not revised in any session where the extension is loaded, and no further entries are extracted from the specimen.
+
 ### cf-pr-03 retrospective conditional
 
 ```text
@@ -3074,6 +3084,8 @@ rights ceiling: Level 4 available, held at Level 0
 **Device cluster.** C (conditionals, tense shift), B (repetition, refrain).
 
 **Stand-down.** None.
+
+**Convergence.** `14-attridge-staten-extraction` reprints and reads this specimen. The entry was extracted at catalog v0.4, before that extension existed, and stands under Section F's prior-entry clause: the convergence with the source's reading is independent, the entry is not revised in any session where the extension is loaded, and no further entries are extracted from the specimen.
 
 ### cf-pr-04 imagined rebuff
 
@@ -3104,6 +3116,8 @@ rights ceiling: Level 4 available, held at Level 0
 
 **Stand-down.** None.
 
+**Convergence.** `14-attridge-staten-extraction` reprints and reads this specimen. The entry was extracted at catalog v0.4, before that extension existed, and stands under Section F's prior-entry clause: the convergence with the source's reading is independent, the entry is not revised in any session where the extension is loaded, and no further entries are extracted from the specimen.
+
 ### cf-pr-05 unreturning hearer
 
 ```text
@@ -3132,6 +3146,8 @@ rights ceiling: Level 4 available, held at Level 0
 **Device cluster.** A (addressee position), E (epigraph as frame), G (reader activation).
 
 **Stand-down.** None.
+
+**Convergence.** `14-attridge-staten-extraction` reprints and reads this specimen. The entry was extracted at catalog v0.4, before that extension existed, and stands under Section F's prior-entry clause: the convergence with the source's reading is independent, the entry is not revised in any session where the extension is loaded, and no further entries are extracted from the specimen.
 
 ### cf-ph-02 failed reception
 
@@ -6287,6 +6303,8 @@ cf-pr-05 is a second case, weaker than the first. The frame it describes runs cf
 
 **Recurrence, v0.12.** Five of the nine Hồ Xuân Hương specimens run primitives extracted from other poets, all of them written later: Offering Betel runs Beckett's null reading in the positive, Girl without a Sex runs Frost's unclassified state, Confession runs Frost's absent arbiter, and Two Beauties runs Trethewey's photographer outside the frame. Three-Mountain Pass runs River Snail's speakable figure within the same poet. The larger recurrence is structural. The catalog's sideways axis, withheld behind decorum in front of people who supply the missing term, and the kernel's Steganographic surface both describe her double entendre exactly, and the device inventory names her as its calibration case for the Nôm opt-in. Her poems are the operation the file's vocabulary was built around, arriving at its end.
 
+**Recurrence, v0.16.** Jackfruit, held at v0.12 as a variant of River Snail, runs two of the same poet's primitives together: cf-rs-02, speakable figure, and cf-ob-03, fated test. It is the fated test's second case. Offering Betel sets love as a condition and names the sign that will show on the other party if the condition holds; Jackfruit does the same inside the figure, with the sign on the tester's hands rather than his mouth, and the figure carrying what Offering Betel carried plainly. Recorded as a recurrence and not given an entry, on the file's standing rule that a primitive recurring unprompted is evidence the primitive is an operation rather than a style of one poem; a within-poet recurrence is the weaker form of that evidence, as the v0.10 note on the Small Branch author records. The hold at v0.12 stands corrected in one respect: Jackfruit is a variant of River Snail in its figure and of Offering Betel in its test, and the family it was filed under has one member that runs a second primitive. cf-rs-01's Assembly line, which lists Jackfruit among the held variants, is left as written; this paragraph supersedes it for Jackfruit. The other held poems of the family, Weaving at Night, The Paper Fan, Swinging, and Picking Flowers, were not re-examined.
+
 **Assembly from v0.3 on is partial.** Each primitive added from v0.3 on was checked within its specimen and against the ten seed primitives, and batch-2 primitives against batch 1 where a pairing was apparent. Pairs across the new specimens are recorded where found and were not run exhaustively. An unrecorded pair involving a v0.3 or v0.4 entry is untested, not neutral. Seed entries' assembly fields are not back-filled; this section carries the new pairs.
 
 ## E. Selection Rule
@@ -6313,7 +6331,9 @@ A confinement is a procedure, and a procedure is not protected expression, so th
 
 **Life dates.** A poet's dates do not settle a rights ceiling. The Huswifery author died in 1729, and the poem was first published in 1939, so its ceiling is uncertain and the entry holds at Level 0. Where first publication was not checked, the entry says so and holds at Level 0.
 
-**Specimens reprinted inside a calibration corpus.** Where a specimen's text appears in a loaded module's calibration corpus with the source's commentary on it, the specimen is left out of selection even when its author is not a calibration source, because an entry could restate the source's reading of the poem. `0c-voice-designations` covers author collisions and not this case; the gap is recorded in the boot's Outstanding list.
+**Specimens reprinted inside a calibration corpus.** Where a specimen's text appears in a loaded module's calibration corpus with the source's commentary on it, the specimen is left out of selection even when its author is not a calibration source, because an entry could restate the source's reading of the poem. `0c-voice-designations` covers author collisions and points here for this case, from its v0.7.
+
+**Entries that predate a calibration corpus.** From v0.15. Where a specimen already in this catalog is reprinted and read in a calibration corpus adopted later, the rule above cannot run, since there is no selection to exclude it from, and the entries are not removed. They stand, because their reading was written before the source was in the bundle and any convergence with the source's reading is independent. Each such entry carries a Convergence field naming the extension, the catalog version at which the entry was extracted, and the freeze: the entry is not revised in any session where that extension is loaded, because a revision made with the source open could not be told from a restatement. No further entries are extracted from the specimen while the extension is in the bundle. The first case is Prufrock, extracted at v0.4 and read in the calibration source of `14-attridge-staten-extraction`.
 
 **Attribution.** An entry's handle and stake depend on who wrote the specimen. A corpus whose attribution is in doubt is repaired before selection, and each specimen's attribution standing is recorded in Provenance.
 
@@ -6330,7 +6350,7 @@ Extraction requires the text on the page. A confinement extracted from a remembe
 | stand-up corpus, batch 1 of 2 | extracted v0.6 | cf-sm, cf-hl, cf-me, cf-as, cf-wh. Weighted toward inward, which held one specimen |
 | In Fortune's Twilight (1900) | extracted v0.8 | cf-ss, cf-pn, cf-kh, cf-pd, cf-yh. Author unidentified; see Provenance |
 | Hồ Xuân Hương selection | extracted v0.12 | cf-fc, cf-ob, cf-um, cf-tb, cf-gw, cf-vt, cf-rs, cf-tm, cf-co. Nine under a ceiling of ten |
-| Hồ Xuân Hương selection, held | held | The double-entendre family, Jackfruit, Weaving at Night, The Paper Fan, Swinging, and Picking Flowers, as variants of River Snail. Lament for Commissioner Coc, a variant of Vinh-Tuong that resolves the ambiguity into mockery by a pun on the dead man's name. Confession (2) and Confession (3), with thin knowledge tests. Teasing Chiêu-Hổ and its reply, an exchange between two poets, the reply by the other one according to its title |
+| Hồ Xuân Hương selection, held | held | The double-entendre family, Weaving at Night, The Paper Fan, Swinging, and Picking Flowers, as variants of River Snail; Jackfruit, held with them at v0.12, moved to a recorded recurrence at v0.16 as cf-rs-02 + cf-ob-03. Lament for Commissioner Coc, a variant of Vinh-Tuong that resolves the ambiguity into mockery by a pun on the dead man's name. Confession (2) and Confession (3), with thin knowledge tests. Teasing Chiêu-Hổ and its reply, an exchange between two poets, the reply by the other one according to its title |
 | Beckett selection | extracted v0.11 | cf-ea, cf-eb, cf-al, cf-ma, cf-dt, cf-ec, cf-ca, cf-oo, cf-vu. Nine under a ceiling of ten |
 | Beckett selection, held | held | Serena III, the strongest held and the nearest miss for the tenth place: beauty fixed because any sight might be the last, and flight as the answer to not knowing which. Serena II, a whelping bitch who takes birth for dying, a limit that belongs to the animal. Sanies I, a birthday ride home wishing to be unborn. Sanies II, whose closing litany drops its last word, the device of Enueg II. Dortmunder, Serena I, and Yoke of Liberty, whose knowledge tests are thin |
 | three recent books (Santos 2017, McGrath 2019, Vuong 2022) | extracted v0.10 | cf-pu, cf-ah, cf-ol from Time Is a Mother; cf-sh, cf-ps from Square Inch Hours; none from Nouns & Verbs |
@@ -6344,6 +6364,7 @@ Extraction requires the text on the page. A confinement extracted from a remembe
 | stand-up corpus: Kowit's four poems | excluded | Lurid Confessions, I Attend a Poetry Reading, Hell, Trick. The author calibrates TARE and JIG, so any entry stands down for JIG, and JIG's Confinement Bay is the catalog's only consumer of trials. Hell and I Attend a Poetry Reading are the two flagged plugin specimens above, now on the page and still unusable |
 | model poems reprinted in the dial file's calibration corpus | excluded | Some fifty poems, reprinted in excerpt with the source's commentary in the book that calibrates `13-speaker-dials`, are left out of selection under Section F. None was a catalog candidate, and none of the catalog's specimens is among them. The book's author also has a poem in the stand-up corpus, rejected below on the knowledge test; an entry from any later poem of his would stand down for dial overlays, per `0c-voice-designations` v0.5 |
 | a `carrier` field in the Entry Schema | deferred | Proposed at v0.13 so that dial overlays have a recorded carrier to change. Deferred because back-filling 194 entries needs the specimen texts on the page, and a carrier read from memory is the fabrication this log's opening rule forbids. Until then the overlay pair reports carrier change at its seam |
+| non-verse specimens as catalog entries | deferred | Deferred at v0.14. A found text yields an extraction in Confinement Bay at runtime, and its entries are not admitted here, because the recurrence findings measure a corpus of whole poems. The whole-poem rule applies as written: a play excerpt is an excerpt, a report is whole in its kind, a cut-up is whole as made. Admission waits on an operator call about whether a second corpus or a `kind` field serves the findings better than exclusion |
 | stand-up corpus: two reprinted poems | excluded | Koertge's What She Wanted, reprinted in full in JIG's corpus, and Grapes's I Like My Own Poems, about a third reprinted, both with the calibration source's commentary. See Section F |
 | anthology corpus, batch 2 | extracted v0.4 | cf-cl, cf-mc, cf-pr, cf-ph, cf-mt. Five Lives and The March into Virginia were tested and rejected; see below |
 | Vigil Strange | held | Passes the knowledge test. The corpus text is OCR-damaged at the word level through the burial, the passage any extraction would turn on. Needs a clean text |

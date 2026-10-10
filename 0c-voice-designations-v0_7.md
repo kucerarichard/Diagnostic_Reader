@@ -1,6 +1,10 @@
 # VOICE DESIGNATION LAYER
 
-Version: 0.5
+Version: 0.7
+
+Revision 0.7: points to the confinement catalog's Section F for the case of a specimen reprinted inside a calibration corpus, which this layer does not cover and the catalog does, from its v0.15 including entries that predate the corpus's adoption. Occasioned by `14-attridge-staten-extraction`, whose source reads a specimen already in the catalog. The pointer closes the boot's Outstanding item on the gap. No change to the designation set, the leak tiers, the collision rule, or the take-versus-specimen distinction.
+
+Revision 0.6: states the distinction between a voice's non-poem take and a specimen reading of a found text, occasioned by the kernel's widening of the specimen to any text at 0.3.17. Four modules already carried a take on a subject; the widening makes a text of any kind a specimen, and the two produce different output from the same voice. Notes that prose by a calibration source can now arrive as a specimen and that the collision rule reaches it as written. Adds the Take Substitution failure mode. No change to the designation set, the leak tiers, or the collision rule.
 
 Revision 0.5: the calibration-collision rule reaches extensions that carry calibration material, occasioned by `13-speaker-dials`, the first extension calibrated by a source rather than extracted from specimens. The stand-down is scoped to the operations the extension supplies, and the consuming mode runs. States that an extension takes no designation. Adds the Collision Scope Error failure mode. No change to the designation set or the leak tiers.
 
@@ -99,7 +103,17 @@ The rule reaches extensions that carry calibration material, from v0.5. An exten
 
 An extension whose entries are extracted from specimens, such as `12-confinement-inventory`, is not calibration in this sense. Its sources are specimens, their attribution is specimen provenance, and the extension's own rights section governs them.
 
+A specimen reprinted inside a calibration corpus with the source's commentary on it is the catalog's case and not this layer's. `12-confinement-inventory` excludes such specimens from selection under its Section F, and from its v0.15 governs entries that predate the corpus's adoption under a prior-entry clause there. This layer covers the author's identity; the catalog covers the specimen's text. Stated here from v0.7 so that the division is on record in both files.
+
 Two reasons, and the second is the load-bearing one. The reading would be a voice reading its own source, which is a fusion problem independent of naming. And a flag saying that this specimen's author calibrates this voice discloses the mapping to anyone holding the specimen, which defeats the layer at the one point where it matters most.
+
+From v0.6, with the specimen widened to any text, prose by a calibration source can arrive as a specimen, which it could not before: a column by the PLUMB source, a report by the DATUM source, an essay by the RETICLE or ASSAY source, a chapter by the TARE source, a passage by the dial file's source. The rule reaches these as it reaches poems. The voice, mode, or extension whose source wrote the specimen stands down, the jurisdiction note states no cause, and the operator takes the reading under a voice that does not collide.
+
+## Take Versus Specimen
+
+Added at v0.6. Four modules carry a non-poem take: ASSAY on institutional rhetoric, PLUMB on systems read through bodies, DATUM on an institution's account of its conduct, and VISE as a single-paragraph take riding one of them. A take addresses a subject. No text on the page is being read as an artifact, the voice runs its own deployment procedure, and no sidecar is produced.
+
+A specimen reading of a found text addresses a text. A play excerpt, a news report, a cut-up, or a label on the page is a specimen under the kernel's Found Text Compatibility, with a kind and a unit on its card, and the full apparatus runs: the Poetics Scan, the sidecar or the workshop, the voices standing up or down on the specimen's properties. The same voice can do either, and the two produce different output. The test is whether a text is on the page and is the thing being read. A news report pasted for reading is a specimen; the event it reports, named without the text, is a subject for a take. Where an operator's request could be either, ask once.
 
 ## Leak Tiers
 
@@ -187,6 +201,12 @@ A mode labels its output with the designation of the voice it rides, on the reas
 
 Correction: modes take mode designations. Accuracy about which register is running is not worth a standing disclosure of which corpora share a source.
 
+### Take Substitution
+
+Added at v0.6. An operator pastes a text and asks for a reading, and a voice answers with a take on the text's subject; or an operator names a subject and the apparatus demands a text. The first discards the page. The second refuses an operation four modules license.
+
+Correction: Take Versus Specimen. A text on the page being read is a specimen; a subject named without one is a take. Ask once when the request could be either.
+
 ### Header Leakage
 
 Apparatus-internal prose is pasted into circulated output because it was written in the default register and looked shippable. Negative lexicons are the likeliest carrier, since they name all five sources in one place.
@@ -196,6 +216,10 @@ Correction: header prose is not output. A header section reaching circulated out
 ## Provenance
 
 Occasioned by an operator instruction in September 2026 to replace calibration-source attribution in generated output with abstract function names. The designation set, the tier structure, and the calibration-collision rule are the apparatus's. The kernel carries the policy hook at v0.3.12; `0b-voice-slot-registry` v0.3 carries the designation column; this file carries the set and the tiers. No module carries any of it, so a sixth voice inherits the policy by being loaded rather than by being written to obey it.
+
+v0.7 adds the pointer to the catalog's Section F for reprinted specimens, occasioned by the first calibration corpus to reprint a specimen the catalog already held.
+
+v0.6 states the take-versus-specimen distinction, occasioned by the kernel's found-text widening. The distinction existed in practice from the day PLUMB first took a non-poem subject; it is written down now because a found text is the first case where the same voice could run either operation on the same words.
 
 v0.5 extends the calibration-collision rule to extensions, occasioned by `13-speaker-dials`. The extension's calibration source is also a poet, and its first consumer is a mode with a calibration source of its own, so the question of whose collision covers what arose on the first day the extension existed. The answer scopes each stand-down to the material its source calibrates.
 

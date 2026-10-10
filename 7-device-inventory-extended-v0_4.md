@@ -1,6 +1,10 @@
 # EXTENDED DEVICE INVENTORY
 
-Version: 0.2
+Version: 0.4
+
+Revision 0.4: carries the kernel's reading-order question, added at Checkpoint 6 in kernel 0.3.18. The scan finds devices and the question decides which are credited: a device whose effect registered in reading order before the scan named it enters the sidecar, and a device whose effect appears only in the scan is reported as a finding about the scan. No change to any entry or count.
+
+Revision 0.3: adds three devices for found text, following the kernel's widening of the specimen at 0.3.17 and the workshop's found-text treatment at 0.7.0. Stage direction and dateline enter Category E; attribution formula enters Category G. Each is a device a script or a report carries as convention and a poem carries as a borrowing, and none had a name here. Their examples are invented. Notes in Workshop Integration how the three serve the workshop's unit-level reading, and in Section K that a supplied corpus is any text. Total devices rise from 189 to 192. No change to the Hermetic re-sort, the training corpus, or the specimen clusters.
 
 Revision 0.2: the first stamped version. Earlier releases carried no version line, so the hollow boot could not register the file; 0.2 is assigned so that it can, and records nothing about how many unstamped releases came before. Restores ventriloquy to Category A. It sits in the kernel's Device Inventory Lite, and this file replaces the lite inventory while loaded, so the device disappeared whenever more resolution was loaded. Adds five devices that `13-speaker-dials` names at its poles and shifts: diction altitude, altitude shift, and in-group idiom to Category D, assertion placement to Category E, and phatic gesture to Category G. Their examples are invented, so that no example comes from the dial file's calibration corpus. Corrects three stale references: the workshop is JIG workshop mode, `3a-workshop`, not the name it carried before its hygiene pass, and the kernel gate has ten steps, not eight. Adds a guard at the head of Section K, which predates the kernel's removal of specimen retrieval at v0.3.10. Total devices rise from 183 to 189.
 
@@ -49,21 +53,25 @@ When a voice module is bound, closing prose and any triangulation the extension 
 - **B.** Sonic and Prosodic Devices (30)
 - **C.** Syntactic and Sentence Devices (30)
 - **D.** Figural and Rhetorical Devices (33: 29 base + 4 Nôm / English-simulation)
-- **E.** Structural and Compositional Devices (31)
+- **E.** Structural and Compositional Devices (33)
 - **F.** Visual and Typographic Devices (20: 15 base + 5 Nôm / simulation / wildcard)
-- **G.** Pragmatic and Ethical Devices (21)
+- **G.** Pragmatic and Ethical Devices (22)
 - **H.** Hermetic / Alchemical Subcluster: vessel / seal / valve / transmuter re-sort, fresh count
 - **I.** Corpus for Training and Stress-Testing
 - **J.** High-Value Device Clusters by Specimen
 - **K.** Scan Mode: Device-Driven Specimen Fetch (operating mode, not catalog)
 
-Total inventory: 189 devices (180 core + 9 Nôm / simulation / wildcard extras).
+Total inventory: 192 devices (183 core + 9 Nôm / simulation / wildcard extras).
 
 Modal use: kernel-only mode runs Device Inventory Lite; kernel plus this extension runs full resolution; kernel plus extension plus Section H runs the inventory through the alchemical lens. Kernel constraints apply in every mode. Nom and English-simulation devices remain a constrained opt-in (English-Nom Hybrid Signals), period fit applies to all named devices per Checkpoint 2, and empty bins remain honest.
 
 ### Augmentation Behavior
 
 When loaded, this extension replaces Device Inventory Lite as the active device-naming resolution for every sidecar the apparatus produces. The lite inventory does not run in parallel; the extended inventory is the catalog the apparatus deploys. Empty bins remain honest. Forced fill across the full set of devices fails Checkpoint 6, Decoration vs. Diagnosis, and breaks the kernel rule that keeps empty bins empty, the same way it did across the lite bins. Section H is the kernel constrained opt-in Hermetic or Alchemical Chamber Reading. It fires on the specimen's structural warrant, where chamber and pressure dynamics make the seal-versus-valve seam carry the ethical or transformational weight, not by default. The extension augments every standard reading the apparatus performs; it is not a separate mode the user must invoke per specimen.
+
+### Reading Order
+
+From v0.4, following kernel 0.3.18. This extension finds devices; it does not credit them. Checkpoint 6 asks, for each named device, whether the effect it carries registered in reading order before the scan supplied the name. A device that passes enters the Device Inventory field and counts toward the Poetics Scan's overt grade. A device that appears only in the scan is reported, if at all, as a finding about the scan, in the default register, and is not credited to the specimen. A full scan against a hundred and ninety-two devices is dissection unless this question runs, and the question is what keeps forced fill from entering by the side door that Checkpoint 6's first question leaves open.
 
 ## Workshop Integration
 
@@ -85,6 +93,8 @@ Governance under workshop use:
 - The English-Nom Hybrid Signals opt-in and the Hermetic or Alchemical Chamber Reading opt-in stay opt-in. Period fit applies to every named device. Empty bins stay empty, and the workshop does not force-fill devices to decorate a treatment. Forced fill fails Checkpoint 6.
 
 Speaker dials, from v0.2. Diction altitude, altitude shift, and in-group idiom (D), assertion placement (E), and phatic gesture (G) are the device names for the poles and shifts of the dials in `13-speaker-dials`, with ventriloquy (A) for its speaker-count dial. This inventory names the devices, so a sidecar can use them without the dial file; the dial file holds their ranges, page tests, and trials.
+
+Found text, from v0.3. Stage direction and dateline (E) and attribution formula (G) are the device names a found-text specimen most often needs and a poem does not. They serve the workshop's unit-level reading at `3a-workshop` v0.7.0: stage direction serves Line Break Analysis when the declared unit is the speech, and all three serve the kernel's Poetics Scan, where a device that is the kind's own convention is not credited as poetics. Named contrast trials on `contrast at:` draw their device from this inventory.
 
 If JIG workshop mode is absent, this section is inert and the extension behaves as a standard device extension for sidecars. Load order is tolerant. If the workshop arrives later in the chat, the integration applies from the next workshop turn.
 
@@ -262,6 +272,8 @@ Includes 4 Nôm / English-simulation entries integrated where they fit, marked *
 | **asymmetrical closure** | An ending that settles one line of movement while leaving another stubbornly unclosed. | *Where Once a Small Branch Fell* closes the scene of the vanished memorial without closing the ethical wound. |
 | **mirrored structure** | A design in which later sections echo, reverse, or answer earlier sections. | *Hell* mirrors itself by first listing what Hell is not, then unveiling what Hell is. |
 | **assertion placement** | The position of a poem's governing assertion, the one general sentence its particulars are read under: opening, middle, near the close, last line, or absent. Each position does different work, and a cliché fails in all of them. Run the kernel's open-or-corner test before crediting the assertion. | Micro: *"Every kitchen keeps a record."* placed last, after a stained counter, a burnt pot, and a child's heights penciled on a door frame, gathers the objects into one claim; placed first, it obliges them to complicate it. |
+| **stage direction** | An instruction set apart from speech that places bodies, objects, light, or sound, or prescribes how a speech is delivered. It is written for a reader of the script and never heard by the audience, so on the page it is the one place a script speaks in its own voice. Addressed separately from speeches, as `SD n`. | Micro: *(She does not look up.)* between two speeches carries the refusal the dialogue never states. |
+| **dateline** | A place and a date set before the first sentence, fixing the speaker's position in space and time and claiming presence there. A report carries it as convention; a poem that borrows it borrows the claim of presence. Addressed as `Dl`. | Micro: *RENO, Nev., March 3* above a paragraph that describes a kitchen two states away. The dateline's claim and the paragraph's position disagree, and the gap is the address. |
 
 ## F. Visual and Typographic Devices
 
@@ -315,6 +327,7 @@ Includes 5 Nôm / English-simulation / wildcard entries integrated where they fi
 | **embodied attention quality** | The degree to which the poem evidences released attention (Alexander-released, breath-coordinated, somatic-disciplined) versus habituated constriction (jaw-clenched, breath-held, postural-locked) in its compositional surface. Cross-references Section H's Sheets-Johnstone embodied-cognition grounding. | Bishop's *The Moose* shows released attention: breath-coordinated long-line patience, the body present and unforced in the observation; Stevens's *The Comedian as the Letter C* shows compositional seizure: formal upholstery operating as overcompensation for body-absence. |
 | **affect-content carrying capacity** | The degree to which a work holds incompatible emotional registers (uplift carrying grief, bounciness carrying loss, brightness carrying weight) without resolving the incompatibility into a single dominant register. The device fires when the work's surface affect and underlying content remain genuinely doubled rather than collapsed. Distinguished from tonal laundering (which smooths ugly content with brighter tone, evasively) by the work's awareness of the doubling and its refusal to resolve it. The pop song does this routinely; serious poetry does it more rarely and often with worse results, since the temptation to resolve the tension kills the operation. | Bishop's *One Art*: the villanelle's playful formal lightness held against escalating losses culminating in the loss of "you," with the parenthetical *"(Write it!)"* marking the structural seam where the doubling becomes visible. Lynne-Edmunds's *Slipping Away*: bouncy 1983 pop production held against present-continuous attrition under conscious witness. |
 | **phatic gesture** | A phrase that carries no information about the subject and works on the contact between speaker and listener: a tag, an aside, a hedge addressed to the listener, a rhetorical question, a check-in. It can place the reader as a confidant, or warm the reader toward material the poem then avoids; name the action before judging it. Check for tonal laundering when it sits next to cost. | Micro: *"The garage, you know the one, burned down in May, anyway, that's where I learned to drive."* Two gestures hold the listener while the fire goes by unexamined. |
+| **attribution formula** | A fixed phrase that assigns a claim to a source and moves the warrant off the speaker: *said*, *according to*, *officials say*, *sources familiar with*. It manages credibility by distance; the speaker vouches for the attribution and not for the claim. Run Register Is Not Referent on it, since the formula is the manner of fact and not its proof, and check whether the source is named or only gestured at. | Micro: *Residents say the water has tasted of metal since spring.* One formula carries the whole claim, and the report names no resident. |
 
 ## H. The Hermetic / Alchemical Subcluster
 
@@ -469,6 +482,8 @@ Devices most worth tracking in each corpus poem when stress-testing the inventor
 ## K. Scan Mode: Device-Driven Specimen Fetch
 
 Guard, added at v0.2. This section predates kernel v0.3.10, which removed specimen retrieval from the apparatus and changed Scan Mode's Source B from retrieved workshop uploads to operator-supplied corpora. Until the section is rewritten, read Source B as an operator-supplied corpus and `Scan feedback` as `Scan supplied`. The venue list, the fetch budget, the recency default, body-only fetching, and the budget-exhausted outcome do not run. Specimen integrity, deanonymization refusal, and the Source B bias flag still apply, the last rescoped to selection bias in what the operator supplies. Where this section and the kernel disagree on retrieval, the kernel governs, whatever the extension precedence order would otherwise say.
+
+A supplied corpus is any text the operator puts on the page, from v0.3. It need not be poems. `Scan supplied` runs on a newspaper, a script, or a set of found fragments on the same terms, with kind and unit declared, and the device verification uses the unit's address forms.
 
 A device-driven operating mode for tuning the inventory outward toward specimens. The user names a source, a Category, and device(s); the apparatus locates a candidate poem from the named source, verifies the device is present in the text, reports provenance and the source-appropriate epistemic rating, then runs a full sidecar against the catch. Triggered by the keyword `Scan` followed by an explicit source flag.
 

@@ -1,9 +1,17 @@
 # Diagnostic Reader Hollow Boot
 
-Version: 0.13
-Kernel: `0a-portable-poetics-kernel`, v0.3.16 or later
+Version: 0.17
+Kernel: `0a-portable-poetics-kernel`, v0.3.17 or later
 Source policy: no embedded raw source
 Status: shareable loader wrapper
+
+v0.17 changes: registers `12-confinement-inventory` at 0.16, which changes no entries and records Jackfruit as a recurrence of cf-rs-02 and cf-ob-03 in Section D, lifting it from the held row of the Candidate Log. No other file changes.
+
+v0.16 changes: registers `14-attridge-staten-extraction` at 0.2, which applies the operator's ruling after reading the source's first chapter: every tool in the file is a brake, the kernel's crediting machinery governs wherever a tool meets it, and no tool may refuse a finding that has an address. Tool 2 loses its narrow association boundary, Tool 1 gains the import-versus-withheld sentence, and the file gains the Depth seam, the wince in its refusal ledger, and the Brake Stack failure mode. No other file changes.
+
+v0.15 changes: registers `14-attridge-staten-extraction` at 0.1, a critic extraction on the model of `8` and `9`, after checking identifier 14 free against this registry and against every file in the bundle. Registers the kernel at 0.3.18 for the two seams the extraction occasioned, `7-device-inventory-extended` at 0.4 for the matching reading-order line, `12-confinement-inventory` at 0.15 for the prior-entry clause and the Prufrock convergence notes, `0b-voice-slot-registry` at 0.6 for the candidate log row and the asymmetry instances, and `0c-voice-designations` at 0.7 for the pointer to Section F. Closes the Outstanding item on specimens reprinted inside a calibration corpus, which `0c` now points to the catalog for and the catalog governs in both directions. Adds two Outstanding items: the extraction's tools are unexercised on a live specimen, and the activation notices of `8` and `9` carry source names against the rule `0c` states for extensions. The kernel floor is unchanged at 0.3.17. The plugin registry is unchanged.
+
+v0.14 changes: registers the found-text widening. The kernel at 0.3.17, `0c-voice-designations` at 0.6, the workshop at 0.7.0, `7-device-inventory-extended` at 0.3, `12-confinement-inventory` at 0.14, and `13-speaker-dials` at 0.3, and raises this file's kernel floor to 0.3.17. Registers `8-frye-extraction` at 0.6, since the widening gives it a default load condition, and removes it from the list of files referenced and not held; `9`, `10`, and the Compartmentalization Engine module stay on that list and the registry gap stays open. Adds three Outstanding items: admission of non-verse specimens to the confinement catalog, candidate devices for found text not added at `7` v0.3, and an audit of the new unit address forms against the reassembly test. The plugin registry is unchanged.
 
 v0.13 changes: closes two Outstanding items by operator ruling, the doctrinal seams between the workshop's and the dial file's calibration sources, and the rename question for the workshop's section 7 heading, and records both under Closed. Registers `13-speaker-dials` at 0.2 and the workshop at 0.6.1, the two files the seam ruling changed. The plugin registry is unchanged.
 
@@ -28,7 +36,7 @@ It is also the apparatus's only complete inventory. Nothing else lists every fil
 1. Load `0a-portable-poetics-kernel`.
 2. Load `0c-voice-designations`. Without it, every voice module emits a label built from its calibration source's name, and the apparatus is out of policy from the first verdict.
 3. Load `0b-voice-slot-registry` when slot status, the voice test, or the candidate log is in question. It is not needed to run a reading.
-4. Load device and catalog extensions the task requires. `11-provenance-grading-extension` is a hard dependency of the DATUM module and is optional for everything else; `12-confinement-inventory` writes its stake levels on that ladder and reads without it. `12-confinement-inventory` is a hard dependency of the workshop's Confinement Bay and is optional for everything else. `13-speaker-dials` is a hard dependency of the workshop's dial trials and dial overlays and is optional for everything else; it needs kernel 0.3.16 and names its devices from `7-device-inventory-extended` at 0.2 or later.
+4. Load device and catalog extensions the task requires. `11-provenance-grading-extension` is a hard dependency of the DATUM module and is optional for everything else; `12-confinement-inventory` writes its stake levels on that ladder and reads without it. `12-confinement-inventory` is a hard dependency of the workshop's Confinement Bay and is optional for everything else. `13-speaker-dials` is a hard dependency of the workshop's dial trials and dial overlays and is optional for everything else; it needs kernel 0.3.16 and names its devices from `7-device-inventory-extended` at 0.2 or later. `8-frye-extraction` loads by default when a specimen's kind is not poem, per the kernel's Found Text Compatibility at 0.3.17, and is optional for poems. `14-attridge-staten-extraction` loads on request for a reading that wants its tools; it fires on warrant and is optional for everything.
 5. Load the voice modules the task needs.
 6. Load style or workshop modes last, since both ride a voice.
 7. Load one or more full monty plugins only when source-bearing calibration is needed.
@@ -42,22 +50,24 @@ Versions current as of the v0.13 sweep. References use unversioned stems per the
 
 | Stem | Version | Type | Designation |
 |---|---|---|---|
-| `0a-portable-poetics-kernel` | 0.3.16 | kernel | none |
-| `0b-voice-slot-registry` | 0.5 | apparatus registry | none |
-| `0c-voice-designations` | 0.5 | apparatus policy | none |
+| `0a-portable-poetics-kernel` | 0.3.18 | kernel | none |
+| `0b-voice-slot-registry` | 0.6 | apparatus registry | none |
+| `0c-voice-designations` | 0.7 | apparatus policy | none |
 | `1-rother-voice-module` | 0.3.1 | voice module | ASSAY |
 | `2-harris-voice-module` | 0.3.1 | voice module | PLUMB |
 | `3-kowit-voice-module` | 0.3.1 | voice module | TARE |
 | `3-perloff-voice-module` | 0.3.1 | voice module | RETICLE |
 | `5-hersh-voice-module` | 0.1 | voice module | DATUM |
-| `3a-workshop` | 0.6.1 | workshop mode | JIG |
+| `3a-workshop` | 0.7.0 | workshop mode | JIG |
 | `4-gonzo-mode` | 0.3.1 | style mode | VISE |
-| `7-device-inventory-extended` | 0.2 | device extension | none |
+| `7-device-inventory-extended` | 0.4 | device extension | none |
+| `8-frye-extraction` | 0.6 | directive extension | none |
 | `11-provenance-grading-extension` | 0.1 | device extension | none |
-| `12-confinement-inventory` | 0.13 | catalog extension | none |
-| `13-speaker-dials` | 0.2 | catalog extension | none |
+| `12-confinement-inventory` | 0.16 | catalog extension | none |
+| `13-speaker-dials` | 0.3 | catalog extension | none |
+| `14-attridge-staten-extraction` | 0.2 | directive extension | none |
 
-Referenced by the apparatus and not held here: `8-frye-extraction`, `9-casanova-extraction`, `10-monadology-foundations`, the Compartmentalization Engine module, and `0-poetics-boot`, the private core, which loads as a legacy full monty plugin. The Compartmentalization Engine module's identifier is not recorded anywhere this file can see, so `6` looks free and is not known to be; check the disk before building on it.
+Referenced by the apparatus and not held here: `9-casanova-extraction`, `10-monadology-foundations`, the Compartmentalization Engine module, and `0-poetics-boot`, the private core, which loads as a legacy full monty plugin. The Compartmentalization Engine module's identifier is not recorded anywhere this file can see, so `6` looks free and is not known to be; check the disk before building on it.
 
 Two identifiers carry history a reader would otherwise have to reconstruct. The `2` and `5` voice modules were built together and the second shipped under `4`, which the style mode already held; it moved in the v0.2 sweep. The `3` prefix holds two unrelated voice modules, TARE and RETICLE, from an earlier numbering that did not anticipate a second module on the same digit. Both are recorded rather than renumbered, because renumbering a loaded module costs more than the confusion it removes.
 
@@ -81,11 +91,21 @@ A `carrier` field for the confinement catalog is deferred. Back-filling it needs
 
 Section K of `7-device-inventory-extended` predates the kernel's removal of specimen retrieval and carries a guard at its head instead of a rewrite. The venue list and fetch rules are still printed there and do not run.
 
-Specimens reprinted inside a calibration corpus with the calibration source's commentary are excluded from confinement selection by the catalog's Section F alone. `0c-voice-designations` covers author collisions, and from v0.5 it covers calibrated extensions, but it does not cover this case. The catalog has cited this item since its v0.6; it is recorded here for the first time at v0.12.
+Admission of non-verse specimens to `12-confinement-inventory` is deferred at the catalog's v0.14. Confinement Bay extracts from a found text at runtime and the catalog does not take the entries, because its recurrence findings measure a corpus of whole poems. The call is whether a second corpus, a `kind` field, or continued exclusion serves the findings, and it is the operator's.
+
+Three devices entered `7-device-inventory-extended` at v0.3 for found text: stage direction, dateline, and attribution formula. Candidates noticed and not added: the speaker cue, the name before a speech in a script, which the stage direction entry does not cover; the byline; the caption. Each waits on a specimen that needs it.
+
+The unit address forms added to the kernel at 0.3.17 (`Sp`, `SD`, `P`, `Hd`, `Dl`, `By`, `Frag`) are unaudited against the reassembly test. The test was written for lines, and a quarter of a report's paragraphs reproduces more text than a quarter of a poem's lines. The kernel states the proportional-or-absolute reading; what counts as the ceiling on a long prose specimen has not been set.
+
+The tools of `14-attridge-staten-extraction` are unexercised on a live specimen. Each fires on a stated warrant and attaches to a field the kernel already has, so the first readings that load it should report, per tool, whether it changed the reading or relabelled a finding; the extraction's Relabelling failure mode is the test.
+
+The activation notices of `8-frye-extraction` and `9-casanova-extraction` carry their sources' names in output. `0c-voice-designations` holds from v0.5 that an extension ships no labelled output of its own, and `14` follows that rule with a notice that names no source. The two earlier notices predate the rule. Whether to bring them under it is the operator's call; nothing else in either file is affected.
 
 ## Closed
 
 Items closed by operator ruling, kept so the history is visible without the revision notes.
+
+Specimens reprinted inside a calibration corpus, closed at v0.15. The item recorded that `0c-voice-designations` had no rule for a specimen reprinted in a calibration corpus with the source's commentary, and that the catalog excluded such specimens under its Section F alone. The first corpus to reprint a specimen the catalog already held, the source of `14-attridge-staten-extraction`, showed that Section F also ran only forward. The catalog at v0.15 gained a prior-entry clause: existing entries stand, carry a convergence note, and are frozen against revision in any session where the extension is loaded, with no further extraction from the specimen; `0c` at v0.7 points to Section F for the case. The division is now stated in both files: `0c` covers the author's identity, the catalog the specimen's text.
 
 The doctrinal seams, closed at v0.13. The dial file's calibration source and the workshop's disagreed on personality, on what plain speech does to cost, on reader position, and on abstraction. The operator ruled for the workshop's position on all three that were open: voice comes from depth of attention, plainness is for exposing cost, and the reader stays a peer. Speaker dials are probes for what a draft holds, and a dial trial that only changes how a span sounds reached nothing. Abstraction had already been settled by the kernel's open-or-corner test. Recorded in `13-speaker-dials` v0.2, Section H, and in the workshop at 0.6.1.
 

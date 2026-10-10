@@ -1,7 +1,9 @@
 # FRYE EXTRACTION
 
-Version: 0.5
+Version: 0.6
 Source: Northrop Frye, *Anatomy of Criticism: Four Essays*, 1957.
+
+Revision 0.6: gains a default load condition, following the kernel's widening of the specimen to any text at 0.3.17. On a specimen whose kind is not poem, this file loads by default and the radical of presentation is the first field filled, because a play and a label differ in channel before they differ anywhere else. Notes that a found text read as a poem has changed radical by construction. No change to the tools, the guards, or the refusal ledger.
 
 A directive extension for the Portable Poetics Kernel v0.3. It carries three tools, one clarification, and one calibration note lifted from Frye, together with a ledger of what was examined and refused. It runs standalone and requires no private core.
 
@@ -61,6 +63,8 @@ The apparatus gets a principled ground here for something it has been asserting 
 Rendering Conditions, as the first question rather than a supplement. L2 and L3 in Genopersistation, where a channel change is a reception event with a date and an agent. Frame, in Core Dimensions, which currently absorbs this work without naming it.
 
 Emit a changed-radical note in the sidecar whenever the answer to the second prompt is yes.
+
+Found text, from v0.6. Load this file by default when a specimen's kind is not poem, and fill the radical field first. A found text read as a poem has changed radical by construction: a label was written to be read at a glance on a shelf, a speech to be heard in a room, a report to be read once and discarded, and the specimen reading delivers each as writing for a reader who will dwell on it. Emit the changed-radical note on the usual terms, naming the original channel and the one the reading uses. The second-channel reading is the apparatus's and not the source's, and Period Fit marks it so.
 
 ### Worked Case
 

@@ -1,6 +1,6 @@
 # VOICE SLOT REGISTRY
 
-Version: 0.5
+Version: 0.6
 
 An apparatus-level registry for the Portable Poetics Kernel v0.3. It holds the voice slot matrix, the test a thinker must pass to occupy a slot, the log of candidates considered, and the conditions under which a closed slot reopens. It runs standalone and requires no private core.
 
@@ -92,6 +92,7 @@ Each entry at its actual weight, which is not the same for all of them.
 | Silliman | Judgment call, not built | Two-camp map of a national field, predicted to fail clause 1 and declined on the operator's reading rather than tested. `New sentence` had already entered through the Perloff voice module, so the expected extraction yield was near zero. |
 | Hoagland | Extraction built, `13-speaker-dials` | Not run against the voice test. The operator asked for craft tools, not a reading register, and the extraction was built for a mode rather than for readings. On a reading of the book, clauses 2 and 3 would likely pass, since it carries sustained readings of some fifty poems. Clause 1 would rest on two concessions in the text, that some poems invest less in this dimension than in story and image, which is operator inference at the weaker standard. The register it would carry sits inside the TARE slot, so a voice build would need a slot decision first. Yielded four established dials, five provisional, and a drill-conversion set. |
 | Rothenberg | Declined at concept stage | Assembling is a compositional method rather than a question with a gate, so it would not cash out on a page. Better used as a specimen for the Casanova tools than as a source. An appropriation problem also attaches, and the Casanova tools describe its mechanism from outside. |
+| Attridge and Staten | Extraction built, `14-attridge-staten-extraction` | Passed clause 1: the discipline claims a layer of reading beneath every other and names what it does not cover, hyper-elliptical work at one end and historical development at the other. Passed clause 2. Failed clause 3 on register rather than on corpus: nine sustained readings, written in two registers that disagree in the text, one author's discipline of the senses and the craft against the other's singularity, otherness, and event. A module would declare one register and lose half the corpus, or declare a composite neither author wrote. Yielded fourteen tools, four clarifications, and two kernel seams; the dialogue form itself entered the kernel as the common-ground line. |
 
 ## Evidential Weight
 
@@ -135,6 +136,8 @@ The second one is the instructive failure. This registry added Stale Matrix as a
 
 **v0.2, the clause-1 grading standard.** See Evidential Weight. Three of the five loaded voices passed clause 1 on operator inference rather than on a stated and acted-upon refusal. Not grounds for unseating them. Grounds for recording that the passes are not all the same strength.
 
+**v0.6, the two-register source.** `14-attridge-staten-extraction` is the first candidate to fail clause 3 with a corpus that would otherwise satisfy it. The clause asks for a corpus of actual readings behind the register, and the source has nine; what it lacks is one register, since the book is a dialogue whose two authors disagree in print. The clause had assumed a single author. It is not amended, because the assumption is right for a voice, which renders in one first person; the finding is that a dialogical source can pass every clause on content and still be unbuildable as a voice, and that what such a source has to give is procedure. The extraction asymmetry gains two instances, recorded above.
+
 A condition only gets tested by a case it was not written for. Expect the next amendment to arrive the same way.
 
 ## The Extraction Asymmetry
@@ -146,6 +149,8 @@ An extraction has no voice zone. So when an extraction's position meets a loaded
 The standing instance: Frye holds that the artist is overheard rather than heard and that direct address falls to metrical talk, while Kowit's whole project is direct address in plain speech. On an address specimen Kowit speaks and Frye is quoted.
 
 New in v0.2, and worse than the first instance because the two positions are closer. The Casanova tools explain a work's features by its position in a field. The Hersh omission audit reads a work's account of itself for what the omission protects. Both work on the apparatus around the artifact, and they will reach the same material by different mechanisms and disagree about which mechanism is operating. On such a specimen Hersh speaks in the first person and Casanova is cited, and the asymmetry now favors the voice on a case where the extraction has the more developed theory.
+
+New in v0.6, two instances from `14-attridge-staten-extraction`. Its source and the TARE voice's share a discipline of plain attention to the made thing, and where they part on one passage, TARE speaks and the tool is cited. And its inverse-stringency tool constrains RETICLE inside RETICLE's own zone, raising the standard of evidence on exactly the procedural specimens that voice defends; on such a specimen RETICLE speaks in the first person and the constraint enters as a note, so the asymmetry favors the voice on the case where the extraction is a check on it.
 
 Accepted as the lesser problem, since the alternative is a voice that cannot stand down. State the imbalance in any reading where an extraction meets a voice, so it operates in the open.
 

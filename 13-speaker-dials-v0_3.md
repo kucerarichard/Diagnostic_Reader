@@ -1,6 +1,8 @@
 # SPEAKER DIALS
 
-Version: 0.2
+Version: 0.3
+
+Revision 0.3: notes how the host-form dial behaves on found text, following the kernel's widening of the specimen at 0.3.17. A found text whose kind is a public form sits at a host-form setting by construction, and the `none` setting is unavailable to it. No dial, range, coupling, or check changes.
 
 Revision 0.2: applies the operator's ruling on the doctrinal seams. Where this file's calibration source and the workshop's disagree, the workshop's position governs, and dials are probes for what a draft's material holds. `Reached` now has one standard: the trial surfaced something real that the draft's setting kept off the page, or it reached nothing. Selection looks first for a setting doing cover work. Adds an appropriation check, since construction moves borrow other people's talk, and restricts lingo swaps, second speakers, and host forms to what the draft's world already contains. Adds two failure modes. No dial, range, or coupling changes.
 
@@ -385,6 +387,8 @@ checks: gating, appropriation
 **Reaches.** The source reports the direction's effect directly: the same bureaucratic diction is comic when the institution speaks down and poignant when a powerless speaker petitions up. Power direction is the catalog's axis seen from the side of the form, and the petition sits upward.
 
 **Fails at.** Form as costume, a borrowed genre with no power relation in it. A whole draft recast in a host form is an engine swap and belongs in Engine Bay.
+
+**Found text.** A found text whose kind is a public form sits at a host-form setting by construction, and `none` is unavailable to it: a notice is already in the notice's form. The page test names the form and the direction as usual. The turn that reverses the power direction runs. The turn that recasts a span in another form the draft's world contains is the one trial that moves a found text off its own kind, and its `Seam` reports what the kind's formulas were carrying.
 
 **Device.** documentary insert (E), which covers the bureaucratic insert; citation-as-device (D).
 
