@@ -61,6 +61,7 @@ Extensions and notes:
 | `12-confinement-inventory` | 0.16 | Confinement catalog | Confinement Bay; catalog work |
 | `13-speaker-dials` | 0.3 | Speaker dial catalog: nine dials, four checks, trial forms, eleven experiments | Workshop dial trials; needs kernel 0.3.16 and `3a` |
 | `14-attridge-staten-extraction` | 0.2 | Fourteen reading operations from a dialogue between two critics, with a refusal ledger. No voice zone | Any reading that wants its tools; fires on warrant |
+| `session-record-2026-10-08.md` | none | Record of the October 2026 session: the found-text widening, extraction 14 and its ruling, and the Hồ Xuân Hương recurrence | Never loaded; read for history |
 
 The stems use the kernel's File Reference Rule: references name the unversioned stem, file names carry the version, and you resolve each stem against what's on disk.
 
