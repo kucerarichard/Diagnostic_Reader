@@ -1,11 +1,15 @@
 # Portable Poetics Kernel
 
-Version: 0.3.18  
+Version: 0.3.19  
 Status: standalone loadable  
 Private-core requirement: none  
 Source policy: no full private-core poems
 
 ## Revision Notes
+
+### 0.3.19
+
+Adds a kind and a unit, occasioned by a rap verse read as a page poem. Found Text Compatibility gains `lyric`, text written to be delivered over music, with `bar` as its unit, and Address gains the `B` forms. The kind carries a hook, a scheme held across a verse, flow, and a punchline, and spends few images, so Checkpoint 9 measures a lyric against those, and a treatment that faults one for page imagery is the workshop's Kind Policing. The lyric is the first kind whose carrier is absent from the page by construction: the apparatus reads the bars and cannot hear the track, so Rendering Conditions gains an absent-carrier clause, and a judgment about pace, padding, or flatness on a lyric is flagged as made without the carrier rather than suppressed. The first specimen's bars ran from seven to fourteen syllables, and its breath bar read as padding until the kind was named. No procedure changes. `3a-workshop` v0.7.1 carries the kind and the unit on its card. Backward-compatible with consumers that declare Portable Poetics Kernel v0.3.
 
 ### 0.3.18
 
@@ -518,6 +522,8 @@ Prompt:
 > On what rendering was this read, what load does that rendering carry that L0 does not, and is any judgment about the poem's difficulty, pace, density, or opacity owned by the poem or contaminated by the rendering?
 
 Emit a Rendering Note when the rendering is degraded, heavy, or otherwise likely to contaminate a difficulty judgment: name the rendering (clean plaintext, OCR'd scan, photographed page, apparatus-wrapped restatement), and flag any difficulty-class judgment that the rendering may be inflating. Omit the note when the rendering is clean and neutral, on the same principle by which the loader notice is omitted when it changes nothing.
+
+Absent-carrier clause, from 0.3.19. A lyric arrives as its words and not as its delivery, which is the reverse of the heavy rendering: the page carries less than the artifact does, not more. The apparatus reads the bars and cannot hear the beat that sets their pace or the voice that flattens their altitude. A judgment about pace, padding, flatness, or how high a word sits, made on a lyric, is made without the carrier, and the Rendering Note says so rather than suppressing the judgment. What the page can establish about a lyric it establishes: the scheme, the syllable count per bar, the hook's returns, the rhyme density inside a bar. What it cannot is where the beat lands and what the voice does to a word's altitude, and the two together are most of what a listener calls flow.
 
 Self-interference clause. The apparatus is itself an L3 rendering. A sidecar, with its logs, axes, and phase notes, wraps the poem in machinery that carries its own load, and a reading can be hobbled by the apparatus as readily as by a journal's typography. When a plain reading would serve the poem better than a full sidecar, say so and get out of the way. The most useful thing a heavy apparatus can know about itself is when it has become the noise.
 
@@ -1070,7 +1076,8 @@ P3           paragraph 3, in prose; do not count a headline, byline, or dateline
 P3 s2        sentence 2 of paragraph 3
 Hd           the headline; Dl the dateline; By the byline
 Frag 7       fragment 7, in a cut-up or found assembly, in the order the page presents them; state the convention when the page gives no order
-Sp 4/5       the junction between two speeches, for turn-taking claims; P3/4 likewise for paragraphs
+B4           bar 4, in a lyric; count every bar the writer broke, do not count a chorus label or a section head
+Sp 4/5       the junction between two speeches, for turn-taking claims; P3/4 likewise for paragraphs, and B4/5 for bars
 ```
 
 Specimen address fields for a supplied specimen are author, provenance, copyright status, and length. Consuming modules define the card; this section defines only the internal address.
@@ -1361,7 +1368,9 @@ Dial entries live in `13-speaker-dials`, on the same terms as the device invento
 
 A specimen is a text on the page with its attribution, and the text need not be a poem. A play excerpt, a screenplay page, a passage of fiction or newspaper prose, a cut-up, a label, a notice, and a stretch of correspondence enter on the terms a poem does, and the apparatus reads them with the same operations. Where a procedure in this kernel says poem, read specimen. The procedures were written for poems and run unchanged on any text, and a global rename would break cross-references in every consumer. The kernel changes nothing in its procedures for found text. It asks the consuming module's specimen card for two declarations the procedures need.
 
-Kind names what the text presents itself as: poem, play excerpt, screenplay, fiction prose, news report, cut-up, label, correspondence, or another named kind. Kind sets the baseline for Checkpoint 9, since an absence is measured against what the kind carries. Unit names what an address counts: line, sentence, speech, paragraph, or fragment. Unit sets the address forms in Located Quote and the length field on the card.
+Kind names what the text presents itself as: poem, lyric, play excerpt, screenplay, fiction prose, news report, cut-up, label, correspondence, or another named kind. Kind sets the baseline for Checkpoint 9, since an absence is measured against what the kind carries. Unit names what an address counts: line, bar, sentence, speech, paragraph, or fragment. Unit sets the address forms in Located Quote and the length field on the card.
+
+Lyric, from 0.3.19. A lyric is text written to be delivered over music, a rap verse or a song, and the page holds the words without the carrier. Its unit is the bar, counted as the line the writer broke; a chorus label or a section head is not a bar. Declare the kind when the writer says so or when the page shows a hook returning per verse and a scheme held across one; otherwise the card defaults to poem and the writer corrects it. The kind's baseline for Checkpoint 9 is hook, scheme, flow, and punchline, with few images spent per verse, and a bar whose only work is to set up the next bar's landing is a breath bar, which the kind carries. Rendering Conditions names what the page lacks.
 
 Three defaults follow from kind. Register Is Not Referent fires by default on report kinds, because documentary manner is the kind's own register and proves nothing about its referent. Rendering Conditions expects a heavy rendering, since found text arrives as a photographed label, an OCR column, or a formatted script page, and emits its note on the usual terms. Where `8-frye-extraction` is loaded, radical of presentation is the first field to fill, because a play and a label differ there before they differ anywhere else, and a found text read as a poem has changed radical by construction.
 

@@ -1,9 +1,11 @@
 # Diagnostic Reader Hollow Boot
 
-Version: 0.17
-Kernel: `0a-portable-poetics-kernel`, v0.3.17 or later
+Version: 0.18
+Kernel: `0a-portable-poetics-kernel`, v0.3.19 or later
 Source policy: no embedded raw source
 Status: shareable loader wrapper
+
+v0.18 changes: registers the kernel at 0.3.19 and the workshop at 0.7.1, and raises this file's kernel floor to 0.3.19, which the workshop's card now needs. The kernel adds the `lyric` kind and the `bar` unit, with `B` address forms and an absent-carrier clause in Rendering Conditions, occasioned by a rap verse read as a page poem. The workshop adds Feedback Bridge as output-form section 13, which converts a treatment into what one peer can say in the thread the poem was posted in, with a procedure, a gate line, two failure modes, and a notice. Adds three Outstanding items: lyric devices not added to `7-device-inventory-extended`, the bridge exercised on one specimen, and the Poetics Scan's behavior on a lyric. No other file changes. The plugin registry is unchanged.
 
 v0.17 changes: registers `12-confinement-inventory` at 0.16, which changes no entries and records Jackfruit as a recurrence of cf-rs-02 and cf-ob-03 in Section D, lifting it from the held row of the Candidate Log. No other file changes.
 
@@ -46,11 +48,11 @@ The order is tolerant. A file arriving later in the session applies from that po
 
 ## Module Registry
 
-Versions current as of the v0.13 sweep. References use unversioned stems per the kernel's File Reference Rule; resolve each against the file on disk.
+Versions current as of the v0.18 sweep. References use unversioned stems per the kernel's File Reference Rule; resolve each against the file on disk.
 
 | Stem | Version | Type | Designation |
 |---|---|---|---|
-| `0a-portable-poetics-kernel` | 0.3.18 | kernel | none |
+| `0a-portable-poetics-kernel` | 0.3.19 | kernel | none |
 | `0b-voice-slot-registry` | 0.6 | apparatus registry | none |
 | `0c-voice-designations` | 0.7 | apparatus policy | none |
 | `1-rother-voice-module` | 0.3.1 | voice module | ASSAY |
@@ -58,7 +60,7 @@ Versions current as of the v0.13 sweep. References use unversioned stems per the
 | `3-kowit-voice-module` | 0.3.1 | voice module | TARE |
 | `3-perloff-voice-module` | 0.3.1 | voice module | RETICLE |
 | `5-hersh-voice-module` | 0.1 | voice module | DATUM |
-| `3a-workshop` | 0.7.0 | workshop mode | JIG |
+| `3a-workshop` | 0.7.1 | workshop mode | JIG |
 | `4-gonzo-mode` | 0.3.1 | style mode | VISE |
 | `7-device-inventory-extended` | 0.4 | device extension | none |
 | `8-frye-extraction` | 0.6 | directive extension | none |
@@ -100,6 +102,12 @@ The unit address forms added to the kernel at 0.3.17 (`Sp`, `SD`, `P`, `Hd`, `Dl
 The tools of `14-attridge-staten-extraction` are unexercised on a live specimen. Each fires on a stated warrant and attaches to a field the kernel already has, so the first readings that load it should report, per tool, whether it changed the reading or relabelled a finding; the extraction's Relabelling failure mode is the test.
 
 The activation notices of `8-frye-extraction` and `9-casanova-extraction` carry their sources' names in output. `0c-voice-designations` holds from v0.5 that an extension ships no labelled output of its own, and `14` follows that rule with a notice that names no source. The two earlier notices predate the rule. Whether to bring them under it is the operator's call; nothing else in either file is affected.
+
+Devices for the lyric kind are not in `7-device-inventory-extended`. Candidates noticed on the first lyric specimen and not added: the hook, a word or phrase that returns per verse, often mutated; the multi, a rhyme chain across two or more syllables that carries an argument; the punchline bar; the breath bar. Category B's rhyme entries name the sound and not the function. Each waits on the operator's call, on the same terms as the found-text candidates above.
+
+The Feedback Bridge in `3a-workshop` is exercised on one specimen. Its gate asks whether a peer could say every sentence, which no other gate asks. The rule set was drafted to match feedback the operator had already posted, and a bridge that agrees with that post is weak evidence that the rules are right; the test is a specimen where the operator has not posted first.
+
+A lyric's Poetics Scan is undecided. The scan runs by default on any kind but poem and grades what stands up, and a lyric declares a poetics in its kind, so the overt grade is likely automatic. Whether the scan adds anything on a lyric, or should stand down for the kind, has not been set.
 
 ## Closed
 

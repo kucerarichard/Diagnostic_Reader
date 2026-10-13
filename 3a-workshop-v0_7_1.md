@@ -1,8 +1,8 @@
 # JIG WORKSHOP MODE
 
-Version: 0.7.0
+Version: 0.7.1
 Module type: source-bearing workshop mode
-Kernel requirement: Portable Poetics Kernel v0.3.17, for Found Text Compatibility, the Poetics Scan, and the unit address forms; v0.3.16 for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials and found text
+Kernel requirement: Portable Poetics Kernel v0.3.19 for the lyric kind and the bar unit on the card; v0.3.17 for Found Text Compatibility, the Poetics Scan, and the unit address forms; v0.3.16 for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials and found text
 Voice module requirement: the TARE voice module, v0.3.1 or later, preferred
 Private-core requirement: none
 Optional full-monty enhancement: yes
@@ -10,6 +10,8 @@ Optional device-extension enhancement: yes. When the Extended Device Inventory i
 Required catalog extension for one section: `12-confinement-inventory`. Confinement Bay does not run without it. Every other section runs as before.
 Optional catalog extension: `13-speaker-dials`, for dial trials, dial overlays, the Engine Bay tuning question, and drill-derived experiments. Every other section runs without it.
 Corpus status: full workshop-book corpus follows this header
+
+Revision 0.7.1: adds Feedback Bridge as output-form section 13, after the verdict, with a procedure, one output-gate line, two failure modes, and one activation notice. The bridge converts a full treatment into what one peer can say to the poet in the room the poem was posted in: time spent and the frame the piece works in first, one image drawn from the poem's own material, one observation the poet can verify by counting, one suggestion sized to a word or a move, and the rest withheld. Occasioned by an operator who compared a treatment with the feedback they then posted: the two agreed on the finding, the treatment was too long and too severe to say out loud, and no gate had asked whether a peer could say any of it. The kernel has a sayability test for poems and had none for critique. Also takes the kernel's `lyric` kind and `bar` unit at 0.3.19 onto the card, and section 4 reads the bar end when the unit is bar; the first lyric specimen was read as a page poem, and the Kind Policing failure mode records it as its first case. Nothing renumbers. No change to the stance, the register lock, the trials, or the corpus.
 
 Revision 0.7.0: widens the specimen to any text on the page, following the kernel's Found Text Compatibility at 0.3.17. The Supplied Specimen Card gains `Kind`, `Unit`, and `Found by`, and its `Provenance` field gains `found`, which admits both this mode and the standard sidecar at the operator's call. Section 4 reads the break at the declared unit. Function Bay's contrast trial can be named on `contrast at: [device]`, which is the apparatus's device-level trial and adds no trial class, since Function Bay already maps strategies to devices. Adds the found-text commands to the Trigger Grammar, two failure modes, Poetics Projection and Kind Policing, one output-gate line, and one activation notice. The kernel's Poetics Scan runs before the treatment on any kind but poem. No change to the stance, the output-form numbering, the register lock, or the corpus. The minor version rises because the card changes shape.
 
@@ -59,6 +61,7 @@ Exports:
 - speaker dial trials and dial overlay pairs, opt-in, when `13-speaker-dials` is loaded
 - drill-derived experiments for Single Experiment, when `13-speaker-dials` is loaded
 - found-text treatment on a declared unit, with kind, unit, and finder on the card
+- feedback bridge, output-form section 13, for a specimen posted where a peer will answer
 - named contrast trials in Function Bay on `contrast at:`, opt-in by command
 - the trial firewall
 - workshop register lock
@@ -210,7 +213,7 @@ When the extended inventory is loaded, route each output-form section to its inv
 - Opening Reading. No device list. Engine vs. Residue from the kernel decides the live line. (Standard: Opening Reading.)
 - Image Inventory. Category A deictic and scalar, and Category D figural and rhetorical. (Standard: Image as Foundation, Specific Over General.)
 - Sound and Cadence Scan. Category B sonic and prosodic. (Standard: Sound and Cadence.)
-- Line Break Analysis. Category B and Category C line devices: enjambment, end-stopping, caesura, dash break, with line length policy from Category F. When the declared unit is not the line, the unit's break devices: sentence and paragraph devices from Category C, stage direction and section break from Category E. (Standard: Line Breaks.)
+- Line Break Analysis. Category B and Category C line devices: enjambment, end-stopping, caesura, dash break, with line length policy from Category F. When the declared unit is not the line, the unit's break devices: sentence and paragraph devices from Category C, stage direction and section break from Category E. When the unit is the bar, the bar end, with end rhyme and internal rhyme from Category B; the inventory at 0.4 names no bar-level device, and the boot records the candidates. (Standard: Line Breaks.)
 - Diction and Language Check. Category D figural and rhetorical, with register-friction devices and the English-Nom Hybrid Signals opt-in when the substrate warrants it. (Standard: Real Language.)
 - Form Examination. Category E structural and compositional, and Category F visual and typographic. (Standard: Form When It Serves.)
 - Voice and Moral Substrate. Category G pragmatic and ethical for the moral substrate. Voice stays with the kernel and the voice module. (Standard: Voice as Depth of Attention, Honest Feeling.)
@@ -314,8 +317,8 @@ Seven fields, before the reading starts. Four were the original card; `Kind`, `U
 Author:      [the user / named third party / handle as given / anonymous]
 Provenance:  [the user's own draft / posted for critique at X / published in Y / public domain / found]
 Copyright:   [the user's / in copyright / public domain / unknown]
-Kind:        [poem / play excerpt / screenplay / fiction prose / news report / cut-up / label / correspondence / other, named]
-Unit:        [line / sentence / speech / paragraph / fragment]
+Kind:        [poem / lyric / play excerpt / screenplay / fiction prose / news report / cut-up / label / correspondence / other, named]
+Unit:        [line / bar / sentence / speech / paragraph / fragment]
 Found by:    [the user / named third party / a named procedure], for found text only
 Length:      N units, with the unit named: N lines, N sentences, N speeches, N paragraphs, N fragments
 ```
@@ -323,6 +326,8 @@ Length:      N units, with the unit named: N lines, N sentences, N speeches, N p
 Provenance routes the treatment. A draft gets workshop mode, finished work gets the standard sidecar, and found text gets either at the operator's call, since it is finished in its own kind and raw as material. See Workshop Mode vs. Standard Sidecar.
 
 Kind and Unit were added at v0.7.0 for found text and default to poem and line. Kind sets the baseline for the absence scan and for the kernel's Poetics Scan, which runs before the treatment on any kind but poem. Unit sets the address forms and what section 4 reads. `Found by` records who did the cutting. A cut-up the user made is the user's arrangement and someone else's words, so Copyright follows the words and the arrangement is quoted as the critique needs. A procedure named there, a cut-up method or an erasure of a named source, is part of the specimen's making and is read at L1; it is not an intention, and the treatment reads what the procedure left on the page. Correspondence and other private text by a third party get the single question a third party's poem gets, below, and the treatment does not identify a private person beyond what the page shows.
+
+Lyric and bar, from v0.7.1, follow the kernel at 0.3.19. A lyric is text written to be delivered over music, and its unit is the bar, counted as the line the writer broke. Declare the kind when the writer says so or the page shows a hook returning per verse and a scheme held across one. The card defaults to poem, and a poet can correct it after the treatment, in which case sections 2 through 4 are re-read against the kind before anything else is. The kind changes the absence baseline. A verse carries a hook, a scheme, flow, and a punchline, and spends few images, so sections 2 and 4 name what the kind carries before naming what the text lacks. The apparatus reads the bars and cannot hear the track, so every judgment about pace, flatness, or how high a word sits is made without the carrier, and the treatment says so once at the Opening Reading, per the kernel's absent-carrier clause.
 
 Copyright sets the exposure ceiling. The user's own draft is quoted as freely as the critique needs, since it is their poem. A third party's in-copyright poem caps at Level 3 and runs the kernel's reassembly test. Public domain reaches Level 4 when full text is diagnostically necessary.
 
@@ -335,6 +340,8 @@ This mode deploys workshop-grade craft attention. It does not make the apparatus
 The apparatus can identify live image, music, line behavior, diction, form, function, body-cost, and revision routes. It cannot enter the vulnerability economy of a human workshop. It does not pretend to be read in return.
 
 The stance is diagnostic craft help from the margins.
+
+A Feedback Bridge is text the operator carries into the room. The apparatus does not post it, is not answered in return, and does not read the thread.
 
 ## Fallback Workshop Register
 
@@ -456,7 +463,7 @@ The three bays descend in scale. Confinement Bay works at condition scale, Engin
 
 Confinement Bay's extraction and breach scan are standard. Its rewrite trials, Engine Bay, and Function Bay are optional. When a bay is omitted, do not renumber the whole apparatus in a way that hides the omission. Empty absence is fine.
 
-Section numbers changed at v0.5.0. Revision Routes moved from 10 to 11 and Workshop Verdict from 11 to 12.
+Section numbers changed at v0.5.0. Revision Routes moved from 10 to 11 and Workshop Verdict from 11 to 12. Section 13 was added at v0.7.1 after the verdict; nothing renumbers, and the section is reported absent when the specimen is the poet's own draft or was not posted where a peer will answer.
 
 When the Extended Device Inventory is loaded, route device naming through the Device Resolution Map in Extended Device Inventory Awareness. When it is absent, run each section on the standard craft category named in that map.
 
@@ -476,7 +483,7 @@ Name sound patterns that matter. Quote small units. Say what the sound does.
 
 Name the breaks that earn their position and the breaks that go slack. Suggest one or two test breaks when useful.
 
-On a unit other than the line, read the break at the declared unit: the sentence boundary in prose, the speech turn and the stage direction in a script, the paragraph break in a report, the cut in a cut-up. The question is the same, whether the break is a decision or a default. Where the unit has no break the draft controls, leave the section empty and say so.
+On a unit other than the line, read the break at the declared unit: the sentence boundary in prose, the speech turn and the stage direction in a script, the paragraph break in a report, the cut in a cut-up. The question is the same, whether the break is a decision or a default. In a lyric the break is the bar end, and the question is whether the bar closes on its rhyme, carries over, or sets up the next bar's landing; a bar that does the last is a breath bar and is not padding. Where the unit has no break the draft controls, leave the section empty and say so.
 
 ### 5. Diction and Language Check
 
@@ -513,6 +520,10 @@ A rewrite trial or a dial trial is not a revision route. See The Trial Firewall.
 Close in workshop voice. Say what the poem does at its best, what it has not yet earned, and what the next draft should trust.
 
 The verdict is not a summary. It is the final craft pressure.
+
+### 13. Feedback Bridge
+
+When the specimen was posted somewhere a peer will answer, convert the treatment into what one peer can say there: one paragraph, for the operator to post or adapt. Report the section absent, and say so, when the specimen is the user's own draft, since the treatment already speaks to the poet. See Feedback Bridge Procedure.
 
 ## Confinement Bay Procedure
 
@@ -879,6 +890,32 @@ Ask:
 Where does this pressure enter the body?
 ```
 
+## Feedback Bridge Procedure
+
+The treatment is a teacher's notes. The bridge is the note. It is written last, from a finished treatment, for the operator to post or adapt, and it is the only section of the form addressed to the poet rather than to the operator.
+
+The gap the bridge closes is not a register problem. A twelve-section treatment on a fifteen-line draft is fair to the draft and unsayable to its author, and softening its sentences does not make it sayable; choosing one does. The bridge reduces volume, never findings. What it keeps is true in the treatment, and what it drops stays true there.
+
+### Five Rules
+
+1. Open with time spent and with the frame the piece works best in. Say which kind it is doing well as before saying what the page lacks. If the kind on the card was corrected during the treatment, the correction is the frame.
+2. One image carries the whole diagnosis, and it comes from the poem's own material. The bridge imports no apparatus figure, no bay, dial, or confinement name; it finds the poem's own high word, object, or motion and lets that carry the altitude, the absence, or the leak.
+3. One observation the poet can verify by counting on their own page: how many times the speaker appears, how many line-ends share a vowel, how many images a stanza spends. A count is fair without the treatment behind it, which is the test.
+4. One suggestion, sized to a word or a move, offered as maybe. It comes from Revision Routes and never from a trial. A trial's text does not enter the bridge under any phrasing; the trial firewall holds here as it holds at section 11.
+5. Everything else is withheld. The poet can ask, and the operator holds the treatment to answer from.
+
+### Form
+
+One paragraph, four to six sentences, in plain speech. No headings, no field names, no apparatus terms, no designation; the bridge carries no label of its own and ships inside the JIG treatment. At most two short quoted units, at Level 1 or 2, since the bridge will sit beside the poem and the kernel's reassembly test counts them with the treatment's quotes. The opening names what the piece does well in the frame's own terms, which is Praise Without Padding applied to the room; a praise label is as empty in a thread as in a treatment.
+
+### Gate
+
+Read the paragraph as if the poet were reading it on a phone, with the poem above it and nothing else. If any sentence is fair only because of the treatment, cut it or carry the finding that makes it fair. Then count: one image, one count, one suggestion. A bridge with two suggestions has not chosen.
+
+### Constraints
+
+Do not write a bridge for the user's own draft. Do not write one in place of a treatment; see Bridge as Treatment. Do not let the bridge's warmth reach back into the verdict, which is the final craft pressure and stays as it was. The operator posts the bridge, adapts it, or leaves it; the apparatus does none of these, and does not read the thread afterward.
+
 ## Workshop Register Lock
 
 Run this lock before output.
@@ -1163,6 +1200,20 @@ Added at v0.7.0. The treatment faults a found text for lacking what its kind nev
 
 Correction: Checkpoint 9 runs against the declared kind. Name what the kind carries before naming what the text lacks, and route a kind-level absence to the Poetics Scan rather than to section 2 or 4.
 
+The first case, recorded at v0.7.1, was a rap verse read as a page poem. Its monorhyme was called a chant and its breath bar was called padding, and both calls stood until the operator named the kind. The card now carries lyric, and the correction above runs whenever a poet corrects the card.
+
+### Unfair Sentence
+
+Added at v0.7.1. A sentence in the bridge is fair only because of the treatment above it, which the poet will not read: a verdict word, a named leak, a named absence, arriving without the count or the line that earned it.
+
+Correction: the bridge gate. Cut the sentence, or carry the finding that makes it fair, and if carrying it breaks the one-count rule, cut it.
+
+### Bridge as Treatment
+
+Added at v0.7.1. The bridge ships instead of the treatment, or the treatment is trimmed to match it, on the reasoning that the bridge is what the poet will see. The bridge is a choice made from a finished treatment. With nothing to choose from, the one image, the one count, and the one suggestion are chosen from the apparatus's first impression, which is the generic critique the register lock exists to catch.
+
+Correction: run the full form first. The bridge is section 13 because it is written last.
+
 ### Corpus Domination
 
 The workshop-book voice overtakes the poem, and the output starts teaching the book instead of workshopping the specimen.
@@ -1202,6 +1253,10 @@ And, when the dial file is loaded and a dial trial ran:
 And, when the specimen's kind is not poem:
 
 > Did the treatment declare the kind and the unit, run the Poetics Scan before the sections, read section 4 at the declared unit, and measure absence against the kind rather than against a poem?
+
+And, when a Feedback Bridge shipped:
+
+> Could the poet read the bridge on a phone, with the poem above it and nothing else, and find every sentence fair, and does it carry one image from the poem, one count, one suggestion sized to a word or a move, and nothing from a trial?
 
 If yes, ship.
 
@@ -1243,6 +1298,12 @@ When a found text is on the card, the assistant may say:
 
 ```text
 Found text: kind [kind], unit [unit]. Poetics Scan: [grade]. Treatment runs on the declared unit.
+```
+
+When a Feedback Bridge ships, the assistant may say:
+
+```text
+Feedback Bridge: written for the thread, for the operator to post or adapt.
 ```
 
 ## Corpus Boundary
