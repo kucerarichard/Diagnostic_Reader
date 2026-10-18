@@ -23,7 +23,7 @@ The framework’s source files are the primary evidence of what the tested revis
 
 **Core distinction:** The target produces evidence; the evaluator grades it; the adjudicator audits the grade; source verification establishes what the framework actually requires.
 
-## Overarching Goal: Framework Architecture, Externalization, and Minimum Viable Execution
+## 2. Overarching Goal: Framework Architecture, Externalization, and Minimum Viable Execution
 
 ### Primary Purpose
 
@@ -106,7 +106,19 @@ The ultimate objective is to make the Diagnostic Reader's essential standards **
 
 The desired result is not merely a framework that performs well when everything is loaded into a capable model. It is a family of evidence-backed configurations whose requirements, dependencies, limitations, and expected behavior are known—and whose failures can be diagnosed without confusing model limitations, framework defects, evaluation errors, or legitimate interpretive disagreement.
 
-## 2. What the suite measures
+## 3. Constrained Execution and Transfer
+
+**Use constrained execution to expose what open-ended capability can conceal, then test whether the required organization transfers back to open-ended work.**
+
+A model’s success under permissive conditions does not, by itself, establish that it followed the required procedure. A model’s failure under constrained conditions does not, by itself, establish a defect in the framework.
+
+Constraints are diagnostic, not punitive. They should make essential relationships observable, close unauthorized routes around required steps, and produce evidence that can be independently evaluated. Once the framework’s required organization is reliable under constraint, test whether it persists when the model has greater freedom to interpret, reason, and generate.
+
+The objective is not to turn flexible execution into checklist compliance. It is to determine which standards must be explicit, which dependencies must be externalized, and which procedures or constraints help the model internalize and retain the required organization without relying on surplus capability to compensate for gaps.
+
+Every failure should therefore be interpreted against the conditions under which it occurred and classified separately as a target-model failure, a loading or dependency failure, a framework defect, an evaluation error, or an unresolved disagreement. A pass/fail result without an adequately supported explanation is a diagnostic outcome to investigate, not a sufficient conclusion.
+
+## 4. What the suite measures
 
 Score these dimensions independently.
 
@@ -123,7 +135,7 @@ Do not infer successful file loading from a model’s statement that it loaded a
 
 Likewise, do not infer that an evaluator is correct because it quotes a file, or that an adjudicator is correct because it disagrees with the evaluator. Each material judgment must be supported by evidence.
 
-## 3. Pin the test environment
+## 5. Pin the test environment
 
 Before running any test, record:
 
@@ -162,7 +174,7 @@ Preserve the following under a single run ID.
 
 Keep the original artifacts even if later stages correct or overturn their conclusions. Do not silently replace an earlier report with a revised one.
 
-## 4. The four-stage protocol
+## 6. The four-stage protocol
 
 ### Stage A — Run the test subject
 
@@ -237,7 +249,7 @@ If the target’s behavior is compatible with the available instructions, do not
 
 This stage is primarily a source check, not automatically another model run. A further LLM may help compare difficult passages, but its conclusion must also be checked against the files. A human decision may be necessary for unresolved policy or interpretive disputes.
 
-## 5. Source-verification ledger
+## 7. Source-verification ledger
 
 Create one entry for every material compliance finding, including findings disputed by the adjudicator.
 
@@ -274,7 +286,7 @@ For the adjudicator’s audit of evaluator findings, use the more specific statu
 
 Do not convert an unresolved finding into a confirmed failure merely to complete the scorecard.
 
-## 6. Evaluation rules common to both roles
+## 8. Evaluation rules common to both roles
 
 Both evaluator and adjudicator must follow these rules.
 
@@ -303,7 +315,7 @@ Both evaluator and adjudicator must follow these rules.
 - Record framework defects separately from target failures.
 - Preserve uncertainty when the supplied evidence does not resolve an issue.
 
-## 7. Independent evaluator prompt
+## 9. Independent evaluator prompt
 
 Use this prompt in a separate session from the test subject. Attach the actual test card, raw target output, manifest, and relevant pinned framework files.
 
@@ -353,7 +365,7 @@ Label the report:
 
 Do not fabricate file paths, quotations, line numbers, or source references. Do not present an unsupported claim as a confirmed violation.
 
-## 8. LLM adjudicator prompt
+## 10. LLM adjudicator prompt
 
 Use this prompt in a separate session from the evaluator. Supply the evaluator report, original target response, test card, manifest, and actual pinned framework files.
 
@@ -467,7 +479,7 @@ Label the report:
 
 The adjudication report must explicitly identify which evaluator findings it upheld, downgraded, overturned, or left unresolved. It must also identify new findings and framework defects independently discovered.
 
-## 9. Canonical benchmark corpus
+## 11. Canonical benchmark corpus
 
 Use established public-domain poems published before 1929. These are benchmark texts, not a claim about which poems were present in any model’s training data.
 
@@ -483,7 +495,7 @@ Use established public-domain poems published before 1929. These are benchmark t
 
 Record the text edition used for supplied-poem tests. For scan tests, do not provide the complete poem unless that is explicitly part of the test condition.
 
-## 10. Regression test cards
+## 12. Regression test cards
 
 ### R1 — Bootstrap and designation integrity
 
@@ -632,7 +644,7 @@ Run separate trials withholding:
 
 **Failure codes:** LOAD, DEGRADE, RECONSTRUCT, JURISDICTION.
 
-## 11. Scoring
+## 13. Scoring
 
 Score each applicable criterion from 0 to 2:
 
@@ -660,7 +672,7 @@ A critical failure must be reported explicitly even if the aggregate score is hi
 
 A source ambiguity that prevents a reliable judgment is not a target failure; it is an unresolved issue or framework defect.
 
-## 12. Failure taxonomy
+## 14. Failure taxonomy
 
 Use these codes consistently across the evaluator report, adjudicator report, and final record.
 
@@ -678,7 +690,7 @@ A failure code is a classification, not proof. Every confirmed code must point t
 
 Evaluator errors and adjudicator errors should be tracked separately from target failure codes. Do not classify an evaluator’s unsupported judgment as a target failure merely because it was included in the first report.
 
-## 13. Repeatability and controlled comparisons
+## 15. Repeatability and controlled comparisons
 
 For each selected test, run:
 
@@ -706,7 +718,7 @@ When comparing runs:
 6. Have the adjudicator audit the reports without assuming that a newer, larger, or more capable model must be correct.
 7. Source-check disputed findings before drawing conclusions about the framework or model configuration.
 
-## 14. Completion criteria
+## 16. Completion criteria
 
 A test is complete only when:
 
@@ -721,7 +733,7 @@ A test is complete only when:
 - The final report includes evidence sufficient for another auditor to reproduce the judgment.
 - The final record identifies the next regression test needed to verify a proposed fix.
 
-## 15. Final report format
+## 17. Final report format
 
 For each run, report:
 
@@ -743,7 +755,7 @@ For each run, report:
 16. Comparison with earlier runs.
 17. The next regression test needed to verify a proposed fix.
 
-## 16. Final operating rule
+## 18. Final operating rule
 
 The test subject produces the artifact. The evaluator grades the artifact. The adjudicator audits the grade against the artifact and the framework. Source verification establishes what the files actually require.
 
