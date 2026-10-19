@@ -764,3 +764,11 @@ The adjudicator is not a second opinion to average with the evaluator. It is an 
 The source files are the evidence for framework requirements, not a guarantee that the framework is internally coherent. When the files cannot resolve a dispute, the suite must preserve that uncertainty and identify the framework clarification needed.
 
 **No model is granted final authority merely because it is the last model in the chain. The final result must remain evidence-based, traceable, and reproducible.**
+
+### Operationalization: Prompt Regime
+
+The executable procedures for this benchmark are maintained in `diagnostic-reader-prompt-regime-v0_1.md`.
+
+The regression suite defines the governing test objectives, test conditions, evaluation criteria, failure taxonomy, and adjudication principles. The prompt regime translates these requirements into copy-ready instructions for target runs, independent evaluation, adjudication, and suite-level synthesis.
+
+The prompt regime must not silently alter the suite's requirements or scoring rules. Any substantive change to a test's behavior, criteria, or interpretation must be reflected in the governing suite definition and recorded in the version history. Each run must identify the exact versions of both files used.
