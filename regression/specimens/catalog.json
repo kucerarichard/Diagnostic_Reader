@@ -1,0 +1,83 @@
+{
+  "catalog_version": "1.0",
+  "received_file": "specimens.txt",
+  "received_as": "User-supplied transcription collection",
+  "source_edition_status": "Not specified in the uploaded file; these are frozen as supplied transcriptions, not edition-verified texts.",
+  "specimens": [
+    {
+      "path": "regression/specimens/The-Tyger.txt",
+      "title": "The Tyger",
+      "author_attribution": "William Blake",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "f115345237e15c49116904ea7f3bde94ccf6688012c325e0c828132e351777cb",
+      "used_by": [
+        "R1",
+        "R2",
+        "R10-A",
+        "R10-B",
+        "R10-C",
+        "R10-D"
+      ]
+    },
+    {
+      "path": "regression/specimens/London.txt",
+      "title": "London",
+      "author_attribution": "William Blake",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "ad07ae682c3b33f1b4fd5cfbb9fe80cfd320cfaa347cad3aa454e7cb46572be1",
+      "used_by": [
+        "R3"
+      ]
+    },
+    {
+      "path": "regression/specimens/Ozymandias.txt",
+      "title": "Ozymandias",
+      "author_attribution": "Percy Bysshe Shelley",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "7eef00270119ee66c9def0d6f24a24a24d2fe405a814c0bc97096d0e18b0216d",
+      "used_by": [
+        "R4"
+      ]
+    },
+    {
+      "path": "regression/specimens/Because-I-Could-Not-Stop-for-Death.txt",
+      "title": "Because I could not stop for Death",
+      "author_attribution": "Emily Dickinson",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "12864ac62924f1bc93d2f2bca741b456bac3d8b7c148240c91449d73b8924fc3",
+      "used_by": [
+        "R5"
+      ]
+    },
+    {
+      "path": "regression/specimens/My-Last-Duchess.txt",
+      "title": "My Last Duchess",
+      "author_attribution": "Robert Browning",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "c3f304a4f4714e3eee12f22e333321a966085d5e465dfd7ee1b6f0d5fce0ea72",
+      "used_by": [
+        "R6"
+      ]
+    },
+    {
+      "path": "regression/specimens/The-Raven.txt",
+      "title": "The Raven",
+      "author_attribution": "Edgar Allan Poe",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "95ba628fb009ff41b4c330f5fbfb0ed94d2b3f686b66632828c23b9baa132da3",
+      "used_by": [
+        "R7"
+      ]
+    },
+    {
+      "path": "regression/specimens/The-Second-Coming.txt",
+      "title": "The Second Coming",
+      "author_attribution": "W. B. Yeats",
+      "source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+      "sha256": "2a5b15bf90d294c54b0b2a6453bd27363e71daaa2556655bc568b51488484678",
+      "used_by": [
+        "R8"
+      ]
+    }
+  ]
+}

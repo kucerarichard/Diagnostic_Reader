@@ -1,0 +1,3 @@
+# EVALUATOR RUN PROMPT — R10-B
+
+Use the shared evaluator instructions at `regression/prompts/evaluator-master.md`. Evaluate the raw target output for **Dependency fault injection — device inventory withheld** against the condition in this folder's `manifest.json` and test card **R10-B** in `diagnostic-reader-prompt-regime-v0_1.md`. Primary focus: Detect unavailable device inventory; separate partial analysis from inventory compliance.. The target output, exact condition file inventory, specimen, and relevant framework files are required inputs. Do not score criteria whose evidence is unavailable; mark them N/D.

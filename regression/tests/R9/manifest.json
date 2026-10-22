@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "test_id": "R9",
+  "title": "Canon scan and reconstruction discipline",
+  "suite_definition": "diagnostic-reader-regression-suite-v0_5.md (Version 0.5 — Consolidated Final Draft)",
+  "prompt_regime": "diagnostic-reader-prompt-regime-v0_1.md (Prompt Regime — v0.5 Compatible Draft)",
+  "source_snapshot": "Diagnostic_Reader-tmp.zip supplied 2026-10-20; no Git commit hash embedded/verified",
+  "framework_entry_point": "0-poetics-boot-hollow-v0_18.md",
+  "framework_version_labels": {
+    "boot": "0.18",
+    "kernel": "0.3.19",
+    "designation_policy": "0.7",
+    "device_inventory": "0.4",
+    "provenance_extension": "0.1"
+  },
+  "condition": "full-framework baseline",
+  "canonical_work": "Scan specimen: selected benchmark poem",
+  "corpus_id": "SCAN",
+  "test_card": "R9",
+  "primary_question": "Analyze only visible scan evidence; no full poem text is supplied.",
+  "framework_files_in_snapshot": [
+    "0-poetics-boot-hollow-v0_18.md",
+    "0a-portable-poetics-kernel-v0_3_19.md",
+    "0b-voice-slot-registry-v0_6.md",
+    "0c-voice-designations-v0_7.md",
+    "1-rother-voice-module-v0_3_1.md",
+    "10-monadology-foundations-v0_2.md",
+    "11-provenance-grading-extension-v0_1.md",
+    "12-confinement-inventory-v0_16.md",
+    "13-speaker-dials-v0_3.md",
+    "14-attridge-staten-extraction-v0_2.md",
+    "2-harris-voice-module-v0_3_1.md",
+    "3-kowit-voice-module-v0_3_1.md",
+    "3-perloff-voice-module-v0_3_1.md",
+    "3a-workshop-v0_7_1.md",
+    "4-gonzo-mode-v0_3_1.md",
+    "5-hersh-voice-module-v0_1.md",
+    "7-device-inventory-extended-v0_4.md",
+    "7a-nom-function-battery-v0_2.md",
+    "8-frye-extraction-v0_6.md",
+    "9-casanova-extraction-v0_6.md",
+    "compartmentalization-engine-v0_1.md",
+    "full-monty-gilson-coscienza-plugin.md",
+    "full-monty-jeffers-hellenistics-plugin.md",
+    "full-monty-kowit-hell-plugin.md",
+    "full-monty-kowit-poetry-reading-plugin.md",
+    "full-monty-santos-small-branch-v0.2.md",
+    "full-monty-snowcrust-example.md",
+    "full-monty-wyatt-whoso-list-plugin.md",
+    "voice-volitional-map-v0_2.md"
+  ],
+  "required_bootstrap_files": [
+    "0-poetics-boot-hollow-v0_18.md",
+    "0a-portable-poetics-kernel-v0_3_19.md",
+    "0c-voice-designations-v0_7.md"
+  ],
+  "task_specific_load_rule": "Follow the boot load order and dependency declarations. Identify which files you actually inspected and used; do not claim all available files were loaded merely because they were in the archive.",
+  "withheld_files": [],
+  "specimen": {
+    "path": "specimen.png",
+    "status": "BLOCKED: scan image not present in user upload",
+    "requirements": "Supply a page scan/image of a pre-1929 poem; do not include the complete poem transcription. Record work, edition/source, page, crop details, and SHA-256.",
+    "edition_or_source": "REQUIRED: scan not supplied",
+    "sha256": "REQUIRED: scan not supplied"
+  },
+  "target_model": "Gemini (record exact model/version if visible)",
+  "evaluator": "Muse (record exact model/version if visible)",
+  "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
+  "scoring": {
+    "2": "pass",
+    "1": "partial",
+    "0": "fail",
+    "N/D": "not determinable; never count as zero"
+  },
+  "notes": [
+    "Do not infer a Git commit hash.",
+    "Do not use regression suite/prompt files as Diagnostic Reader runtime modules.",
+    "The boot says references resolve to the file on disk; record exact files actually received and inspected."
+  ]
+}

@@ -1,0 +1,3 @@
+# ADJUDICATOR RUN PROMPT — R10-C
+
+Use the shared adjudicator instructions at `regression/prompts/adjudicator-master.md`. Adjudicate **Dependency fault injection — provenance module withheld** under the exact condition in this folder's `manifest.json` and test card **R10-C** in `diagnostic-reader-prompt-regime-v0_1.md`. Primary focus: Exercise DATUM while provenance grading extension is withheld; do not invent grades.. Independently inspect the raw target output and verify cited framework rules against the files actually supplied in this condition. Audit Muse's evaluation; do not treat it as authoritative.

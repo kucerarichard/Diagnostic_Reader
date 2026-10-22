@@ -1,0 +1,3 @@
+# ADJUDICATOR RUN PROMPT — R10-B
+
+Use the shared adjudicator instructions at `regression/prompts/adjudicator-master.md`. Adjudicate **Dependency fault injection — device inventory withheld** under the exact condition in this folder's `manifest.json` and test card **R10-B** in `diagnostic-reader-prompt-regime-v0_1.md`. Primary focus: Detect unavailable device inventory; separate partial analysis from inventory compliance.. Independently inspect the raw target output and verify cited framework rules against the files actually supplied in this condition. Audit Muse's evaluation; do not treat it as authoritative.

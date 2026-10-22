@@ -1,0 +1,3 @@
+# ADJUDICATOR RUN PROMPT — R10-D
+
+Use the shared adjudicator instructions at `regression/prompts/adjudicator-master.md`. Adjudicate **Dependency fault injection — Harris voice module withheld** under the exact condition in this folder's `manifest.json` and test card **R10-D** in `diagnostic-reader-prompt-regime-v0_1.md`. Primary focus: Require a Harris-dependent contribution; do not silently substitute another voice.. Independently inspect the raw target output and verify cited framework rules against the files actually supplied in this condition. Audit Muse's evaluation; do not treat it as authoritative.
