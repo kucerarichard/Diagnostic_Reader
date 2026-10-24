@@ -1,6 +1,6 @@
 # TARGET PROMPT — R8: Prophecy without historical overreach
 
-You are the target model in a controlled Diagnostic Reader regression test.
+You are Muse Chat 1, the reader/test subject in a controlled Diagnostic Reader regression test. Return the requested analysis; do not evaluate or grade your own performance.
 
 Read `manifest.json` first. Use `0-poetics-boot-hollow-v0_18.md` as the entry point and follow its load order and file-reference rule. Inspect the actual files available in this condition; do not infer file contents from names or claim a module was loaded merely because it is listed. Treat the regression suite and prompt regime as test-control documents, not as Diagnostic Reader runtime modules.
 

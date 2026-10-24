@@ -22,16 +22,16 @@ R1–R8 and R10 now contain the supplied poem transcriptions. Their exact bytes 
 
 ## Package architecture
 
-`manifests/` contains machine-readable condition definitions. `tests/<ID>/` contains the condition's human-operable files. `prompts/` contains shared evaluator and adjudicator prompts. `specimens/` is the canonical specimen store once texts/scans are pinned. `test-runs/` is for raw target outputs and evaluator reports. `results/` is for adjudicated results. Never overwrite raw outputs; create a new run record per repetition.
+`manifests/` contains machine-readable condition definitions. `tests/<ID>/` contains the condition's human-operable files. `prompts/` contains shared evaluator and adjudicator prompts. `specimens/` is the canonical specimen store once texts/scans are pinned. `test-runs/` is for raw target outputs and Muse Chat 2 evaluator reports. `results/` is for adjudicated results. Never overwrite raw outputs; create a new run record per repetition.
 
-## Roles and sequence
+## Roles and sequence (Muse-only reader/evaluator)
 
-1. **Target:** receives the condition package, specimen, and target prompt; returns raw output only.
-2. **Evaluator (Muse):** receives the raw target output, the same test manifest/card, and the relevant framework files; scores the output independently.
-3. **Adjudicator (separate ChatGPT chat):** receives the same condition snapshot, raw target output, evaluator report, and scoring prompt; audits the evaluator and independently inspects the target artifact.
-4. Save each artifact separately and record model/version, settings if visible, date, files actually received, and any archive-reading limitation.
+1. **Reader / test subject (Muse Chat 1):** start a fresh chat; upload only the condition-specific ZIP and paste its `target-prompt.md`. Save the returned artifact verbatim. Record the exact Muse model/version and any archive-reading limitation.
+2. **Evaluator (Muse Chat 2):** use a different fresh chat. Provide the raw Muse Chat 1 artifact, condition manifest/test card, scoring criteria, and relevant framework files. Paste `prompts/evaluator-master.md` plus the test's `evaluator-prompt.md`. Do not expose evaluator instructions to Chat 1 or let Chat 2 revise the reader artifact.
+3. **Adjudicator (ChatGPT, separate chat):** provide the same condition snapshot, specimen, raw Chat 1 output, and complete Chat 2 report. Paste `prompts/adjudicator-master.md` plus the test's `adjudicator-prompt.md`. Independently inspect the source files and audit both stages.
+4. **Save separately:** raw reader output, evaluator report, adjudication, model/version, settings if visible, date, files actually received, and archive-reading limitations. Preserve the raw artifact; never overwrite it with a revised answer.
 
-The target should not receive evaluator/adjudicator prompts. The evaluator should not see the adjudicator report before grading. The adjudicator must see the raw target output, not only the evaluator summary.
+**Independence limitation:** Chat 1 and Chat 2 use the same model family (Muse). Separate chats prevent direct conversational carryover but do not provide independent model-family replication. ChatGPT adjudication is a separate model perspective, but remains fallible and should cite the pinned framework evidence.
 
 ## Version and checksum discipline
 
