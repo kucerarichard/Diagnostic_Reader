@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "test_id": "R8",
   "title": "Prophecy without historical overreach",
-  "suite_definition": "diagnostic-reader-regression-suite-v0_5.md (Version 0.5 — Consolidated Final Draft)",
-  "prompt_regime": "diagnostic-reader-prompt-regime-v0_1.md (Prompt Regime — v0.5 Compatible Draft)",
+  "suite_definition": "regression/regression-suite-v0_5.md (Version 0.5 — Consolidated Final Draft)",
+  "prompt_regime": "regression/prompt-regime-v0_1.md (Prompt Regime — v0.5 Compatible Draft)",
   "source_snapshot": "Diagnostic_Reader-tmp.zip supplied 2026-10-20; no Git commit hash embedded/verified",
   "framework_entry_point": "0-poetics-boot-hollow-v0_18.md",
   "framework_version_labels": {
@@ -67,8 +67,8 @@
     "sha256": "2a5b15bf90d294c54b0b2a6453bd27363e71daaa2556655bc568b51488484678",
     "normalization_note": "Section separators and leading/trailing blank lines removed; poem text, punctuation, capitalization, and internal lineation otherwise preserved from supplied transcription."
   },
-  "target_model": "Muse Chat 1 (reader/test subject; record exact model/version if visible)",
-  "evaluator": "Muse Chat 2 (same model family as reader, separate fresh chat; record exact model/version if visible)",
+  "target_model": "Gemini (record exact model/version if visible)",
+  "evaluator": "Muse (record exact model/version if visible)",
   "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
   "scoring": {
     "2": "pass",
@@ -81,5 +81,14 @@
     "Do not use regression suite/prompt files as Diagnostic Reader runtime modules.",
     "The boot says references resolve to the file on disk; record exact files actually received and inspected."
   ],
-  "role_independence_note": "Reader and evaluator are separate chats but both use Muse; this is role separation, not independent model-family replication. ChatGPT adjudicates against the pinned source snapshot."
+  "control_documents": {
+    "suite_definition": {
+      "path": "regression/regression-suite-v0_5.md",
+      "purpose": "Test-control/reference document; not a Diagnostic Reader runtime module."
+    },
+    "prompt_regime": {
+      "path": "regression/prompt-regime-v0_1.md",
+      "purpose": "Test-control/reference document; not a Diagnostic Reader runtime module."
+    }
+  }
 }

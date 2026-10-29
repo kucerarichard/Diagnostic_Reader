@@ -35,8 +35,8 @@
     "voice-volitional-map-v0_2.md"
   ],
   "control_files_excluded_from_runtime": [
-    "diagnostic-reader-regression-suite-v0_5.md",
-    "diagnostic-reader-prompt-regime-v0_1.md",
+    "regression/regression-suite-v0_5.md",
+    "regression/prompt-regime-v0_1.md",
     "README.md",
     "session-record-2026-10-08.md"
   ],

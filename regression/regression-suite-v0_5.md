@@ -767,7 +767,7 @@ The source files are the evidence for framework requirements, not a guarantee th
 
 ### Operationalization: Prompt Regime
 
-The executable procedures for this benchmark are maintained in `diagnostic-reader-prompt-regime-v0_1.md`.
+The executable procedures for this benchmark are maintained in `regression/prompt-regime-v0_1.md`.
 
 The regression suite defines the governing test objectives, test conditions, evaluation criteria, failure taxonomy, and adjudication principles. The prompt regime translates these requirements into copy-ready instructions for target runs, independent evaluation, adjudication, and suite-level synthesis.
 

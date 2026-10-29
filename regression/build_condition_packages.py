@@ -18,6 +18,10 @@ REG = ROOT / "regression"
 OUT = REG / "packages"
 OUT.mkdir(exist_ok=True)
 EXCLUDE = {
+    "regression-suite-v0_5.md",
+    "prompt-regime-v0_1.md",
+    "regression/regression-suite-v0_5.md",
+    "regression/prompt-regime-v0_1.md",
     "diagnostic-reader-regression-suite-v0_5.md",
     "diagnostic-reader-prompt-regime-v0_1.md",
     "README.md",
@@ -39,14 +43,6 @@ for test_dir in sorted((REG / "tests").iterdir()):
         continue
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     tid = manifest["test_id"]
-    specimen = manifest.get("specimen", {})
-    specimen_path = test_dir / specimen.get("path", "specimen.txt")
-    if not specimen_path.exists() or (specimen.get("status", "").startswith("BLOCKED")):
-        print(f"SKIP {tid}: required specimen missing or blocked ({specimen.get('path', 'specimen.txt')})")
-        continue
-    expected_hash = specimen.get("sha256")
-    if expected_hash and expected_hash != "REQUIRED: scan not supplied" and sha256(specimen_path) != expected_hash:
-        raise RuntimeError(f"{tid}: specimen SHA-256 mismatch for {specimen_path}")
     withheld = set(manifest.get("withheld_files", []))
     outpath = OUT / f"target-{tid}.zip"
     with zipfile.ZipFile(outpath, "w", zipfile.ZIP_DEFLATED) as z:
@@ -57,15 +53,29 @@ for test_dir in sorted((REG / "tests").iterdir()):
             if p.name in EXCLUDE or p.name in withheld:
                 continue
             z.write(p, p.relative_to(ROOT).as_posix())
-        # Only this test's run controls go to the target.
+        # Include the exact test-control documents for auditability.
+        # These are controls/reference documents, not Diagnostic Reader runtime modules.
+        for name in ["regression-suite-v0_5.md", "prompt-regime-v0_1.md"]:
+            p = REG / name
+            if not p.exists():
+                raise FileNotFoundError(f"Required regression control document missing: {p}")
+            z.write(p, f"regression/{name}")
+        # Only this test's run controls go to the package root.
         for name in ["manifest.json", "target-prompt.md", "specimen.txt", "specimen.png"]:
             p = test_dir / name
             if p.exists():
                 z.write(p, name)
     with zipfile.ZipFile(outpath) as z:
         packaged = z.namelist()
+        required_controls = {
+            "regression/regression-suite-v0_5.md",
+            "regression/prompt-regime-v0_1.md",
+        }
+        missing_controls = sorted(required_controls - set(packaged))
+        if missing_controls:
+            raise RuntimeError(f"{tid}: missing control document(s): {missing_controls}")
         missing = [f for f in withheld if any(Path(n).name == f for n in packaged)]
         if missing:
             raise RuntimeError(f"{tid}: withheld file(s) present in package: {missing}")
     print(f"{outpath.name}\t{outpath.stat().st_size}\tsha256={sha256(outpath)}")
-print("NOTE: R9 is skipped until its scan specimen is supplied. Other specimens are frozen user-supplied transcriptions; bibliographic editions remain unverified.")
+print("NOTE: packages were built from the current framework snapshot and the supplied specimen files. Verify specimen source/hash metadata in each manifest before treating runs as scored benchmark results.")

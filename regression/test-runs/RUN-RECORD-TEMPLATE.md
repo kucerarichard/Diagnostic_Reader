@@ -19,6 +19,3 @@
 - Adjudication report path:
 - N/D criteria and reasons:
 - Deviations from protocol:
-
-## Role separation note
-Muse Chat 1 and Muse Chat 2 are separate chats using the same model family; do not describe them as independent model-family replication.
