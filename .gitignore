@@ -3,4 +3,6 @@ __pycache__/
 compiled-run/
 compiled-regression/
 run-*/
+runs/**/prompt*.md
+runs/**/*-prompt.md
 .DS_Store

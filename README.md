@@ -35,6 +35,95 @@ Catalog work, adding confinements to `12-confinement-inventory`, is the standing
 
 Limits. The apparatus has no retrieval: it reads the specimen you supply, as `--specimen` to the compiler or on the page in a chat. Scan Mode's canon source is the one place it names a poem from the model's own knowledge, and there it rates how well the model can reconstruct the poem and never reproduces it whole. The apparatus doesn't read intention. It quotes in-copyright text only at the lowest exposure level that preserves a mechanism. Generated output never names or identifies a calibration source.
 
+## Getting Started
+
+Run everything from the repository root with `python -m dr`. Python 3.9 or later; on Windows, `py -3` stands in for `python` when it isn't on the path. The three commands that prove an install:
+
+```
+python -m unittest discover -s tests          79 tests, OK
+python -m dr lint                             0 errors; the six warnings are the Registry Gaps below
+python -m dr list tests                       fourteen regression cases
+```
+
+### Looking around
+
+Every `list` runs in the compiler and consults no model. The catalogs are parsed from the files on disk, so what you see is what the bundle holds.
+
+```
+python -m dr list voices                      the five designations, what each fires on, what silences it
+python -m dr list modules                     every file with its load step, version, and dependencies
+python -m dr list tasks                       the minimal sets by task
+python -m dr list categories                  the seven device Categories and their counts
+python -m dr list devices --category A        one Category
+python -m dr list devices --find pronoun      substring on the device name
+python -m dr list confinements --axis inward --class primitive
+python -m dr list confinements --handle "Apple-Picking"
+python -m dr list dials                       sd-01 to sd-09 with status, checks, couplings
+python -m dr list directives                  the twenty-one calibration directives and their prompts
+python -m dr list plugins                     handles, stems, collisions
+```
+
+`explain` resolves a request and prices it without writing anything. Put it in front of any compile command, or add `--explain` to one:
+
+```
+python -m dr explain read --quick
+python -m dr explain read --triangulate --voices ASSAY PLUMB --verdict PLUMB
+python -m dr explain workshop --dial-trial --rewrites
+python -m dr explain read --voices DATUM                    watch 11 arrive as "required by 5-hersh-voice-module"
+python -m dr explain read --kind "news report"              watch 8 arrive for found text
+python -m dr explain read --triangulate --voices ASSAY PLUMB --max-tokens 300000     over budget: exit 1, nothing written
+python -m dr read --help                                    the full flag set
+```
+
+### Specimens
+
+A specimen is a UTF-8 text file. Images are not accepted. The card fields can ride in the file as a header block, `Key: value` lines ended by one blank line, after which everything is text:
+
+```
+Title: After Apple-Picking
+Author: Robert Frost
+Date: 1914
+Edition: North of Boston
+Copyright: public domain
+
+My long two-pointed ladder's sticking through a tree
+...
+```
+
+Keys are title, author, date, edition, kind, unit, provenance, copyright, and found by. A file with no header block is all text, and the flags `--title`, `--author`, `--date`, `--edition`, `--provenance`, `--copyright`, `--found-by` supply the card instead or override it. With more than one `--specimen`, each file carries its own block. `--specimen -` reads stdin.
+
+```
+python -m dr read --specimen poems/apple-picking.txt                          sidecar, ASSAY, card from the header block
+python -m dr read --specimen draft.txt --title "Untitled" --author "the user"  card from flags
+python -m dr read --specimen report.txt --kind "news report"                  found text; unit defaults to paragraph; 8 loads
+python -m dr workshop --specimen draft.txt --provenance "the user's own draft" --copyright "the user's"
+python -m dr read --datum --specimen poem.txt --account note.txt              DATUM: the account is a second file, held at P2
+python -m dr scan supplied --category B --devices caesura --corpus poems.txt  the corpus is one or more files
+python -m dr scan canon --category A --devices apostrophe                     no specimen; the model names one
+```
+
+The compiler keeps the specimen's bytes as given and records their sha256 in the prompt and the manifest, so a reading can always be matched to the exact text it read.
+
+### Output
+
+Each compile writes two files into `--out`: `prompt.md`, which is the one thing you paste into a model, and `build-manifest.json`, which records the request, every framework file with its hash, the specimen with its hash, and the token estimate. Nothing in either carries a timestamp, so the same inputs produce the same bytes on any machine.
+
+```
+python -m dr read --specimen poems/apple-picking.txt --out runs/2026-11-08-apple-picking
+```
+
+A working convention: one directory per run under `runs/`, named by date and subject. Paste `prompt.md` into the model, then save the model's reply beside it as `reading.md`. The directory is then a complete record: what was asked, what was loaded, what was read, and what came back. For a regression case the same convention holds with the three role prompts and their outputs:
+
+```
+python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
+```
+
+then `reader-output.md` saved beside the prompts, a recompile with `--reader-output` to fill the evaluator's slot, `evaluator-report.md`, a recompile with `--evaluator-output`, and `adjudicator-report.md`. `regression/README.md` has the handoff in full.
+
+Under version control, keep the outputs and the manifests and drop the prompts: a prompt regenerates from the manifest's request and hashes, and fourteen of them come to 47 MB. The `.gitignore` ignores the compiler's default output directories (`compiled-run/`, `compiled-regression/`), any `run-*/` scratch directory, and prompt files inside `runs/`, while leaving the rest of `runs/` to be committed.
+
+If the interface caps a single paste below the prompt's size, `--part-size 400000` splits at file boundaries into `prompt-partNofM.md`, each opening with a line saying so.
+
 ## Files
 
 Versions are the ones in this bundle. For every file the boot registers, its Module Registry agrees with the version below. Registry Gaps lists the files it doesn't register correctly.

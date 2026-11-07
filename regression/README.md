@@ -33,6 +33,19 @@ python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Mode
 
 After the Reader run, paste its complete raw output into the marked slot in `evaluator-prompt.md`, or recompile with `--reader-output reader-output.md`. After evaluation, paste the evaluator report into `adjudicator-prompt.md`, or recompile with `--reader-output ... --evaluator-output ...`.
 
+A working convention, one directory per run:
+
+```
+python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
+#   paste reader-prompt.md into the Reader; save its output as runs/.../reader-output.md
+python -m dr regress --cases R1 --reader-model "<model>" --evaluator-model "<model>"     --reader-output runs/2026-11-08-R1-<model>/reader-output.md --out runs/2026-11-08-R1-<model>
+#   paste evaluator-prompt.md into the evaluator; save as runs/.../evaluator-report.md
+python -m dr regress --cases R1 --reader-model "<model>" --evaluator-model "<model>" --adjudicator-model "<model>"     --reader-output runs/.../reader-output.md --evaluator-output runs/.../evaluator-report.md --out runs/2026-11-08-R1-<model>
+#   paste adjudicator-prompt.md into the adjudicator; save as runs/.../adjudicator-report.md
+```
+
+The directory then holds the condition (`build-manifest.json`, with every hash), the three outputs, and the prompts. Commit the manifest and the outputs; the `.gitignore` drops the prompt files from `runs/`, since they regenerate from the manifest and each set is several megabytes. The first thing to read in any `reader-output.md` is its loading report against the case's repeated LOAD SET.
+
 ## Case manifests
 
 The `request` block takes the same fields as the `dr` command line, so a case is a request the compiler resolves:
