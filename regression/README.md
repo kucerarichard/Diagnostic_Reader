@@ -1,54 +1,91 @@
-# Diagnostic Reader Regression Operations
+# Diagnostic Reader Regression Suite
 
-**Status:** operational scaffold for the supplied repository snapshot. The source apparatus files are unchanged; this directory adds run controls only.
+Test definitions for the regression suite, compiled into role prompts by `dr regress`. This directory holds no runtime module. The framework files are read from the repository root (or a snapshot you name), and nothing here calls a model.
 
-## Recommended run mechanics
+```
+python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Model Y" --adjudicator-model "Model Z" --out run-R1
+```
 
-For each run, start a **fresh target-model chat**. Upload one condition package (or the full-framework ZIP plus the matching `regression/tests/<ID>/` files), then paste the matching `target-prompt.md` into that same chat. The target must receive the actual specimen as a file or image, not merely its title. Do not reuse a chat between conditions.
+`regression/generate_prompts.py` forwards to the same command for scripts that still call it.
 
-The preferred durable layout is one folder per condition containing:
-- `manifest.json` — exact condition, supplied/withheld files, specimen requirements, and version metadata;
-- `target-prompt.md` — copy-ready prompt for the target model;
-- `specimen.txt` or `specimen.png` — the actual source material used in that run (once pinned/populated).
+## Contents
 
-For R1–R8, place the chosen poem transcription in `specimen.txt` and record its edition/source and checksum in the manifest before the first scored run. The supplied repository ZIP does **not** specify a particular edition, so the scaffold intentionally does not fabricate a supposedly authoritative transcription. R9 requires an actual scan/image file and must not include the complete poem text. R10 uses the same pinned “The Tyger” specimen as R1/R2.
+| Path | Holds |
+|---|---|
+| `tests/<R-ID>/manifest.json` | the condition: a `request` block the compiler resolves into a load set, an `expect` block, and the pinned specimen |
+| `tests/<R-ID>/target-prompt.md` | Reader instructions for the case |
+| `tests/<R-ID>/evaluator-prompt.md`, `adjudicator-prompt.md` | role-specific case instructions |
+| `tests/<R-ID>/specimen.txt` | the frozen transcription; its sha256 is pinned in the manifest. R9 has none by design |
+| `tests/R11/account.txt` | the poet's account the DATUM reading measures the specimen against; pinned like the specimen |
+| `regression-suite-v*.md`, `prompt-regime-v*.md` | control documents: scoring, procedure, test cards. Not runtime modules |
+| `prompts/evaluator-master.md`, `prompts/adjudicator-master.md` | shared role instructions |
 
-## Test-control documents
+## Output
 
-The canonical control documents live directly in `regression/`, above `packages/`, `prompts/`, `specimens/`, and `tests/`:
-- `regression-suite-v0_5.md`
-- `prompt-regime-v0_1.md`
+`dr regress` writes four files:
 
-Every test manifest points to these exact paths. The package builder copies both into each condition ZIP under the same `regression/` paths so evaluators and adjudicators can audit the test card and prompt regime. They are test-control/reference documents, not Diagnostic Reader runtime modules.
+| File | Contents |
+|---|---|
+| `reader-prompt.md` | per case: target instructions, a reader-facing manifest (no scoring material), the LOAD SET table, every framework file in the condition, the specimen with its card, the LOAD SET repeated with withheld files named, and the operator request line |
+| `evaluator-prompt.md` | evaluator master, the two control documents, then per case: evaluator instructions, the full manifest, the same LOAD SET, files and specimen, and a slot for the raw Reader output |
+| `adjudicator-prompt.md` | the same with adjudicator instructions and a second slot for the evaluator report |
+| `build-manifest.json` | selected cases, model labels, per-case request line, load set with sha256 per file, withheld list, specimen sha256, token estimate, and the sha256 of each prompt |
 
-## ZIP versus individual uploads
+After the Reader run, paste its complete raw output into the marked slot in `evaluator-prompt.md`, or recompile with `--reader-output reader-output.md`. After evaluation, paste the evaluator report into `adjudicator-prompt.md`, or recompile with `--reader-output ... --evaluator-output ...`.
 
-- **Best for reproducibility:** give the target a condition-specific ZIP whose manifest and specimen are inside it, plus the allowed framework files for that condition. Paste the prompt in the same chat.
-- **Fallback:** upload the framework files, manifest, and specimen individually, then paste the prompt in that same chat. Record exactly what was uploaded.
-- Do not assume that uploading a ZIP means every model has extracted or read every nested file. The prompt requires the model to report which files it could actually inspect. If the model cannot inspect the archive, provide the extracted files individually; do not count a claimed load as evidence of a load.
-- Keep the original full-framework ZIP immutable. Build each R10 condition from a fresh copy and remove only the specified dependency. Never create a missing-dependency condition merely by telling the model that a file is absent while leaving it accessible in the same archive.
+## Case manifests
 
-## Package architecture
+The `request` block takes the same fields as the `dr` command line, so a case is a request the compiler resolves:
 
-`manifests/` contains machine-readable condition definitions. `tests/<ID>/` contains the condition's human-operable files. `prompts/` contains shared evaluator and adjudicator prompts. `specimens/` is the canonical specimen store once texts/scans are pinned. `test-runs/` is for raw target outputs and evaluator reports. `results/` is for adjudicated results. Never overwrite raw outputs; create a new run record per repetition.
+```json
+"request": {
+  "task": "triangulate",
+  "voices": ["ASSAY", "PLUMB"],
+  "extensions": ["provenance"],
+  "withhold": ["2-harris-voice-module"]
+},
+"expect": {
+  "loaded": ["1-rother-voice-module", "11-provenance-grading-extension"],
+  "absent": ["2-harris-voice-module"]
+}
+```
 
-## Roles and sequence
+`withhold` is the fault-injection hook: the stem is removed from the plan and listed under WITHHELD FILES in every role prompt. `expect` pins stems that must and must not be in the resolved plan, so a case that depends on a file being present or absent fails at compile time, with the plan printed, instead of in a model run. The specimen's pinned sha256 is checked on every compile; an edited transcription refuses to compile.
 
-1. **Target:** receives the condition package, specimen, and target prompt; returns raw output only.
-2. **Evaluator (Muse):** receives the raw target output, the same test manifest/card, and the relevant framework files; scores the output independently.
-3. **Adjudicator (separate ChatGPT chat):** receives the same condition snapshot, raw target output, evaluator report, and scoring prompt; audits the evaluator and independently inspects the target artifact.
-4. Save each artifact separately and record model/version, settings if visible, date, files actually received, and any archive-reading limitation.
+The load set is derived, never listed by hand. `python -m dr regress --explain --cases R10-C` prints it with the reason for each file.
 
-The target should not receive evaluator/adjudicator prompts. The evaluator should not see the adjudicator report before grading. The adjudicator must see the raw target output, not only the evaluator summary.
+## Conditions
 
-## Version and checksum discipline
+| Case | Request | Framework set |
+|---|---|---|
+| R1, R2, R4 | `sidecar`, ASSAY | boot, kernel, `0c`, `7`, `1` (~222k tokens) |
+| R3 | `triangulate` ASSAY and PLUMB, PLUMB closes | adds `2` (~355k) |
+| R5 | `triangulate` ASSAY and RETICLE | adds `3-perloff` (~327k) |
+| R6 | `triangulate` ASSAY and PLUMB | adds `2` (~355k) |
+| R7 | `triangulate` ASSAY and TARE | adds `3-kowit` (~269k) |
+| R8 | `sidecar` ASSAY, VISE verdict riding ASSAY, `11` loaded | adds `4`, `11` (~310k) |
+| R9 | `scan canon A for apostrophe`, no specimen | boot, kernel, `0c`, `7` (~63k) |
+| R10-A to D | `triangulate` ASSAY and PLUMB with `11`, one stem withheld | the R10 base less the withheld file |
+| R11 | `datum`, The Raven against Poe's "The Philosophy of Composition" | boot, kernel, `0c`, `11`, `5` (~159k) |
 
-The ZIP supplied for this scaffold has no Git commit hash embedded in the available metadata. Do not invent one. Record the Git commit/tag when available, and SHA-256 checksums for the ZIP and each specimen. Framework versions can be read from file contents, but file version labels are not a substitute for a repository commit.
+Every voice and both modes are now under test somewhere: ASSAY throughout, PLUMB in R3, R6, and R10, RETICLE in R5, TARE in R7, DATUM in R11, VISE in R8, and JIG only implicitly, since the suite's corpus holds finished canonical poems and the workshop wants a draft. The dial file is the one extension no case loads; it rides the workshop.
 
-## R9 scan caution
+The R10 base loads `11-provenance-grading-extension` explicitly so that R10-C has something to withhold; DATUM is not loaded there, because The Tyger carries no account for it to measure. R11 is the DATUM case: Poe's essay is the one text in the corpus that gives the voice a record, and it is a famously disputed one. The account is held at P2 and the target is scored on measuring it against the page, not on agreeing with received opinion about the essay.
 
-R9 is not executable until an actual scan image is selected. Put the image at `specimen.png` (or use a stable image format) and record its source, edition if known, visible/cropped portions, and SHA-256. Do not add the full poem transcription to the target's package.
+Where a case names voices, whether a voice fires on the specimen is the test and not the premise; a justified stand-down passes.
 
-## R10 variants
+R9 changed in this revision from an image-scan test to the canon-scan test the suite's section 12 defines. The harness is text only. The prompt regime's R9 card was rewritten to match; the suite's card was already right.
 
-R10-A withholds `0c-voice-designations-v0_7.md`; R10-B withholds `7-device-inventory-extended-v0_4.md`; R10-C withholds `11-provenance-grading-extension-v0_1.md` and explicitly exercises DATUM; R10-D withholds `2-harris-voice-module-v0_3_1.md` and explicitly requires a Harris-dependent triangulation step. Each variant must be packaged from a clean copy and verified by listing its actual contents before upload.
+## The loading report
+
+Each target prompt's first required output is the LOAD SET table copied out with every file marked used or unused, and any file the apparatus names that is not in the table named as absent. The table is repeated directly before the operator request so the report is written against it. Two things in the prompt look like inventories and are not: the boot's Module Registry, which lists sixteen files whatever the condition, and the kernel's cross-references to `0b`, `0c`, `12`, and `13`. A report that lists either as loaded is the RECONSTRUCT failure the suite exists to catch.
+
+R10-A is narrower than its title suggests. The kernel's Voice Slot Matrix names all five designations and its Designation Policy states the rule, so a verdict labelled ASSAY is possible with `0c` withheld; what the absent file governs is the leak-tier procedure and the calibration-collision rule. The evaluator and adjudicator prompts for R10-A say so, and the target is scored on whether it reported that split.
+
+## Isolation
+
+Selecting several cases concatenates them into one prompt per role. Each case keeps its own LOAD SET, specimen, and withheld list, but every file is visible in the one model context, so a file withheld from one case is present under another. Compile R10-A to D one at a time.
+
+## Size
+
+Each case's framework set is the README's minimal set for its task, not the whole bundle. `--max-tokens N` refuses a case whose set exceeds the budget. The voice modules carry the size (their source corpora are the calibration); the sidecar cases load one voice and the triangulations two.

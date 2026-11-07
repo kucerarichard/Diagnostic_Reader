@@ -1,0 +1,257 @@
+{
+  "tasks": {
+    "quick-read": {
+      "request_line": "Quick read.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations"
+      ]
+    },
+    "sidecar": {
+      "request_line": "Full sidecar. ASSAY verdict.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module"
+      ]
+    },
+    "triangulate": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ]
+    },
+    "datum": {
+      "request_line": "DATUM verdict on the poem and its note.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "11-provenance-grading-extension",
+        "5-hersh-voice-module"
+      ]
+    },
+    "scan": {
+      "request_line": "Scan canon A for apostrophe",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended"
+      ]
+    },
+    "workshop": {
+      "request_line": "workshop this specimen",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "12-confinement-inventory",
+        "3-kowit-voice-module",
+        "3a-workshop"
+      ]
+    },
+    "poetics-scan": {
+      "request_line": "Poetics scan. Read as found. Kind: label. Unit: line.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "8-frye-extraction"
+      ]
+    },
+    "extract": {
+      "request_line": "extract confinement",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "11-provenance-grading-extension",
+        "12-confinement-inventory",
+        "3a-workshop"
+      ]
+    }
+  },
+  "regression_cases": {
+    "R1": {
+      "request_line": "Full sidecar. ASSAY verdict.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module"
+      ],
+      "withheld": []
+    },
+    "R10-A": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "7-device-inventory-extended",
+        "11-provenance-grading-extension",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ],
+      "withheld": [
+        "0c-voice-designations"
+      ]
+    },
+    "R10-B": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "11-provenance-grading-extension",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ],
+      "withheld": [
+        "7-device-inventory-extended"
+      ]
+    },
+    "R10-C": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ],
+      "withheld": [
+        "11-provenance-grading-extension"
+      ]
+    },
+    "R10-D": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "11-provenance-grading-extension",
+        "1-rother-voice-module"
+      ],
+      "withheld": [
+        "2-harris-voice-module"
+      ]
+    },
+    "R11": {
+      "request_line": "DATUM verdict on the poem and its note.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "11-provenance-grading-extension",
+        "5-hersh-voice-module"
+      ],
+      "withheld": []
+    },
+    "R2": {
+      "request_line": "Full sidecar. ASSAY verdict.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module"
+      ],
+      "withheld": []
+    },
+    "R3": {
+      "request_line": "Triangulate ASSAY and PLUMB. PLUMB closes.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ],
+      "withheld": []
+    },
+    "R4": {
+      "request_line": "Full sidecar. ASSAY verdict.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module"
+      ],
+      "withheld": []
+    },
+    "R5": {
+      "request_line": "Triangulate ASSAY and RETICLE.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "3-perloff-voice-module"
+      ],
+      "withheld": []
+    },
+    "R6": {
+      "request_line": "Triangulate ASSAY and PLUMB.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "2-harris-voice-module"
+      ],
+      "withheld": []
+    },
+    "R7": {
+      "request_line": "Triangulate ASSAY and TARE.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "1-rother-voice-module",
+        "3-kowit-voice-module"
+      ],
+      "withheld": []
+    },
+    "R8": {
+      "request_line": "Full sidecar. ASSAY verdict. VISE verdict, ASSAY spine.",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended",
+        "11-provenance-grading-extension",
+        "1-rother-voice-module",
+        "4-gonzo-mode"
+      ],
+      "withheld": []
+    },
+    "R9": {
+      "request_line": "Scan canon A for apostrophe",
+      "stems": [
+        "0-poetics-boot-hollow",
+        "0a-portable-poetics-kernel",
+        "0c-voice-designations",
+        "7-device-inventory-extended"
+      ],
+      "withheld": []
+    }
+  }
+}

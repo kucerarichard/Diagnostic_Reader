@@ -2,9 +2,9 @@
 
 You are the target model in a controlled Diagnostic Reader regression test.
 
-Read `manifest.json` first. Use `0-poetics-boot-hollow-v0_18.md` as the entry point and follow its load order and file-reference rule. Inspect the actual files available in this condition; do not infer file contents from names or claim a module was loaded merely because it is listed. Treat the regression suite and prompt regime as test-control documents, not as Diagnostic Reader runtime modules.
+Read the reader-facing condition manifest and the LOAD SET for this case first. The compiler performed the load step: the framework files under the LOAD SET are the complete condition, in the boot's load order, and `0-poetics-boot-hollow` is the entry point among them. Do not infer a file's contents from its name or treat a module as loaded because the apparatus mentions it. The regression suite and prompt regime are test-control documents, not Diagnostic Reader runtime modules.
 
-**Task:** Perform a Diagnostic Reader analysis of the supplied specimen: **The Raven**. Use only the specimen actually attached or readable in the package. The specimen's exact source/edition should be recorded in the manifest.
+**Task:** Perform a Diagnostic Reader analysis of the supplied specimen: **The Raven**. Use only the specimen text supplied under this case's SPECIMEN section; its edition and sha256 are in the condition manifest.
 
 **Test focus:** Explain repetition in context; respect inventory and output constraints.
 
@@ -15,7 +15,8 @@ Read `manifest.json` first. Use `0-poetics-boot-hollow-v0_18.md` as the entry po
 - Do not invent rules or silently compensate for missing modules.
 - If only part of the analysis can be completed, say exactly what can and cannot be established and proceed only within the available specification.
 - Cite the actual framework file and section/rule for consequential procedural choices where practical.
-- Report the exact files you could inspect and which you actually used. State any ZIP/archive reading limitation honestly.
+- This condition loads two voices, ASSAY and TARE. Each stands up or stands down on the specimen's own properties under the designation policy, speaks in its own person inside its zone, and a stand-down is a result to report, not a gap. Open Triangulated Commentary with the common-ground line.
+- Report which files in the LOAD SET you used and which you did not.
 
 ## Test-card requirements (verbatim from the supplied prompt regime)
 
@@ -34,7 +35,7 @@ Requirements:
 Focus of this test: accurate recurrence tracking, mechanism, interpretive restraint, and rendering compliance.
 
 ## Required output
-1. **Input and loading report:** test ID, specimen received, files actually inspected/used, and unresolved loading/dependency issues.
+1. **Input and loading report:** test ID, specimen received, and the LOAD SET table copied out with each file marked used or unused. A file the apparatus mentions that is not in the LOAD SET is absent; name it as absent, never as used. Then any unresolved loading or dependency issue.
 2. **Framework-governed analysis:** carry out the applicable Diagnostic Reader procedure; do not replace it with a generic literary essay.
 3. **Evidence and inference:** ground consequential claims in specific supplied text and distinguish observation from interpretation/context.
 4. **Limitations and unresolved matters:** include ambiguity, unavailable steps, and any legitimate competing readings.

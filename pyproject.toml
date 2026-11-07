@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dr"
+version = "0.1.0"
+description = "Diagnostic Reader prompt compiler"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+dr = "dr.cli:main"
+
+[tool.setuptools]
+packages = ["dr"]
+
+[tool.setuptools.package-data]
+dr = ["framework-registry.json"]

@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "description": "Machine mirror of 0-poetics-boot-hollow (Load Order, Module Registry, Plugin Registry) and the README's hard dependencies and minimal sets by task. The boot stays the human-readable inventory; `dr lint` checks this file against it and against the files on disk.",
+  "mirrors": {
+    "boot_stem": "0-poetics-boot-hollow",
+    "boot_version": "0.18",
+    "readme": "README.md"
+  },
+
+  "load_steps": {
+    "0": "boot",
+    "1": "kernel",
+    "2": "designation policy",
+    "3": "slot registry, when slot status is in question",
+    "4": "device and catalog extensions the task requires",
+    "5": "voice modules",
+    "6": "style and workshop modes, which ride a voice",
+    "7": "full monty plugins, only when source-bearing calibration is needed",
+    "8": "Full Monty State"
+  },
+
+  "modules": {
+    "0-poetics-boot-hollow": {
+      "type": "boot", "load_step": 0, "loadable": true,
+      "role": "Loader wrapper: load order, module registry, plugin registry, Outstanding and Closed lists, Default State"
+    },
+    "0a-portable-poetics-kernel": {
+      "type": "kernel", "load_step": 1, "loadable": true,
+      "role": "Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan"
+    },
+    "0c-voice-designations": {
+      "type": "policy", "load_step": 2, "loadable": true,
+      "role": "Designation set, leak tiers, calibration-collision rule, take versus specimen",
+      "note": "Load before any voice module. Without it every voice labels its output with its calibration source's name."
+    },
+    "0b-voice-slot-registry": {
+      "type": "registry", "load_step": 3, "loadable": true,
+      "role": "Slot matrix, voice test, candidate log, reopen conditions"
+    },
+    "0d-apparatus-provenance": {
+      "type": "note", "load_step": null, "loadable": false,
+      "role": "History and rationale. Loaded by nothing", "optional_on_disk": true
+    },
+    "voice-volitional-map": {
+      "type": "note", "load_step": null, "loadable": false,
+      "role": "The five voices' aims, completion tests, and failures in one table. Never loaded"
+    },
+
+    "7-device-inventory-extended": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "192 devices in Categories A to G, Hermetic re-sort (H), training corpus (I), specimen clusters (J), Scan Mode (K). Replaces the kernel's lite inventory while loaded"
+    },
+    "7a-nom-function-battery": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "requires": ["7-device-inventory-extended"],
+      "role": "Five function-level tests built from the inventory's Nom and English-simulation entries"
+    },
+    "8-frye-extraction": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "Radical of presentation, paired fallacy guards, melos and opsis separation. Default for any specimen whose kind is not poem"
+    },
+    "9-casanova-extraction": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "Seven tools and one directive on a work's position in international literary space"
+    },
+    "10-monadology-foundations": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "Leibniz foundations for three house disciplines. Fires nothing"
+    },
+    "11-provenance-grading-extension": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "P0 to P5 claim ladder"
+    },
+    "12-confinement-inventory": {
+      "type": "catalog", "load_step": 4, "loadable": true,
+      "role": "Confinement catalog; hard dependency of the workshop's Confinement Bay"
+    },
+    "13-speaker-dials": {
+      "type": "catalog", "load_step": 4, "loadable": true,
+      "requires": ["7-device-inventory-extended"],
+      "floors": {"0a-portable-poetics-kernel": "0.3.16", "7-device-inventory-extended": "0.2"},
+      "role": "Speaker dial catalog: nine dials, four checks, trial forms, eleven experiments"
+    },
+    "14-attridge-staten-extraction": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "Fourteen reading operations with a refusal ledger. Fires on warrant"
+    },
+    "compartmentalization-engine": {
+      "type": "extension", "load_step": 4, "loadable": true,
+      "role": "An engine type and a constrained opt-in lens for a poem built around a wound it walls off"
+    },
+
+    "1-rother-voice-module": {
+      "type": "voice", "designation": "ASSAY", "load_step": 5, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "floors": {"0a-portable-poetics-kernel": "0.3"},
+      "role": "ASSAY voice; holds the default verdict slot"
+    },
+    "2-harris-voice-module": {
+      "type": "voice", "designation": "PLUMB", "load_step": 5, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "floors": {"0a-portable-poetics-kernel": "0.3"},
+      "role": "PLUMB voice"
+    },
+    "3-kowit-voice-module": {
+      "type": "voice", "designation": "TARE", "load_step": 5, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "floors": {"0a-portable-poetics-kernel": "0.3"},
+      "role": "TARE voice; JIG rides it"
+    },
+    "3-perloff-voice-module": {
+      "type": "voice", "designation": "RETICLE", "load_step": 5, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "floors": {"0a-portable-poetics-kernel": "0.3"},
+      "role": "RETICLE voice"
+    },
+    "5-hersh-voice-module": {
+      "type": "voice", "designation": "DATUM", "load_step": 5, "loadable": true,
+      "requires": ["0c-voice-designations", "11-provenance-grading-extension"],
+      "floors": {"0a-portable-poetics-kernel": "0.3", "11-provenance-grading-extension": "0.1"},
+      "role": "DATUM voice; reads a specimen's account of itself against a record"
+    },
+
+    "4-gonzo-mode": {
+      "type": "mode", "designation": "VISE", "load_step": 6, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "role": "VISE style mode; rides any voice"
+    },
+    "3a-workshop": {
+      "type": "mode", "designation": "JIG", "load_step": 6, "loadable": true,
+      "requires": ["0c-voice-designations"],
+      "floors": {"0a-portable-poetics-kernel": "0.3.19"},
+      "role": "JIG workshop mode, with found-text treatment and named contrast trials"
+    },
+
+    "full-monty-snowcrust-example": {
+      "type": "plugin", "handle": "Snow Crust", "load_step": 7, "loadable": true,
+      "role": "Floor-origin hypothesis and accidental ars poetica"
+    },
+    "full-monty-santos-small-branch": {
+      "type": "plugin", "handle": "Small Branch", "load_step": 7, "loadable": true,
+      "role": "Sayability, seam pressure, and appropriation risk",
+      "boot_alias": "full-monty-santos-small-branch-example"
+    },
+    "full-monty-wyatt-whoso-list-plugin": {
+      "type": "plugin", "handle": "Whoso List", "load_step": 7, "loadable": true,
+      "role": "Steganographic surface and load-bearing foreignness"
+    },
+    "full-monty-kowit-hell-plugin": {
+      "type": "plugin", "handle": "Kowit Hell", "load_step": 7, "loadable": true,
+      "role": "Complaint loop and comic clarity",
+      "collides_with": ["TARE", "JIG"]
+    },
+    "full-monty-jeffers-hellenistics-plugin": {
+      "type": "plugin", "handle": "Hellenistics", "load_step": 7, "loadable": true,
+      "role": "Anti-laundering engine default and transparent ugliness"
+    },
+    "full-monty-kowit-poetry-reading-plugin": {
+      "type": "plugin", "handle": "Poetry Reading", "load_step": 7, "loadable": true,
+      "role": "Captive attention and access asymmetry",
+      "collides_with": ["TARE", "JIG"]
+    },
+    "full-monty-gilson-coscienza-plugin": {
+      "type": "plugin", "handle": "Gilson", "load_step": 7, "loadable": true,
+      "role": "Source-bearing Coscienza calibration from a critic's book, with added directives. 7a and the Compartmentalization Engine use its Critic's Projection Error directive when loaded"
+    }
+  },
+
+  "voices": {
+    "ASSAY":   {"module": "1-rother-voice-module",  "unit": "a ranking",     "fires": "A work is valued above or below what its inheritance earns", "silent": "No misfiling to correct"},
+    "PLUMB":   {"module": "2-harris-voice-module",  "unit": "a witness",     "fires": "A system hides its cost and there's ground to stand on", "silent": "No ground, or the subject sits above the body"},
+    "TARE":    {"module": "3-kowit-voice-module",   "unit": "a relationship","fires": "Cost is laundered or a reader is gated", "silent": "A difficult poem earns its difficulty"},
+    "RETICLE": {"module": "3-perloff-voice-module", "unit": "a genealogy",   "fires": "A procedure is present and misnamed as noise", "silent": "The force is narrative, bodily, or vernacular"},
+    "DATUM":   {"module": "5-hersh-voice-module",   "unit": "a record",      "fires": "An official account and a record both exist", "silent": "Either is missing, or interpretation was asked for"}
+  },
+
+  "modes": {
+    "VISE": {"module": "4-gonzo-mode", "rides": "any voice", "default_spine": "ASSAY"},
+    "JIG":  {"module": "3a-workshop",  "rides": "TARE"}
+  },
+
+  "features": {
+    "devices":            {"modules": ["7-device-inventory-extended"], "note": "device-level naming; Scan Mode; workshop; device names for 13"},
+    "battery":            {"modules": ["7a-nom-function-battery"], "note": "Full battery report"},
+    "hermetic":           {"modules": ["7-device-inventory-extended"], "note": "Section H chamber reading"},
+    "found-text":         {"modules": ["8-frye-extraction"], "note": "default for any specimen whose kind is not poem"},
+    "frye":               {"modules": ["8-frye-extraction"]},
+    "casanova":           {"modules": ["9-casanova-extraction"]},
+    "monadology":         {"modules": ["10-monadology-foundations"]},
+    "provenance":         {"modules": ["11-provenance-grading-extension"]},
+    "confinement-bay":    {"modules": ["12-confinement-inventory"]},
+    "dial-trials":        {"modules": ["13-speaker-dials"]},
+    "attridge-staten":    {"modules": ["14-attridge-staten-extraction"]},
+    "compartmentalization": {"modules": ["compartmentalization-engine"]},
+    "slot-registry":      {"modules": ["0b-voice-slot-registry"]}
+  },
+
+  "tasks": {
+    "quick-read":    {"label": "Quick reading",               "modules": ["0a-portable-poetics-kernel", "0c-voice-designations"], "default_voices": []},
+    "sidecar":       {"label": "Full reading",                "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "7-device-inventory-extended"], "default_voices": ["ASSAY"]},
+    "triangulate":   {"label": "Triangulated reading",        "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "7-device-inventory-extended"], "min_voices": 2},
+    "datum":         {"label": "Record-against-account reading", "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "11-provenance-grading-extension", "5-hersh-voice-module"], "default_voices": ["DATUM"]},
+    "scan":          {"label": "Scan Mode",                   "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "7-device-inventory-extended"]},
+    "workshop":      {"label": "Workshop",                    "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "3-kowit-voice-module", "3a-workshop", "12-confinement-inventory", "7-device-inventory-extended"], "default_voices": ["TARE"]},
+    "poetics-scan":  {"label": "Poetics Scan only",           "modules": ["0a-portable-poetics-kernel", "0c-voice-designations"], "default_voices": []},
+    "extract":       {"label": "Catalog extraction",          "modules": ["0a-portable-poetics-kernel", "0c-voice-designations", "11-provenance-grading-extension", "12-confinement-inventory", "3a-workshop"], "default_voices": []}
+  },
+
+  "kinds": ["poem", "lyric", "play excerpt", "screenplay", "fiction prose", "news report", "cut-up", "label", "correspondence", "other"],
+  "units": ["line", "bar", "sentence", "speech", "paragraph", "fragment"],
+  "kind_default_unit": {"poem": "line", "lyric": "bar", "play excerpt": "speech", "screenplay": "speech", "fiction prose": "paragraph", "news report": "paragraph", "cut-up": "fragment", "label": "line", "correspondence": "paragraph", "other": "line"},
+
+  "non_runtime_files": [
+    "README.md", "LICENSE", "0-tech-comms-register.md", "session-record-2026-10-08.md"
+  ],
+  "non_runtime_dirs": ["regression", "dr", "tests", "avatar", ".git"],
+
+  "calibration_authors": {
+    "Kowit":   {"stands_down": ["TARE", "JIG"]},
+    "Rother":  {"stands_down": ["ASSAY"]},
+    "Harris":  {"stands_down": ["PLUMB"]},
+    "Perloff": {"stands_down": ["RETICLE"]},
+    "Hersh":   {"stands_down": ["DATUM"]},
+    "Hoagland": {"stands_down": ["dial-trials"]},
+    "Cosgrove": {"stands_down": ["dial-trials"]}
+  }
+}

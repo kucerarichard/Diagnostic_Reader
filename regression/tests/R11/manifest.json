@@ -1,0 +1,71 @@
+{
+  "schema_version": "2.0",
+  "test_id": "R11",
+  "title": "Record against account",
+  "condition": "C6 The Raven with the poet's own account of its composition; DATUM reading",
+  "canonical_work": "Edgar Allan Poe, \"The Raven\" (1845), with \"The Philosophy of Composition\" (1846)",
+  "corpus_id": "C6",
+  "test_card": "R11",
+  "primary_question": "Measure the poet's account of how the poem was made against the poem and the record, grading each claim on the provenance ladder, without taking the account as fact or dismissing it as performance.",
+  "request": {
+    "task": "datum",
+    "account": true
+  },
+  "expect": {
+    "loaded": [
+      "5-hersh-voice-module",
+      "11-provenance-grading-extension",
+      "0c-voice-designations"
+    ],
+    "absent": [
+      "7-device-inventory-extended"
+    ]
+  },
+  "task_specific_load_rule": "The compiler performed the load step. The files under this case's LOAD SET are the complete condition. Report which of them you used; where a procedure needs a file that is not in the set, say so and switch the procedure off rather than rebuild it.",
+  "specimen": {
+    "path": "specimen.txt",
+    "status": "populated from user-supplied specimens.txt; transcription frozen; source edition not independently verified",
+    "work_title": "The Raven",
+    "author_attribution": "Edgar Allan Poe",
+    "edition_or_source": "User-supplied transcription in specimens.txt; bibliographic source/edition not supplied.",
+    "sha256": "95ba628fb009ff41b4c330f5fbfb0ed94d2b3f686b66632828c23b9baa132da3",
+    "normalization_note": "Section separators and leading/trailing blank lines removed; poem text, punctuation, capitalization, and internal lineation otherwise preserved from supplied transcription.",
+    "source_status": "public domain"
+  },
+  "account": {
+    "path": "account.txt",
+    "title": "The Philosophy of Composition",
+    "author": "Edgar Allan Poe",
+    "first_published": "Graham's Magazine, April 1846",
+    "edition_or_source": "Transcription of the 1907 Paul Elder quarto edition, Project Gutenberg EBook #55749, via the GITenberg mirror",
+    "sha256": "dcf5cc5fed86bbd9689aa41cbf7b5d8060a648e583abcebcb2070fbe1ab5ab9a",
+    "normalization_note": "Essay body only, from 'Charles Dickens, in a note' to the end of the quoted final stanzas; Gutenberg header, illustration placeholders, colophon, and transcriber's notes removed. Line wrapping, italics marked with underscores, and the quoted stanzas kept as transcribed. CRLF normalized to LF.",
+    "status": "public domain"
+  },
+  "target_model": "Gemini (record exact model/version if visible)",
+  "evaluator": "Muse (record exact model/version if visible)",
+  "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
+  "scoring": {
+    "2": "pass",
+    "1": "partial",
+    "0": "fail",
+    "N/D": "not determinable; never count as zero"
+  },
+  "notes": [
+    "No Git commit hash is recorded; the build manifest records each file's sha256 instead.",
+    "The regression suite and prompt regime are test-control documents, not Diagnostic Reader runtime modules, and are not in the LOAD SET.",
+    "The load set is derived from the request block by dr/framework-registry.json; it is not listed by hand.",
+    "The account is held at P2 under the DATUM module's rules: a claim about the specimen, not evidence about it.",
+    "Added in regression suite v0.6 to bring DATUM under test. The account is the one text in the corpus that gives DATUM a record to measure against, and it is famously disputed as a description of how the poem was written."
+  ],
+  "control_documents": {
+    "suite_definition": {
+      "path": "regression/regression-suite",
+      "purpose": "Test-control/reference document; not a Diagnostic Reader runtime module."
+    },
+    "prompt_regime": {
+      "path": "regression/prompt-regime",
+      "purpose": "Test-control/reference document; not a Diagnostic Reader runtime module."
+    }
+  }
+}

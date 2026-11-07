@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+compiled-run/
+compiled-regression/
+run-*/
+.DS_Store

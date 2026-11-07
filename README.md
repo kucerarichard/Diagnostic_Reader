@@ -2,23 +2,38 @@
 
 # Diagnostic Reader
 
-Operator's guide to the Diagnostic Reader, a poetics apparatus that runs on a language model loaded with the files in this bundle. Its standard mode is the diagnostic reading. You put a text on the page, a poem or any found text with its kind declared, and the kernel reads it: critic voices take the zones they claim, voices with nothing to say stand down, and the device inventory names devices when it's loaded. On a found text the Poetics Scan runs first and grades what stands up. A style mode, a scan mode, and the JIG workshop extend the reading. The confinement catalog and the speaker dials serve the workshop. This file covers the parts, the load order, how to invoke each mode, the output policy, and the open work.
+Operator's guide to the Diagnostic Reader, a poetics apparatus that runs on a language model loaded with the files in this bundle. Its standard mode is the diagnostic reading. You give it a text, a poem or any found text with its kind declared, and the kernel reads it: critic voices take the zones they claim, voices with nothing to say stand down, and the device inventory names devices when it's loaded. On a found text the Poetics Scan runs first and grades what stands up. A style mode, a scan mode, and the JIG workshop extend the reading. The confinement catalog and the speaker dials serve the workshop.
+
+The apparatus is loaded by a compiler. `dr`, the package in `dr/`, takes a request and a specimen file, resolves the request into the framework files the task needs, in the boot's load order, and writes one prompt holding the files, the specimen card, and the request in the plain-language form the kernel recognizes. You paste that prompt into a model. The chat-shell practice of uploading files by hand and typing a request into the context still works, and this file states the rules either way; the compiler is the one that checks them.
+
+```
+$ python -m dr workshop --specimen draft.txt --dial-trial --out run-draft
+Wrote 2 files to run-draft
+  prompt.md: 1,565,867 chars; sha256 33453f7cfb96a7b8
+  build-manifest.json
+Request line: workshop this specimen ...
+~391,466 tokens at 4 chars/token; 8 framework files; Full Monty State absent
+```
+
+This file covers the parts, the load order and the compiler that performs it, how to request each mode, the output policy, the regression suite, and the open work. `dr/README.md` is the command reference.
 
 This README is apparatus-internal. It names calibration sources, which output never does. Don't paste its tables into a reading.
 
 ## Scope
 
-| Mode | Returns | Request |
-|---|---|---|
-| Reading, the standard mode | A minimal runtime or a full sidecar, with voiced zones and triangulated commentary | `Quick read.` / `Full sidecar.` / `Triangulate this.` |
-| VISE style mode | A closing verdict in propulsive cadence, riding a voice | `VISE verdict, PLUMB spine.` |
-| Scan Mode | A specimen carrying a named device, then a sidecar on it | `Scan canon A for apostrophe` |
-| JIG workshop | A twelve-section craft treatment of a draft, with Confinement Bay, optional rewrite trials, and optional dial trials | `workshop this specimen` |
-| Poetics Scan | A grade of what stands up in a text, overt, covert, latent, or null, with an address for each | `poetics scan` / `read as found` |
+| Mode | Returns | Command | Request line it renders |
+|---|---|---|---|
+| Reading, the standard mode | A minimal runtime or a full sidecar, with voiced zones and triangulated commentary | `dr read --quick` / `dr read` / `dr read --triangulate --voices ASSAY PLUMB` | `Quick read.` / `Full sidecar.` / `Triangulate ASSAY and PLUMB.` |
+| VISE style mode | A closing verdict in propulsive cadence, riding a voice | `dr read --voices PLUMB --vise` | `VISE verdict, PLUMB spine.` |
+| Scan Mode | A specimen carrying a named device, then a sidecar on it | `dr scan canon --category A --devices apostrophe` | `Scan canon A for apostrophe` |
+| JIG workshop | A thirteen-section craft treatment of a draft, with Confinement Bay, optional rewrite trials, optional dial trials, and the Feedback Bridge | `dr workshop` | `workshop this specimen` |
+| Poetics Scan | A grade of what stands up in a text, overt, covert, latent, or null, with an address for each | `dr read --poetics-scan-only` / `dr read --kind label` | `Poetics scan.` / `Read as found. Kind: label. Unit: line.` |
+
+Every command takes `--specimen FILE` (text only) and `--explain`, which prints the load set and its size and writes nothing. `dr list` reads the catalogs: `dr list devices --category A`, `dr list confinements --axis inward`, `dr list dials`, `dr list directives`, `dr list voices`.
 
 Catalog work, adding confinements to `12-confinement-inventory`, is the standing maintenance job. The catalog holds 194 entries from 57 specimens.
 
-Limits. The apparatus has no retrieval: it reads what you put on the page. Scan Mode's canon source is the one place it names a poem from the model's own knowledge, and there it rates how well the model can reconstruct the poem and never reproduces it whole. The apparatus doesn't read intention. It quotes in-copyright text only at the lowest exposure level that preserves a mechanism. Generated output never names or identifies a calibration source.
+Limits. The apparatus has no retrieval: it reads the specimen you supply, as `--specimen` to the compiler or on the page in a chat. Scan Mode's canon source is the one place it names a poem from the model's own knowledge, and there it rates how well the model can reconstruct the poem and never reproduces it whole. The apparatus doesn't read intention. It quotes in-copyright text only at the lowest exposure level that preserves a mechanism. Generated output never names or identifies a calibration source.
 
 ## Files
 
@@ -28,11 +43,11 @@ Core and policy:
 
 | Stem | Version | Role | Load when |
 |---|---|---|---|
-| `0-poetics-boot-hollow` | 0.17 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
-| `0a-portable-poetics-kernel` | 0.3.18 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan | Always, first |
+| `0-poetics-boot-hollow` | 0.18 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
+| `0a-portable-poetics-kernel` | 0.3.19 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan | Always, first |
 | `0c-voice-designations` | 0.7 | Designation set, leak tiers, calibration-collision rule for voices, modes, and calibrated extensions, take versus specimen | Always, with any voice, mode, or `13` |
 | `0b-voice-slot-registry` | 0.6 | Slot matrix, voice test, candidate log, reopen conditions | Only when slot status is in question |
-| `0d-apparatus-provenance` | 0.3 | History and rationale. Loaded by nothing | Never; read for background |
+| `0d-apparatus-provenance` | 0.3 | History and rationale. Loaded by nothing. Not in this bundle | Never; read for background |
 | `voice-volitional-map` | 0.2 | The five voices' aims, completion tests, and failures in one table | Never; read for background |
 
 Voices and modes:
@@ -45,7 +60,7 @@ Voices and modes:
 | `3-perloff-voice-module` | 0.3.1 | RETICLE voice | Procedural or avant-garde specimens |
 | `5-hersh-voice-module` | 0.1 | DATUM voice | A specimen's account of itself against a record; needs `11` |
 | `4-gonzo-mode` | 0.3.1 | VISE style mode; rides any voice | On request |
-| `3a-workshop` | 0.7.0 | JIG workshop mode, with found-text treatment and named contrast trials | Workshop requests |
+| `3a-workshop` | 0.7.1 | JIG workshop mode, with found-text treatment and named contrast trials | Workshop requests |
 
 Extensions and notes:
 
@@ -77,21 +92,57 @@ Seven full monty plugins carry source-bearing calibration. Six cover single poem
 | `full-monty-kowit-poetry-reading-plugin` | Poetry Reading | Captive attention and access asymmetry |
 | `full-monty-gilson-coscienza-plugin` | none | Source-bearing Coscienza calibration from Gilson's *Dante the Philosopher*, with added directives. `7a` and the Compartmentalization Engine use its Critic's Projection Error directive when it's loaded |
 
-Plugins are private. The apparatus runs without them, and a loaded plugin enriches calibration under the active zones without taking them over. The two Kowit plugins are calibration collisions: TARE stands down for both specimens.
+Plugins are private and opt-in. The compiler loads none unless `--plugins` names them, by handle or stem (`--plugins "Snow Crust" Gilson`), and Full Monty State is `absent` until one is named. The apparatus runs without them, and a loaded plugin enriches calibration under the active zones without taking them over. The two Kowit plugins are calibration collisions: TARE stands down for both specimens, and the compiler warns when one is loaded into a workshop or alongside TARE.
 
 Not in this bundle: `0-poetics-boot`, the original private core, which loads as a legacy full monty plugin when you supply it. The edit scripts, boot companions, and corpus-repair scripts from the catalog sessions aren't here either. Every edit they carried is already in the files above.
 
 ### Registry Gaps
 
-The boot calls itself the apparatus's only complete inventory. At v0.13 it disagrees with this bundle in three places:
+The boot calls itself the apparatus's only complete inventory. At v0.18 it disagrees with this bundle in three places, and `dr lint` reports each one against the files on disk:
 
-- It lists `9-casanova-extraction`, `10-monadology-foundations`, and the Compartmentalization Engine module as referenced and not held. All three are here. `8-frye-extraction` was registered at boot v0.14.
-- It doesn't register `7a-nom-function-battery`, `0d-apparatus-provenance`, `voice-volitional-map`, or the Gilson plugin. No apparatus file references `7a`.
-- Its plugin registry gives Small Branch as `full-monty-santos-small-branch-example`. The file on disk is `full-monty-santos-small-branch-v0.2`.
+```
+$ python -m dr lint
+INFO  disk: 0d-apparatus-provenance is in framework-registry.json but not on disk
+WARN  boot: 7a-nom-function-battery is on disk and loadable but the boot's Module Registry does not list it (known Registry Gap)
+WARN  boot: 9-casanova-extraction is on disk and loadable but the boot's Module Registry does not list it (known Registry Gap)
+WARN  boot: 10-monadology-foundations is on disk and loadable but the boot's Module Registry does not list it (known Registry Gap)
+WARN  boot: compartmentalization-engine is on disk and loadable but the boot's Module Registry does not list it (known Registry Gap)
+WARN  boot: boot's plugin registry gives Small Branch as full-monty-santos-small-branch-example; the file on disk is full-monty-santos-small-branch-v0.2.md (known Registry Gap)
+WARN  boot: plugin Gilson (full-monty-gilson-coscienza-plugin) is on disk but not in the boot's Plugin Registry
+```
 
-Load from the disk, per the File Reference Rule. The gap is item 16 under Outstanding.
+The boot lists `9`, `10`, and the Compartmentalization Engine module as referenced and not held; all three are here. It doesn't register `7a`, `voice-volitional-map`, or the Gilson plugin, and no apparatus file references `7a`. Its plugin registry names Small Branch by a stem that isn't on disk. `dr/framework-registry.json` carries the on-disk truth and aliases the Small Branch stem, so the compiler loads from the disk, per the File Reference Rule. The gap is item 16 under Outstanding, and lint is the check that it hasn't widened.
 
 ## Loading
+
+The compiler performs the load step. `dr explain` shows what a request resolves to and why, before anything is written:
+
+```
+$ python -m dr explain workshop --specimen draft.txt --dial-trial
+Request:       workshop; voices TARE
+Request line:  workshop this specimen
+               dial trial
+Snapshot:      /path/to/Diagnostic_Reader
+Specimens:     draft.txt
+
+step file                                             version      size  why
+0    0-poetics-boot-hollow-v0_18.md                   0.18        19 KB  entry point
+1    0a-portable-poetics-kernel-v0_3_19.md            0.3.19     126 KB  task Workshop
+2    0c-voice-designations-v0_7.md                    0.7         22 KB  task Workshop
+4    7-device-inventory-extended-v0_4.md              0.4         85 KB  task Workshop
+4    12-confinement-inventory-v0_16.md                0.16       431 KB  task Workshop
+4    13-speaker-dials-v0_3.md                         0.3         53 KB  dial trial or dial overlay requested
+5    3-kowit-voice-module-v0_3_1.md                   0.3.1      189 KB  task Workshop; voice TARE
+6    3a-workshop-v0_7_1.md                            0.7.1      660 KB  task Workshop; JIG workshop
+
+Full Monty State: absent
+Total: 1.58 MB across 8 files; ~396,182 tokens at 4 chars/token
+Plan OK.
+```
+
+The `step` column is the boot's load order below. The `why` column is the chain that put the file in the plan: the task's minimal set, a named voice or mode, a flag, or a hard dependency of another file (`--voices DATUM` brings `11` in as `required by 5-hersh-voice-module`). The compiler checks every version floor against the files on disk and refuses a plan that breaks one. `--max-tokens N` refuses a plan over budget. The rest of this section states the rules the compiler encodes, from `dr/framework-registry.json`; they hold when files are loaded by hand, and the compiler is what checks them.
+
+The compiled prompt opens with a notice that the load step was performed, the load set as a table with each file's sha256, any withheld files, then the framework files in order, the specimen card, the load set repeated with withheld files named, and the request line. The repeat exists because the boot's Module Registry and the kernel's cross-references both look like inventories and list files the condition may not hold; the loading report is written against the repeated table, with every file marked used or unused and anything the apparatus names outside it marked absent. Withholding a file is a declared operation: `--withhold 11` removes it from the plan and lists it in the prompt under WITHHELD FILES, so the apparatus switches the dependent procedure off instead of rebuilding it. The regression suite's R10 cases are this flag.
 
 The boot's load order:
 
@@ -104,27 +155,29 @@ The boot's load order:
 7. Load plugins only when source-bearing calibration is needed.
 8. Set Full Monty State. The default is absent.
 
-The order is tolerant. A file that arrives later applies from the next turn.
+The order is tolerant in a chat; a file that arrives later applies from the next turn. The compiler emits the files in this order every time.
 
-**Warning:** load `0c-voice-designations` before any voice module. Without it, every voice labels its output with its calibration source's name, and the apparatus is out of policy from the first verdict.
+**Warning:** load `0c-voice-designations` before any voice module. Without it, every voice labels its output with its calibration source's name, and the apparatus is out of policy from the first verdict. Every voice module lists `0c` as a hard dependency in the registry, so the compiler brings it in; `--withhold 0c` removes it and warns.
 
-Hard dependencies: `5` needs `11`. `7a` needs `7`. Confinement Bay needs `12`. Dial trials need `13`, which needs kernel 0.3.16 and names its devices from `7` at 0.2 or later. Found-text treatment in the workshop needs kernel 0.3.17.
+Hard dependencies: `5` needs `11`. `7a` needs `7`. Confinement Bay needs `12`. Dial trials need `13`, which needs kernel 0.3.16 and names its devices from `7` at 0.2 or later. Found-text treatment in the workshop needs kernel 0.3.17, and the workshop's card at 0.7.1 needs kernel 0.3.19. The registry holds these as `requires` and `floors`; `dr lint` checks them against the disk.
 
-Minimal sets by task:
+Minimal sets by task, with the command that loads each:
 
-| Task | Load |
-|---|---|
-| Quick reading | `0a`, `0c` |
-| Full reading | `0a`, `0c`, `7`, and the voice modules the specimen calls for |
-| Triangulated reading | `0a`, `0c`, `7`, and at least two voice modules |
-| Record-against-account reading | `0a`, `0c`, `11`, `5` |
-| VISE verdict | The reading set plus `4` |
-| Scan Mode | `0a`, `0c`, `7` |
-| Workshop | `0a`, `0c`, `3-kowit`, `3a`, `12`, and `7` for device names |
-| Workshop with dial trials | The workshop set plus `13` |
-| Found-text reading | `0a`, `0c`, `7`, `8`, and the voice modules the specimen calls for |
-| Found-text workshop | The workshop set plus `8` |
-| Catalog extraction | `0a`, `0c`, `11`, `12`, and `3a` for the Bay's field contract |
+| Task | Load | Command |
+|---|---|---|
+| Quick reading | `0a`, `0c` | `dr read --quick` |
+| Full reading | `0a`, `0c`, `7`, and the voice modules the specimen calls for | `dr read --voices PLUMB` (ASSAY when none is named) |
+| Triangulated reading | `0a`, `0c`, `7`, and at least two voice modules | `dr read --triangulate --voices ASSAY PLUMB` |
+| Record-against-account reading | `0a`, `0c`, `11`, `5` | `dr read --datum --account note.txt` |
+| VISE verdict | The reading set plus `4` | `dr read --voices PLUMB --vise` |
+| Scan Mode | `0a`, `0c`, `7` | `dr scan canon --devices apostrophe` |
+| Workshop | `0a`, `0c`, `3-kowit`, `3a`, `12`, and `7` for device names | `dr workshop` |
+| Workshop with dial trials | The workshop set plus `13` | `dr workshop --dial-trial` |
+| Found-text reading | `0a`, `0c`, `7`, `8`, and the voice modules the specimen calls for | `dr read --kind "news report"` |
+| Found-text workshop | The workshop set plus `8` | `dr workshop --kind "news report"` |
+| Catalog extraction | `0a`, `0c`, `11`, `12`, and `3a` for the Bay's field contract | `dr extract` |
+
+The boot is in every set as the entry point; `--no-boot` drops it. The voice modules carry the size: `1` is 635 KB and `2` is 532 KB, almost all of it source corpus, which is the calibration and stays. A quick read is about 42k tokens, a one-voice sidecar about 220k, a two-voice triangulation about 355k.
 
 A missing file switches off what depends on it, and the apparatus says so rather than rebuilding the file's contents from memory. Without `7` a reading uses the kernel's lite device bins. Without a voice module, that voice appears as a compressed note in the default register or stays absent.
 
@@ -134,7 +187,13 @@ The reading is the apparatus's standard mode. The kernel defines it, the voice m
 
 ### Requesting a Reading
 
-Put the poem on the page with its poet, date, and edition:
+Put the poem in a text file with its poet, date, and edition, and compile:
+
+```
+$ python -m dr read --quick --specimen apple-picking.txt --title "After Apple-Picking" --author "Robert Frost" --date 1914 --edition "North of Boston"
+```
+
+The card fields can live in the file instead, as a header block of `Key: value` lines ended by a blank line; the keys are title, author, date, edition, kind, unit, provenance, copyright, and found by. Flags override the block. In a chat, the same request is the poem on the page with its provenance and the request line:
 
 ```text
 Quick read. Robert Frost, "After Apple-Picking," North of Boston (1914).
@@ -142,7 +201,23 @@ Quick read. Robert Frost, "After Apple-Picking," North of Boston (1914).
 [poem text]
 ```
 
-Reading requests are plain language. The kernel and the voice modules define the conditions a request meets, not fixed command strings, so these forms are examples rather than a grammar:
+Reading requests are plain language. The kernel and the voice modules define the conditions a request meets, not fixed command strings, so the forms below are examples rather than a grammar. The compiler renders each flag as one of them, and `--ask "..."` appends anything the flags don't cover:
+
+| Flag | Request line |
+|---|---|
+| `--quick` | `Quick read.` |
+| (default) | `Full sidecar.` |
+| `--triangulate --voices ASSAY PLUMB` | `Triangulate ASSAY and PLUMB.` |
+| `--verdict PLUMB` | `PLUMB closes.` |
+| `--voices ASSAY` | `ASSAY verdict.` |
+| `--counter-voice TARE` | `Add TARE as counter-voice.` |
+| `--datum --account note.txt` | `DATUM verdict on the poem and its note.` |
+| `--hermetic` | `Run the Hermetic chamber reading.` |
+| `--battery` | `Full battery report.` |
+| `--kind label` | `Read as found. Kind: label. Unit: line.` |
+| `--poetics-scan-only` | `Poetics scan.` |
+
+What each form asks for:
 
 ```text
 Quick read.                                      minimal runtime
@@ -188,7 +263,7 @@ The same poem is the catalog's Apple-Picking specimen; see Confinement Inventory
 
 ### Sidecar
 
-Ask for the sidecar when you want the full diagnostic. Its fields, from the kernel:
+`dr read` without `--quick` compiles the sidecar; in a chat, ask for it. Its fields, from the kernel:
 
 ```text
 ## [Specimen Title]
@@ -293,7 +368,13 @@ Hd / Dl / By headline, dateline, byline
 Frag 7       fragment 7, in a cut-up or found assembly
 ```
 
-Request a reading of found text with its kind:
+Request a reading of found text with its kind. `--unit` defaults from the kind (paragraph for a news report, speech for a play excerpt, bar for a lyric):
+
+```
+$ python -m dr read --specimen report.txt --kind "news report" --edition "[source, date, edition]"
+```
+
+which renders:
 
 ```text
 Read as found. Kind: news report. Unit: paragraph. [source, date, edition]
@@ -334,7 +415,7 @@ Which voice takes the verdict:
 - A voice whose specimen conditions hold is more specific and takes the verdict.
 - The specific cases: PLUMB for labor and institutional harm, TARE for plain speech and bodily cost, RETICLE for formal procedure, DATUM for an account measured against a record.
 - ASSAY stands down where the live question is what an account omits, even though the slot would otherwise fall to it.
-- One voice per zone. A voice stays inactive when another holds the zone, unless you ask for it as counter-voice.
+- One voice per zone. A voice stays inactive when another holds the zone, unless you ask for it as counter-voice (`--counter-voice TARE`).
 - A voice whose calibration source wrote the specimen stands down, recorded as a jurisdiction note with no stated cause.
 
 In triangulation, the commentary opens with one line of common ground in the default register, what every deployed voice agrees is given on the page, with an address; a triangulation in which nothing is agreed says so, and that is a finding. Then each voice with something distinct to say speaks in its own person under its designation, and the disagreement stands unsmoothed against the common ground. A loaded voice with nothing to say holds silent or leaves a compressed note. The shape, with the voiced prose left out:
@@ -388,7 +469,7 @@ DATUM verdict:
 
 The ASSAY, TARE, and RETICLE modules still instruct labels built from their sources' names. `0c-voice-designations` supersedes that one instruction at runtime, which is why it loads before any voice.
 
-DATUM reads a poem through the poet's own account of it: an author's note, an interview, a jacket claim, a headnote. Its procedure records the account at P2, attributed on the record, and reads the poem at P0, on the page. It then names where the account diverges, grades the divergence, and enters a thing the account should mention and doesn't as P5. It closes by naming what the omission protects. The verdict records the gap and stops. A poem with no account of itself gets no DATUM verdict.
+DATUM reads a poem through the poet's own account of it: an author's note, an interview, a jacket claim, a headnote. Its procedure records the account at P2, attributed on the record, and reads the poem at P0, on the page. It then names where the account diverges, grades the divergence, and enters a thing the account should mention and doesn't as P5. It closes by naming what the omission protects. The verdict records the gap and stops. A poem with no account of itself gets no DATUM verdict. `dr read --datum --specimen poem.txt --account note.txt` supplies both texts; the account is embedded as its own section, held at P2, after the specimen. The regression suite's R11 is this reading, The Raven against Poe's "The Philosophy of Composition."
 
 Extractions have no voice zone. When `8`, `9`, or `13` meets a voice on the same specimen, the voice speaks and the extraction enters as a note in the default register. A reading where that happens states the imbalance.
 
@@ -414,7 +495,7 @@ A chamber that is sealed but produces nothing new is the failure the lens exists
 
 ### Reading Extensions
 
-These attach to an ordinary reading without adding a mode. Each announces itself only when it changes the output.
+These attach to an ordinary reading without adding a mode. Each announces itself only when it changes the output. The compiler loads them with `--extensions`, by feature name or identifier: `frye` or `8`, `casanova` or `9`, `monadology` or `10`, `attridge-staten` or `14`, `compartmentalization`, and `battery` or `7a`, which brings `7` with it. `8` needs no flag on a found text; any `--kind` but `poem` loads it.
 
 `8-frye-extraction` adds a radical-of-presentation field: acted, recited, sung or overheard, or written. It adds a changed-radical note when reception delivered the poem through a different channel:
 
@@ -432,7 +513,7 @@ Reading Discipline: [tool name] applied.
 
 The extraction's source also occasioned two kernel seams at 0.3.18, the reading-order question at Checkpoint 6 and the common-ground line in triangulation, which run whether or not the extraction is loaded. Every tool in the file is a brake, and from its 0.2 the file says so: the kernel's crediting machinery governs wherever a tool meets it, and no tool may refuse a finding that has an address.
 
-`7a-nom-function-battery` runs five tests silently on every specimen and reports fires at point grade or above inside the sidecar. Its grades are systemic fire, point fire, faint, and non-trigger. `Full battery report` reports all five with page evidence:
+`7a-nom-function-battery` runs five tests silently on every specimen and reports fires at point grade or above inside the sidecar. Its grades are systemic fire, point fire, faint, and non-trigger. `--battery`, which renders `Full battery report.`, reports all five with page evidence:
 
 ```text
 Nôm Function Battery v0.2: active. Five function-level trigger tests running per specimen; grades reported at point fire or above. Test 3 margin scan runs when live.
@@ -495,7 +576,11 @@ When instructions conflict, the kernel resolves them in this order:
 
 ## Style Mode
 
-VISE changes the cadence of a closing verdict and supplies none of its judgment. It rides a voice and names that voice, its spine, in the label. It fires on `VISE`, on the retired name Gonzo Mode, or on a request for a glitched-prose, overdrive, or drag verdict:
+VISE changes the cadence of a closing verdict and supplies none of its judgment. It rides a voice and names that voice, its spine, in the label. It fires on `VISE`, on the retired name Gonzo Mode, or on a request for a glitched-prose, overdrive, or drag verdict. `--vise` loads `4` and names the verdict voice as the spine; `--spine` names another:
+
+```
+$ python -m dr read --specimen poem.txt --voices PLUMB --vise
+```
 
 ```text
 VISE verdict, PLUMB spine.
@@ -517,15 +602,30 @@ At most two voices ride one VISE verdict, and three never do; write adjacent ver
 
 Scan Mode lives in Section K of `7-device-inventory-extended`. You name a source, a Category, and one or more devices. The apparatus finds a specimen carrying them, verifies each device in the text, and runs a sidecar at extended-inventory resolution:
 
-```text
-Scan canon A for apostrophe
-Scan canon A for apostrophe and pronoun shift
-Scan supplied B for caesura
-Scan list categories
-Scan list D devices
+```
+$ python -m dr scan canon --category A --devices apostrophe
+$ python -m dr scan canon --category A --devices apostrophe "pronoun shift"
+$ python -m dr scan supplied --category B --devices caesura --corpus poems.txt
 ```
 
-`canon` names a canonical poem from the model's own knowledge, with author, title, and a standard reference so you can reach the text. The output rates reconstruction strength as strong, weak, or asymmetric, and flags consensus smoothing when the sidecar is averaging existing readings. `supplied` scans a corpus you put on the page. Multiple devices are conjunctive by default; ask for OR to loosen it. The source flag is required, and the apparatus never substitutes one source for the other.
+which render `Scan canon A for apostrophe`, `Scan canon A for apostrophe and pronoun shift`, and `Scan supplied B for caesura`. The list commands run in the compiler without a model:
+
+```
+$ python -m dr list categories
+category  name                                  devices
+A         Deictic and Scalar Devices            24
+B         Sonic and Prosodic Devices            30
+C         Syntactic and Sentence Devices        30
+D         Figural and Rhetorical Devices        33
+E         Structural and Compositional Devices  33
+F         Visual and Typographic Devices        20
+G         Pragmatic and Ethical Devices         22
+
+$ python -m dr list devices --category D
+$ python -m dr list devices --find apostrophe
+```
+
+`canon` names a canonical poem from the model's own knowledge, with author, title, and a standard reference so you can reach the text, and needs no specimen file. The output rates reconstruction strength as strong, weak, or asymmetric, and flags consensus smoothing when the sidecar is averaging existing readings. `supplied` scans a corpus you pass with `--corpus`, one or more files. Multiple devices are conjunctive by default; `--or` loosens it. The source is a required positional argument, and neither the apparatus nor the compiler substitutes one source for the other.
 
 An empty scan is a result. If nothing in the named source carries the devices with reasonable confidence, the apparatus reports the empty scan and stops. It doesn't relax the criteria or fabricate a candidate; re-tuning is your call.
 
@@ -545,7 +645,7 @@ give this the workshop treatment
 jig as news report
 ```
 
-It runs only on a text you supply. Asked for a random poem, it says it has no retrieval and asks you to paste one. The treatment opens with a specimen card:
+`dr workshop --specimen draft.txt` renders the first; `--kind "news report"` renders the last. It runs only on a text you supply. Asked for a random poem, it says it has no retrieval and asks you to paste one; the compiler refuses to run without `--specimen`. The treatment opens with a specimen card, which the compiler fills from the file's header block and the flags `--author`, `--provenance`, `--copyright`, `--kind`, `--unit`, and `--found-by`, counting Length in the declared unit. A poem with no author named is the user's own draft under the user's copyright; found text with no author named is a third party's, status unknown:
 
 ```text
 Author:      [the user / named third party / handle as given / anonymous]
@@ -583,18 +683,19 @@ Axis:           upward, sideways, inward, or outward
 
 An empty knowledge test means the draft is running a form, which routes to Form Examination. The breach scan finds where the draft breaks its own confinement and says whether the break is the poem's one earned exception or a slack default. Rewrite trials run only on command:
 
-```text
-confinement rewrites
-rewrite under found inscription
-rewrite under withheld case + flat predicate
-rewrite under axis: upward
-rewrite under imposed by: institution
-rewrite under handle: Snow Crust
-+ ars poetica
-extract confinement
-list confinements where axis = inward
-no rewrites
-```
+| Flag | Request line |
+|---|---|
+| `--rewrites` | `confinement rewrites` |
+| `--rewrite-under "found inscription"` | `rewrite under found inscription` |
+| `--rewrite-under "withheld case + flat predicate"` | `rewrite under withheld case + flat predicate` |
+| `--rewrite-under "axis: upward"` | `rewrite under axis: upward` |
+| `--rewrite-under "imposed by: institution"` | `rewrite under imposed by: institution` |
+| `--rewrite-under "handle: Snow Crust"` | `rewrite under handle: Snow Crust` |
+| `--ars-poetica` | `+ ars poetica` |
+| `--no-rewrites` | `no rewrites` |
+| `dr extract` | `extract confinement`, with the catalog-extraction set loaded |
+
+`--rewrite-under` repeats. The catalog's list commands run in the compiler: `dr list confinements --axis inward`, `--handle "Snow Crust"`, `--class primitive`, `--imposed-by institution`.
 
 Each trial ships in this form:
 
@@ -656,14 +757,16 @@ A setting is named by the located words that fix it and is never scored. The pro
 
 ### Dial Commands
 
-```text
-dial trial                                            reasoning path selects the dial and setting
-dial trial: idiom density                             named dial; setting selected against the draft
-rewrite at diction altitude: high                     named dial and setting
-rewrite under fixed vantage + diction altitude: low   dial overlay on a confinement trial, run as a pair
-list dials                                            index from the dial file
-no dial trials                                        suppress dial trials and overlays for the session
-```
+| Flag | Request line | Effect |
+|---|---|---|
+| `--dial-trial` | `dial trial` | reasoning path selects the dial and setting |
+| `--dial-trial "idiom density"` | `dial trial: idiom density` | named dial; setting selected against the draft |
+| `--rewrite-at "diction altitude:high"` | `rewrite at diction altitude: high` | named dial and setting |
+| `--rewrite-under "fixed vantage + diction altitude: low"` | `rewrite under fixed vantage + diction altitude: low` | dial overlay on a confinement trial, run as a pair |
+| `--no-dial-trials` | `no dial trials` | suppress dial trials and overlays for the session |
+| `dr list dials` | | index from the dial file, without a model |
+
+Any dial flag loads `13`; `--no-dial-trials` leaves it out.
 
 Dial trials run only on command. In Function Bay a dial trial is the contrast trial: the wrong-way trial turns the dial one way and the cleaner trial the other. In Confinement Bay a dial overlay runs as a pair, the same confinement trial without the setting and then with it. In Engine Bay, Tuning Before Swap may ask which dial setting works against the current engine; a dial tunes an engine and never proposes one. Function Bay's closing experiment may come from the dial file unasked.
 
@@ -770,7 +873,7 @@ The catalog's sections:
 - H: failure modes.
 - Provenance: a table per batch.
 
-The list commands draw on the catalog's two index tables. These rows are the primitives extracted from the Frost poem in the reading example above:
+`dr list confinements` draws on the catalog's two index tables, with `--axis`, `--class`, `--handle`, and `--imposed-by` as filters. These rows are the primitives extracted from the Frost poem in the reading example above:
 
 ```text
 | id       | name               | handle        | axis    | imposed by                                       | operation                                                   |
@@ -944,13 +1047,23 @@ Where the catalog can test it, recurrence looks like rediscovery rather than tra
 - The United States supplies two thirds of the catalog.
 - Hồ Xuân Hương is read through one translator.
 
+## Regression
+
+`regression/` holds fourteen cases on seven public-domain poems, each a condition the compiler resolves: a request block, an `expect` block pinning which stems must and must not load, and a specimen with its sha256 pinned. Every voice and both modes are loaded by at least one case; R11 reads The Raven against Poe's own account of composing it, which is the DATUM case. `dr regress` compiles a case into a reader prompt, an evaluator prompt, and an adjudicator prompt, with the control documents in the two auditing roles and the same framework files in all three:
+
+```
+$ python -m dr regress --cases R10-D --out run-R10-D
+```
+
+R10-A to D withhold one file each from a common base and test graceful degradation; R9 is a canon scan with no poem text supplied. The cases, the conditions, and the handoff between roles are in `regression/README.md`.
+
 ## Output Policy
 
 Three zones:
 
 - Generated readings carry designations only.
 - Apparatus-internal prose, such as headers, registries, loader notes, and this file, may name sources.
-- Operator questions get plain answers.
+- Operator questions get plain answers. The compiler's `list` output is in this zone: `dr list voices` shows designations and the conditions each fires on, and `dr list plugins` shows handles, which carry specimen authors and are protected rather than masked.
 
 Specimen attribution is never masked. Extensions take no designation; a dial trial ships inside the JIG treatment under JIG.
 
@@ -1036,6 +1149,13 @@ Extraction 14:
 21. The Prufrock entries, cf-pr-01 to cf-pr-05, are frozen against revision in any session where `14` is loaded, under the catalog's prior-entry clause. Not a defect; a standing condition to know about before editing them.
 22. The activation notices of `8` and `9` name their sources in output, against the rule `0c` states for extensions and that `14` follows. Operator's call whether to bring them under it.
 
+Compiler:
+
+23. The compiled prompt's opening notice, that the load step was performed and the files below are the complete set, is untested in a live run. The first run of R1 and of R10-D is the test of whether the Reader reports its load state from the LOAD SET or from habit.
+24. R9 as a text canon scan is unexercised. Its first run tests whether the model marks reconstructed quotations as reconstructed when nothing in the prompt supplies a text.
+25. `dr/framework-registry.json` mirrors the boot by hand. `dr lint` reports drift against the boot's tables and the disk, and the mirror is a second place to edit when a module, dependency, or task changes. Item 16 is the same gap seen from the boot's side.
+26. The regression base for R10 loads two voices and `11`; the suite's test cards were written against a condition that loaded every file. Whether the narrower base changes any card's reading of graceful degradation is the adjudicator's question on the first run.
+
 ### Closed
 
 Closed at boot v0.13 by operator ruling:
@@ -1051,7 +1171,7 @@ Closed by this bundle: every pending edit the earlier README listed is applied i
 
 Every module carries a version line and dated revision notes. A revision note says what changed and why. Earlier notes aren't rewritten, because a rewritten log isn't a log. The version line is part of the release: kernel 0.3.12 shipped under a 0.3.12 file name with a 0.3.11 version line, and nothing caught it until an audit.
 
-A new file takes an identifier only after a check against the boot's registry and the files on disk. The DATUM module once shipped as `4`, which the style mode already held, because its registry row was checked for state and not for a free identifier.
+A new file takes an identifier only after a check against the boot's registry and the files on disk. The DATUM module once shipped as `4`, which the style mode already held, because its registry row was checked for state and not for a free identifier. A new file also takes a row in `dr/framework-registry.json`, with its load step, hard dependencies, and floors; `dr lint` warns about a file on disk the registry doesn't know, and `python -m unittest discover -s tests` pins the catalog counts (192 devices, 194 confinements, 9 dials, 21 directives), so a change to a catalog's shape shows up as a failing count rather than a silent miss.
 
 Scars are recorded rather than repaired. Two unrelated voice modules share the `3` prefix and keep it, because renumbering a loaded module costs more than the confusion it removes. The boot records the shared prefix and the DATUM move so nobody has to reconstruct either.
 
@@ -1102,6 +1222,8 @@ Confinement. An imposed pattern of absence that makes something unknowable. Comp
 
 Contrast trial. Function Bay's pair of a wrong-way trial and a cleaner trial. Rewrite trials and dial trials share its footing, and none of them is a revision route.
 
+Compiler. `dr`, the package that resolves a request into a load set and writes the prompt. It performs the boot's load step and records the result in `build-manifest.json`.
+
 Coscienza. The two-axis awareness check on the poem and on the apparatus itself.
 
 Counter-voice. A voice you add to a zone another voice already holds, so the two disagree in their own registers.
@@ -1150,6 +1272,8 @@ Level 0 to 4. Source exposure levels, from address only to full text.
 
 Lingo source. The region, trade, generation, class, institution, or community whose talk an idiom comes from. Every sd-04 setting above none names one.
 
+Load set. The framework files a request resolves to, in the boot's order, each with the reason it is present. The compiled prompt opens with it as a table.
+
 Located quote. A quote at Levels 1 to 3 with an address, meeting the seven properties.
 
 Minimal runtime. The kernel's six-line reading.
@@ -1177,6 +1301,8 @@ Primitive. A combinable catalog entry isolating one operation from a specimen.
 Reached. The line on every trial that names what the trial got to. For a dial trial, it names a real thing the draft held and the line where it was latent, or reports `nothing, setting only`.
 
 Reading-order question. Checkpoint 6's second question, from kernel 0.3.18: whether the effect a named device carries registered in reading order before the scan named it. The scan finds devices; this decides which are credited.
+
+Request line. The operator request as the compiler renders it, in the plain-language form the kernel and modules recognize. It is the last section of a compiled prompt, after the repeated load set.
 
 Refusal ceiling. At most one refusal primitive per trial. The refusal primitives are cf-sc-02, cf-sb-04, cf-wa-04, cf-pr-02, cf-me-03, and cf-eb-02.
 
@@ -1211,6 +1337,8 @@ Triangulated commentary. The sidecar field where each voice with something disti
 Unit. What an address counts: line, sentence, speech, paragraph, or fragment. Declared on the card; defaults to line.
 
 Voice zone. A section of output a voice module declares and renders in its own person. The default register governs everything outside it.
+
+Withhold. Removing a file from a load set on purpose and listing it in the prompt as absent. The compiler's `--withhold`, and the regression suite's fault-injection condition.
 
 ![Coolly Skeptical](./avatar/avatar-cholo-coolly-skeptical.png)
 
