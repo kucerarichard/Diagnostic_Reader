@@ -2,6 +2,8 @@
 
 Test definitions for the regression suite, compiled into role prompts by `dr regress`. This directory holds no runtime module. The framework files are read from the repository root (or a snapshot you name), and nothing here calls a model.
 
+The cases live under `regression/tests/R*/`. That is a different directory from `tests/` at the repository root, which holds the compiler's own unit tests and is run with `python -m unittest`; the two share a word and nothing else. A regression case is a condition for a language model; a unit test is an assertion about the `dr` package. See `tests/README.md` for the latter.
+
 ```
 python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Model Y" --adjudicator-model "Model Z" --out run-R1
 ```
@@ -12,11 +14,11 @@ python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Mode
 
 | Path | Holds |
 |---|---|
-| `tests/<R-ID>/manifest.json` | the condition: a `request` block the compiler resolves into a load set, an `expect` block, and the pinned specimen |
-| `tests/<R-ID>/target-prompt.md` | Reader instructions for the case |
-| `tests/<R-ID>/evaluator-prompt.md`, `adjudicator-prompt.md` | role-specific case instructions |
-| `tests/<R-ID>/specimen.txt` | the frozen transcription; its sha256 is pinned in the manifest. R9 has none by design |
-| `tests/R11/account.txt` | the poet's account the DATUM reading measures the specimen against; pinned like the specimen |
+| `regression/tests/<R-ID>/manifest.json` | the condition: a `request` block the compiler resolves into a load set, an `expect` block, and the pinned specimen |
+| `regression/tests/<R-ID>/target-prompt.md` | Reader instructions for the case |
+| `regression/tests/<R-ID>/evaluator-prompt.md`, `adjudicator-prompt.md` | role-specific case instructions |
+| `regression/tests/<R-ID>/specimen.txt` | the frozen transcription; its sha256 is pinned in the manifest. R9 has none by design |
+| `regression/tests/R11/account.txt` | the poet's account the DATUM reading measures the specimen against; pinned like the specimen |
 | `regression-suite-v*.md`, `prompt-regime-v*.md` | control documents: scoring, procedure, test cards. Not runtime modules |
 | `prompts/evaluator-master.md`, `prompts/adjudicator-master.md` | shared role instructions |
 

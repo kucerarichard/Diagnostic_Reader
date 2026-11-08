@@ -306,8 +306,11 @@ dr/
   catalog.py                parsers for 7, 12, 13, the kernel's directives, and regression manifests
   lint.py                   consistency checks
   cli.py                    argument grammar and output
-tests/
+tests/                      the compiler's unit tests (not the regression cases, which are regression/tests/R*/)
   test_dr.py                python -m unittest discover -s tests
+  golden.json               pinned load sets and request lines
+  update_golden.py          regenerates golden.json after a deliberate change
+  README.md                 what the suite covers and when to update the golden file
 ```
 
 ## History

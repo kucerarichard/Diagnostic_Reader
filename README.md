@@ -40,7 +40,7 @@ Limits. The apparatus has no retrieval: it reads the specimen you supply, as `--
 Run everything from the repository root with `python -m dr`. Python 3.9 or later; on Windows, `py -3` stands in for `python` when it isn't on the path. The three commands that prove an install:
 
 ```
-python -m unittest discover -s tests          79 tests, OK
+python -m unittest discover -s tests          79 tests, OK (the compiler's own tests; the regression cases are regression/tests/)
 python -m dr lint                             0 errors; the six warnings are the Registry Gaps below
 python -m dr list tests                       fourteen regression cases
 ```
