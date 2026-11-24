@@ -42,9 +42,6 @@
     "normalization_note": "Essay body only, from 'Charles Dickens, in a note' to the end of the quoted final stanzas; Gutenberg header, illustration placeholders, colophon, and transcriber's notes removed. Line wrapping, italics marked with underscores, and the quoted stanzas kept as transcribed. CRLF normalized to LF.",
     "status": "public domain"
   },
-  "target_model": "Gemini (record exact model/version if visible)",
-  "evaluator": "Muse (record exact model/version if visible)",
-  "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
   "scoring": {
     "2": "pass",
     "1": "partial",

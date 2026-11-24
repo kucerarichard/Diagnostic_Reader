@@ -527,7 +527,7 @@ class CliCompileTests(unittest.TestCase):
 
 
 REG_DIR = ROOT / "regression"
-MODELS = {"reader": "X", "evaluator": "Y", "adjudicator": "Z"}
+MODELS = {"reader": "X"}
 
 
 class RegressTests(unittest.TestCase):
@@ -614,40 +614,39 @@ class RegressTests(unittest.TestCase):
         rm = reader_manifest(c.manifest)
         self.assertIn("request", rm)
         self.assertNotIn("scoring", rm)
-        self.assertNotIn("evaluator", rm)
+        self.assertNotIn("target_model", rm)
         self.assertNotIn("expect", rm)
 
-    def test_role_prompts(self):
+    def test_reader_prompt(self):
         cases, prompts, man = compile_cases(["R10-A"], REG_DIR, REG, SNAP, MODELS)
-        self.assertEqual(sorted(prompts), ["adjudicator-prompt.md", "evaluator-prompt.md", "reader-prompt.md"])
-        r, e, a = prompts["reader-prompt.md"], prompts["evaluator-prompt.md"], prompts["adjudicator-prompt.md"]
-        for t in (r, e, a):
-            self.assertIn("R10-A: WITHHELD FILES", t)
-            self.assertIn("- `0c-voice-designations`", t)
-            self.assertIn("R10-A: LOAD SET, REPEATED", t)
-            self.assertIn("Withheld from this condition: `0c-voice-designations`", t)
-            self.assertLess(t.index("R10-A: LOAD SET, REPEATED"), t.index("R10-A: OPERATOR REQUEST"))
-            self.assertNotIn("FRAMEWORK FILE 2: 0c-voice-designations", t)
-            self.assertIn("R10-A: SPECIMEN: The Tyger", t)
-            self.assertIn("R10-A: OPERATOR REQUEST", t)
-            self.assertNotIn("\r", t)
+        self.assertEqual(sorted(prompts), ["reader-prompt.md"])
+        r = prompts["reader-prompt.md"]
+        self.assertIn("R10-A: WITHHELD FILES", r)
+        self.assertIn("- `0c-voice-designations`", r)
+        self.assertIn("R10-A: LOAD SET, REPEATED", r)
+        self.assertIn("Withheld from this condition: `0c-voice-designations`", r)
+        self.assertLess(r.index("R10-A: LOAD SET, REPEATED"), r.index("R10-A: OPERATOR REQUEST"))
+        self.assertNotIn("FRAMEWORK FILE 2: 0c-voice-designations", r)
+        self.assertIn("R10-A: SPECIMEN: The Tyger", r)
+        self.assertIn("R10-A: OPERATOR REQUEST", r)
+        self.assertNotIn("\r", r)
+        # the reader never receives the control documents or any scoring material
         self.assertNotIn("CANONICAL REGRESSION SUITE", r)
+        self.assertNotIn("CANONICAL PROMPT REGIME", r)
         self.assertNotIn("scoring", r.split("R10-A: LOAD SET")[0].split("CONDITION MANIFEST")[1])
-        self.assertIn("CANONICAL REGRESSION SUITE", e)
-        self.assertIn("RAW READER OUTPUT", e)
-        self.assertNotIn("INDEPENDENT EVALUATOR REPORT", e)
-        self.assertIn("INDEPENDENT EVALUATOR REPORT", a)
-        self.assertIn("[PASTE THE COMPLETE RAW READER OUTPUT HERE", a)
         self.assertEqual(man["cases"]["R10-A"]["withheld"], ["0c-voice-designations"])
         self.assertEqual(man["multi_case_context_warning"], "Single-case prompt: no cross-case context exposure.")
 
-    def test_outputs_embedded(self):
-        _, prompts, man = compile_cases(["R1"], REG_DIR, REG, SNAP, MODELS,
-                                        reader_output="READER SAYS X", evaluator_output="EVAL SAYS Y")
-        self.assertIn("READER SAYS X", prompts["evaluator-prompt.md"])
-        self.assertIn("EVAL SAYS Y", prompts["adjudicator-prompt.md"])
-        self.assertNotIn("[PASTE", prompts["adjudicator-prompt.md"])
-        self.assertEqual(man["handoff_slots"]["evaluator"], "reader output embedded")
+    def test_no_grader_artifacts(self):
+        """The compiler emits one role. Nothing names a grader or a handoff."""
+        _, prompts, man = compile_cases(["R1"], REG_DIR, REG, SNAP, MODELS)
+        self.assertEqual(list(prompts), ["reader-prompt.md"])
+        self.assertNotIn("handoff_slots", man)
+        self.assertEqual(list(man["prompt_sha256"]), ["reader-prompt.md"])
+        self.assertEqual(list(man["model_assignments"]), ["reader"])
+        low = prompts["reader-prompt.md"].lower()
+        for word in ("evaluator", "adjudicator", "[paste"):
+            self.assertNotIn(word, low)
 
     def test_multi_case_and_determinism(self):
         _, p1, m1 = compile_cases(["R1", "R3"], REG_DIR, REG, SNAP, MODELS)
@@ -664,7 +663,7 @@ class RegressTests(unittest.TestCase):
             _, prompts, man = compile_cases(["R9"], REG_DIR, REG, SNAP, MODELS)
             written = write_regression(Path(td), prompts, man)
             self.assertEqual([p.name for p in written],
-                             ["reader-prompt.md", "evaluator-prompt.md", "adjudicator-prompt.md", "build-manifest.json"])
+                             ["reader-prompt.md", "build-manifest.json"])
 
     def test_cli_regress(self):
         out, err = io.StringIO(), io.StringIO()

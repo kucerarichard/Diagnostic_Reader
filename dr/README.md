@@ -174,25 +174,23 @@ Stems accept shorthand: `7`, `7a`, `0c`, `3-kowit`.
 ### regress
 
 ```
-python -m dr regress --cases R1 R10-A [--out DIR] [--reader-model X] [--evaluator-model Y] [--adjudicator-model Z]
-    [--reader-output FILE] [--evaluator-output FILE] [--reader-only] [--max-tokens N] [--explain] [--regression-dir DIR]
+python -m dr regress --cases R1 R10-A [--out DIR] [--reader-model X]
+    [--max-tokens N] [--explain] [--regression-dir DIR]
 ```
 
-Compiles regression cases into `reader-prompt.md`, `evaluator-prompt.md`, `adjudicator-prompt.md`, and `build-manifest.json`. Each case's `manifest.json` carries a `request` block in the same fields as the command line, so the load set is resolved, never listed; `withhold` is the fault-injection hook and `expect` pins what must and must not be in the plan. The specimen's sha256 is checked against its pin. See `regression/README.md` for the case format and the conditions.
+Compiles regression cases into `reader-prompt.md` and `build-manifest.json`. Each case's `manifest.json` carries a `request` block in the same fields as the command line, so the load set is resolved, never listed; `withhold` is the fault-injection hook and `expect` pins what must and must not be in the plan. The specimen's sha256 is checked against its pin. See `regression/README.md` for the case format and the conditions.
 
 ```
 $ python -m dr regress --cases R10-D --out run-R10-D
-Wrote 4 files to run-R10-D for R10-D
+Wrote 2 files to run-R10-D for R10-D
   reader-prompt.md: 896,101 chars; sha256 976d10cead37c967
-  evaluator-prompt.md: 986,223 chars; sha256 c42e0033eadaa479
-  adjudicator-prompt.md: 986,925 chars; sha256 04c73acea77ba274
   build-manifest.json
   R10-D: 6 files, ~223,905 tokens; Triangulate ASSAY and PLUMB.; withheld 2-harris-voice-module
 ```
 
 `--explain` prints each case's plan and writes nothing. `regression/generate_prompts.py` forwards to this command.
 
-`--reader-only` writes `reader-prompt.md` alone and skips the evaluator and adjudicator prompts, for a run where the operator reads the artifact instead of grading it through the four-stage protocol. The reader prompt is byte-identical either way; the build manifest then records hashes only for what was written. `regression/tools/` holds the scripts for that run, and its README gives the procedure.
+One role is compiled. Suite v0.7 removed the independent evaluator and the LLM adjudicator, so the operator reads the artifact against the case manifest and the suite's criteria. The compiler no longer reads `regression-suite` or `prompt-regime`: those are reference for a person, and a case now compiles from its manifest, its target prompt, and its specimen alone. `regression/tools/` holds the scripts for a hand-run, where the framework is attached as files and only the 3 percent wrapper is pasted, and its README gives the procedure and the by-eye checks.
 
 ### lint
 
@@ -304,7 +302,7 @@ dr/
   request.py                the Request model; request-line rendering; author collisions
   resolve.py                Request -> LoadPlan
   compile.py                LoadPlan + specimens -> prompt parts and build manifest
-  regress.py                regression cases -> reader, evaluator, adjudicator prompts
+  regress.py                regression cases -> reader prompts
   catalog.py                parsers for 7, 12, 13, the kernel's directives, and regression manifests
   lint.py                   consistency checks
   cli.py                    argument grammar and output

@@ -200,6 +200,17 @@ A documentation count has drifted. `dr/README.md` line 248 states 77 tests. The 
 both `tests/README.md` and the framework README say 79. The README drift check in `dr lint` does
 not cover this number.
 
+## What changed after this record
+
+Suite v0.7 removed the independent evaluator and the LLM adjudicator, and prompt regime v0.3
+removed their master prompts. `dr regress` compiles one role. The paste arithmetic above is
+what prompted it: the grader prompts were two thirds of the 48.5 MB and the roles were never
+run, so the suite now has the operator read the artifact, with sections 7, 8 and 11 kept
+because a single reader needs every one of them.
+
+This record describes the suite as it stood at v0.6, when the attempt was made. The
+references to the two roles below are accurate for that version and are left as written.
+
 ## Limits of this record
 
 No individual case was shown to be beyond a model. Two agent runs of one case were stopped before

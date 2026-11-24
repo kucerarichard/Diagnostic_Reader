@@ -118,7 +118,7 @@ A working convention: one directory per run under `runs/`, named by date and sub
 python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
 ```
 
-then `reader-output.md` saved beside the prompts, a recompile with `--reader-output` to fill the evaluator's slot, `evaluator-report.md`, a recompile with `--evaluator-output`, and `adjudicator-report.md`. `regression/README.md` has the handoff in full.
+then `reader-output.md` saved beside the prompt, and the operator's reading of it against the case manifest and the suite's criteria. `regression/README.md` has the procedure, and `regression/tools/README.md` has the cheaper form of it, where the framework is attached as files and only the wrapper is pasted.
 
 Under version control, keep the outputs and the manifests and drop the prompts: a prompt regenerates from the manifest's request and hashes, and fourteen of them come to 47 MB. The `.gitignore` ignores the compiler's default output directories (`compiled-run/`, `compiled-regression/`), any `run-*/` scratch directory, and prompt files inside `runs/`, while leaving the rest of `runs/` to be committed.
 
@@ -1138,7 +1138,7 @@ Where the catalog can test it, recurrence looks like rediscovery rather than tra
 
 ## Regression
 
-`regression/` holds fourteen cases on seven public-domain poems, each a condition the compiler resolves: a request block, an `expect` block pinning which stems must and must not load, and a specimen with its sha256 pinned. Every voice and both modes are loaded by at least one case; R11 reads The Raven against Poe's own account of composing it, which is the DATUM case. `dr regress` compiles a case into a reader prompt, an evaluator prompt, and an adjudicator prompt, with the control documents in the two auditing roles and the same framework files in all three:
+`regression/` holds fourteen cases on seven public-domain poems, each a condition the compiler resolves: a request block, an `expect` block pinning which stems must and must not load, and a specimen with its sha256 pinned. Every voice and both modes are loaded by at least one case; R11 reads The Raven against Poe's own account of composing it, which is the DATUM case. `dr regress` compiles a case into one reader prompt. Suite v0.7 removed the independent evaluator and the LLM adjudicator, so the operator reads the artifact; the control documents are reference for that reading and are no longer compiled into anything:
 
 ```
 $ python -m dr regress --cases R10-D --out run-R10-D
@@ -1243,7 +1243,7 @@ Compiler:
 23. The compiled prompt's opening notice, that the load step was performed and the files below are the complete set, is untested in a live run. The first run of R1 and of R10-D is the test of whether the Reader reports its load state from the LOAD SET or from habit.
 24. R9 as a text canon scan is unexercised. Its first run tests whether the model marks reconstructed quotations as reconstructed when nothing in the prompt supplies a text.
 25. `dr/framework-registry.json` mirrors the boot by hand. `dr lint` reports drift against the boot's tables and the disk, and the mirror is a second place to edit when a module, dependency, or task changes. Item 16 is the same gap seen from the boot's side.
-26. The regression base for R10 loads two voices and `11`; the suite's test cards were written against a condition that loaded every file. Whether the narrower base changes any card's reading of graceful degradation is the adjudicator's question on the first run.
+26. The regression base for R10 loads two voices and `11`; the suite's test cards were written against a condition that loaded every file. Whether the narrower base changes any card's reading of graceful degradation is open until the first run.
 
 ### Closed
 

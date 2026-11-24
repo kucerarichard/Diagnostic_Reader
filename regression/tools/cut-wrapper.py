@@ -12,8 +12,8 @@ Writes reader-wrapper.md beside the input and prints which files to attach.
 
 Cut the wrapper from the compiled prompt, never from the case directory. The manifest in
 the compiled prompt is the reader-facing one, filtered by READER_MANIFEST_KEYS;
-regression/tests/<case>/manifest.json additionally carries scoring, target_model,
-evaluator and adjudicator, and giving the Reader those contaminates the run.
+regression/tests/<case>/manifest.json additionally carries the scoring scale and the
+expect block, and giving the Reader those contaminates the run.
 
 Standard library only, Python 3.9 or later, same as the dr package.
 """

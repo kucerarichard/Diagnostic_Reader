@@ -40,9 +40,6 @@
     "normalization_note": "Section separators and leading/trailing blank lines removed; poem text, punctuation, capitalization, and internal lineation otherwise preserved from supplied transcription.",
     "source_status": "public domain"
   },
-  "target_model": "Gemini (record exact model/version if visible)",
-  "evaluator": "Muse (record exact model/version if visible)",
-  "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
   "scoring": {
     "2": "pass",
     "1": "partial",

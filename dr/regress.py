@@ -1,19 +1,17 @@
-"""Compile regression cases into reader, evaluator, and adjudicator prompts.
+"""Compile regression cases into reader prompts.
 
 A case directory under regression/tests/<R-ID>/ holds manifest.json,
-target-prompt.md, evaluator-prompt.md, adjudicator-prompt.md, and usually
-specimen.txt. The manifest's `request` block is the same request the CLI
-takes (task, voices, extensions, withhold, ...); the resolver computes the
-load set from it. `withhold` is the fault-injection hook. `expect` pins
-which stems must and must not end up in the plan, so a test that depends
-on a file being present or absent fails at compile time instead of in a
-model run.
+target-prompt.md, and usually specimen.txt. The manifest's `request` block
+is the same request the CLI takes (task, voices, extensions, withhold, ...);
+the resolver computes the load set from it. `withhold` is the fault-injection
+hook. `expect` pins which stems must and must not end up in the plan, so a
+test that depends on a file being present or absent fails at compile time
+instead of in a model run.
 
 The reader prompt per case is the target instructions, a reader-facing
 manifest, and the compiled prompt (load set, framework files, specimen,
-request line). The evaluator and adjudicator prompts carry the control
-documents, the full manifest, the same framework files and specimen, and
-a slot for the reader output (and evaluator report). No model is called.
+request line). No model is called, and nothing here grades the artifact: the
+operator reads it against the case manifest and the suite's criteria.
 """
 from __future__ import annotations
 
@@ -32,7 +30,6 @@ from .resolve import LoadPlan, resolve
 from .snapshot import Snapshot
 
 CASE_RE = re.compile(r"^R\d+(?:-[A-Z])?$")
-ROLES = ("reader", "evaluator", "adjudicator")
 READER_MANIFEST_KEYS = (
     "schema_version", "test_id", "title", "condition", "canonical_work", "corpus_id",
     "test_card", "primary_question", "request", "task_specific_load_rule", "specimen", "account",
@@ -55,8 +52,6 @@ class Case:
     specimen: Optional[Specimen]
     account: Optional[Specimen]          # DATUM: the poet's account, pinned like the specimen
     target_prompt: str
-    evaluator_prompt: str
-    adjudicator_prompt: str
     expect_errors: List[str]
 
     @property
@@ -70,14 +65,6 @@ def _read(path: Path, label: str) -> str:
     if not path.is_file():
         raise RegressionError(f"{label} missing: {path}")
     return path.read_text(encoding="utf-8-sig").replace("\r\n", "\n").rstrip() + "\n"
-
-
-def find_control(reg_dir: Path, stem: str) -> Path:
-    """Resolve a control document by unversioned stem, e.g. regression-suite -> regression-suite-v0_5.md."""
-    hits = sorted(reg_dir.glob(f"{stem}*.md"))
-    if not hits:
-        raise RegressionError(f"no {stem}*.md in {reg_dir}")
-    return hits[-1]
 
 
 def request_from_manifest(manifest: dict, case_id: str) -> Request:
@@ -162,14 +149,11 @@ def load_case(reg_dir: Path, case_id: str, reg: Registry, snap: Snapshot,
         if stem not in plan.withheld:
             errors.append(f"{case_id}: withhold {stem} did not resolve")
 
-    adj = _read(case_dir / "adjudicator-prompt.md", f"{case_id} adjudicator prompt")
     return Case(
         id=case_id, dir=case_dir, manifest=manifest, request=req, request_line=line, plan=plan,
         specimen=specimen,
         account=account,
         target_prompt=_read(case_dir / "target-prompt.md", f"{case_id} target prompt"),
-        evaluator_prompt=_read(case_dir / "evaluator-prompt.md", f"{case_id} evaluator prompt"),
-        adjudicator_prompt=adj,
         expect_errors=errors,
     )
 
@@ -177,7 +161,7 @@ def load_case(reg_dir: Path, case_id: str, reg: Registry, snap: Snapshot,
 # ---- prompt assembly ----------------------------------------------------------
 
 def reader_manifest(manifest: dict) -> dict:
-    """Operational facts only; no scoring, evaluator, or adjudicator material."""
+    """Operational facts only; no scoring material."""
     return {k: manifest[k] for k in READER_MANIFEST_KEYS if k in manifest}
 
 
@@ -225,10 +209,7 @@ def condition_sections(case: Case, snap: Snapshot) -> str:
     return out
 
 
-def build_prompts(cases: List[Case], snap: Snapshot, suite: str, regime: str,
-                  evaluator_master: str, adjudicator_master: str,
-                  reader_output: Optional[str], evaluator_output: Optional[str],
-                  models: Dict[str, str]) -> Dict[str, str]:
+def build_prompts(cases: List[Case], snap: Snapshot, models: Dict[str, str]) -> Dict[str, str]:
     ids = ", ".join(c.id for c in cases)
     multi = len(cases) > 1
     isolation = (
@@ -244,59 +225,20 @@ def build_prompts(cases: List[Case], snap: Snapshot, suite: str, regime: str,
         "boot's load order. Treat each as loaded from the point it appears, resolve cross-references against "
         "that set and not against memory of other releases, and where a procedure needs a file that is not "
         f"in the set, say so and switch the procedure off rather than rebuild it. {isolation}"
-        "Do not consult evaluator or adjudicator materials. Do not grade yourself. Label each case's output "
-        "with its test ID and keep the outputs separate.\n"
+        "Do not grade yourself. Label each case's output with its test ID and keep the outputs separate.\n"
     )
-    evaluator = (
-        "# INDEPENDENT EVALUATOR: REGRESSION EVALUATOR PROMPT\n\n"
-        f"Generator: dr {__version__}\nSelected cases: {ids}\nEvaluator model: {models['evaluator']}\n\n"
-        "You are the independent evaluator, not the Reader and not the adjudicator. Evaluate each case "
-        "separately against the control documents and the exact condition shown under its LOAD SET. Do not "
-        "treat the Reader's self-audit as independent evidence. Distinguish Pass, Partial, Fail, and N/D "
-        "exactly as the suite defines. Cite the supplied source text.\n"
-    ) + section("SHARED EVALUATOR INSTRUCTIONS", evaluator_master) \
-      + section("CANONICAL REGRESSION SUITE", suite) \
-      + section("CANONICAL PROMPT REGIME", regime)
-    adjudicator = (
-        "# INDEPENDENT ADJUDICATOR: REGRESSION ADJUDICATOR PROMPT\n\n"
-        f"Generator: dr {__version__}\nSelected cases: {ids}\nAdjudicator model: {models['adjudicator']}\n\n"
-        "You are the independent adjudicator. Audit the evaluator and independently inspect the Reader "
-        "artifact against the supplied files. The evaluator is not authoritative. For every criterion, "
-        "uphold, revise, overturn, or mark N/D with evidence. Identify missed failures and distinguish "
-        "framework defects from execution or load failures. Recommend only justified changes, and produce "
-        "one consolidated verdict and prioritized recommendations after all cases.\n"
-    ) + section("SHARED ADJUDICATOR INSTRUCTIONS", adjudicator_master) \
-      + section("CANONICAL REGRESSION SUITE", suite) \
-      + section("CANONICAL PROMPT REGIME", regime)
 
     for case in cases:
-        full = json.dumps(case.manifest, ensure_ascii=False, indent=2, sort_keys=True)
         rdr = json.dumps(reader_manifest(case.manifest), ensure_ascii=False, indent=2, sort_keys=True)
-        cond = condition_sections(case, snap)
         reader += section(f"{case.id}: TARGET INSTRUCTIONS", case.target_prompt)
         reader += section(f"{case.id}: CONDITION MANIFEST (reader-facing)", fence(rdr, "json"))
-        reader += cond
-        evaluator += section(f"{case.id}: EVALUATOR CASE INSTRUCTIONS", case.evaluator_prompt)
-        evaluator += section(f"{case.id}: FULL TEST MANIFEST", fence(full, "json"))
-        evaluator += cond
-        adjudicator += section(f"{case.id}: ADJUDICATOR CASE INSTRUCTIONS", case.adjudicator_prompt)
-        adjudicator += section(f"{case.id}: FULL TEST MANIFEST", fence(full, "json"))
-        adjudicator += cond
+        reader += condition_sections(case, snap)
 
-    slot_reader = ("[PASTE THE COMPLETE RAW READER OUTPUT HERE. Preserve test IDs; do not summarize.]\n")
-    slot_eval = ("[PASTE THE COMPLETE INDEPENDENT EVALUATOR REPORT HERE. Preserve all criteria, "
-                 "evidence, scores, and N/D entries.]\n")
-    evaluator += section("RAW READER OUTPUT", reader_output or slot_reader)
-    adjudicator += section("RAW READER OUTPUT", reader_output or slot_reader)
-    adjudicator += section("INDEPENDENT EVALUATOR REPORT", evaluator_output or slot_eval)
-
-    return {"reader-prompt.md": reader.rstrip() + "\n",
-            "evaluator-prompt.md": evaluator.rstrip() + "\n",
-            "adjudicator-prompt.md": adjudicator.rstrip() + "\n"}
+    return {"reader-prompt.md": reader.rstrip() + "\n"}
 
 
-def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot, models: Dict[str, str],
-                   reader_output: Optional[str], evaluator_output: Optional[str]) -> dict:
+def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot,
+                   models: Dict[str, str]) -> dict:
     return {
         "generator": "dr regress",
         "generator_version": __version__,
@@ -326,29 +268,14 @@ def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot, m
             "files included for another case are visible. Compile one case at a time for strict isolation, "
             "especially R10."
         ) if len(cases) > 1 else "Single-case prompt: no cross-case context exposure.",
-        "handoff_slots": {
-            k: v for k, v in {
-                "evaluator": "reader output embedded" if reader_output else "paste reader output at the marked slot",
-                "adjudicator_reader": "reader output embedded" if reader_output else "paste reader output at the marked slot",
-                "adjudicator_evaluator": "evaluator report embedded" if evaluator_output else "paste evaluator report at the marked slot",
-            }.items()
-            if ("evaluator-prompt.md" in prompts if k == "evaluator" else "adjudicator-prompt.md" in prompts)
-        },
     }
 
 
 # ---- entry ----------------------------------------------------------------------
 
 def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snapshot,
-                  models: Dict[str, str], reader_output: Optional[str] = None,
-                  evaluator_output: Optional[str] = None, max_tokens: Optional[int] = None,
-                  reader_only: bool = False):
-    """Returns (cases, prompts, build_manifest). Raises RegressionError when any case cannot compile.
-
-    reader_only drops the evaluator and adjudicator prompts before the manifest is built, so
-    the manifest records hashes only for what was written. The condition is unchanged: the
-    reader prompt is byte-identical either way.
-    """
+                  models: Dict[str, str], max_tokens: Optional[int] = None):
+    """Returns (cases, prompts, build_manifest). Raises RegressionError when any case cannot compile."""
     ids = [c.upper() for c in case_ids]
     if len(set(ids)) != len(ids):
         raise RegressionError("duplicate case IDs")
@@ -359,14 +286,8 @@ def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snaps
     problems = [e for c in cases for e in c.plan.errors + c.expect_errors]
     if problems:
         raise RegressionError("cannot compile:\n  " + "\n  ".join(problems))
-    suite = _read(find_control(reg_dir, "regression-suite"), "regression suite")
-    regime = _read(find_control(reg_dir, "prompt-regime"), "prompt regime")
-    ev = _read(reg_dir / "prompts" / "evaluator-master.md", "evaluator master")
-    ad = _read(reg_dir / "prompts" / "adjudicator-master.md", "adjudicator master")
-    prompts = build_prompts(cases, snap, suite, regime, ev, ad, reader_output, evaluator_output, models)
-    if reader_only:
-        prompts = {"reader-prompt.md": prompts["reader-prompt.md"]}
-    manifest = build_manifest(cases, prompts, snap, models, reader_output, evaluator_output)
+    prompts = build_prompts(cases, snap, models)
+    manifest = build_manifest(cases, prompts, snap, models)
     return cases, prompts, manifest
 
 

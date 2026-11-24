@@ -29,13 +29,12 @@ Build the Tier 1 snapshot once. It lands in `tier1-snapshot/`, which `.gitignore
 python regression/tools/make-tier1-snapshot.py
 ```
 
-Compile a case against it and cut the wrapper. `--reader-only` skips the evaluator and
-adjudicator prompts; `--regression-dir` is required because `--framework` also relocates
-the case lookup.
+Compile a case against it and cut the wrapper. `--regression-dir` is required because
+`--framework` also relocates the case lookup.
 
 ```
 python -m dr regress --cases R9 --framework tier1-snapshot --regression-dir regression \
-    --reader-only --out runs/manual-tier1/R9
+    --out runs/manual-tier1/R9
 python regression/tools/cut-wrapper.py runs/manual-tier1/R9/reader-prompt.md
 ```
 
@@ -70,9 +69,11 @@ suite section 5; it is the upload that is shared, not the context.
 
 ## Reading the result without a grader
 
-Suite section 13 keeps four score categories separate and forbids averaging them. Three
-are checkable by hand against `build-manifest.json`, which is why a run needs no evaluator
-or adjudicator to be worth doing.
+Suite section 11 keeps four score categories separate and forbids averaging them. Three
+are checkable by hand against `build-manifest.json`, which is why suite v0.7 dropped the
+grader roles: procedural compliance, dependency handling and framework integrity are
+decidable against the files, and literary execution is the one category a second reader
+would have earned its cost on.
 
 **Loading report.** The prompt repeats the LOAD SET immediately before the operator
 request so the report can be written against it. Check three things:
@@ -113,5 +114,5 @@ Tier 1, at about 160,000 tokens. The other thirteen sit between 52,000 and 83,00
 
 `cut-wrapper.py` reads a compiled prompt, never a case directory. The manifest inside a
 compiled reader prompt is the reader-facing one, filtered by `READER_MANIFEST_KEYS`;
-`regression/tests/<case>/manifest.json` also carries `scoring`, `target_model`, `evaluator`
-and `adjudicator`, and handing the Reader those contaminates the run.
+`regression/tests/<case>/manifest.json` also carries the scoring scale and the `expect`
+block, and handing the Reader those contaminates the run.

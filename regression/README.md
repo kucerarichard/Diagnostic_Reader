@@ -1,11 +1,11 @@
 # Diagnostic Reader Regression Suite
 
-Test definitions for the regression suite, compiled into role prompts by `dr regress`. This directory holds no runtime module. The framework files are read from the repository root (or a snapshot you name), and nothing here calls a model.
+Test definitions for the regression suite, compiled into reader prompts by `dr regress`. This directory holds no runtime module. The framework files are read from the repository root (or a snapshot you name), and nothing here calls a model.
 
 The cases live under `regression/tests/R*/`. That is a different directory from `tests/` at the repository root, which holds the compiler's own unit tests and is run with `python -m unittest`; the two share a word and nothing else. A regression case is a condition for a language model; a unit test is an assertion about the `dr` package. See `tests/README.md` for the latter.
 
 ```
-python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Model Y" --adjudicator-model "Model Z" --out run-R1
+python -m dr regress --cases R1 --reader-model "Model X" --out run-R1
 ```
 
 `regression/generate_prompts.py` forwards to the same command for scripts that still call it.
@@ -16,37 +16,32 @@ python -m dr regress --cases R1 --reader-model "Model X" --evaluator-model "Mode
 |---|---|
 | `regression/tests/<R-ID>/manifest.json` | the condition: a `request` block the compiler resolves into a load set, an `expect` block, and the pinned specimen |
 | `regression/tests/<R-ID>/target-prompt.md` | Reader instructions for the case |
-| `regression/tests/<R-ID>/evaluator-prompt.md`, `adjudicator-prompt.md` | role-specific case instructions |
 | `regression/tests/<R-ID>/specimen.txt` | the frozen transcription; its sha256 is pinned in the manifest. R9 has none by design |
 | `regression/tests/R11/account.txt` | the poet's account the DATUM reading measures the specimen against; pinned like the specimen |
-| `regression-suite-v*.md`, `prompt-regime-v*.md` | control documents: scoring, procedure, test cards. Not runtime modules |
-| `prompts/evaluator-master.md`, `prompts/adjudicator-master.md` | shared role instructions |
+| `regression-suite-v*.md`, `prompt-regime-v*.md` | control documents: scoring, procedure, test cards. Reference for the operator, not read by the compiler |
+| `tools/` | scripts for a hand-run: the Tier 1 snapshot builder and the wrapper cutter. See `tools/README.md` |
 
 ## Output
 
-`dr regress` writes four files:
+`dr regress` writes two files:
 
 | File | Contents |
 |---|---|
 | `reader-prompt.md` | per case: target instructions, a reader-facing manifest (no scoring material), the LOAD SET table, every framework file in the condition, the specimen with its card, the LOAD SET repeated with withheld files named, and the operator request line |
-| `evaluator-prompt.md` | evaluator master, the two control documents, then per case: evaluator instructions, the full manifest, the same LOAD SET, files and specimen, and a slot for the raw Reader output |
-| `adjudicator-prompt.md` | the same with adjudicator instructions and a second slot for the evaluator report |
-| `build-manifest.json` | selected cases, model labels, per-case request line, load set with sha256 per file, withheld list, specimen sha256, token estimate, and the sha256 of each prompt |
+| `build-manifest.json` | selected cases, the reader model label, per-case request line, load set with sha256 per file, withheld list, specimen sha256, token estimate, and the prompt's sha256 |
 
-After the Reader run, paste its complete raw output into the marked slot in `evaluator-prompt.md`, or recompile with `--reader-output reader-output.md`. After evaluation, paste the evaluator report into `adjudicator-prompt.md`, or recompile with `--reader-output ... --evaluator-output ...`.
+Suite v0.7 removed the independent evaluator and the LLM adjudicator. One role is compiled; the operator reads the artifact against the case manifest and the criteria on its card in `prompt-regime`, Part II.
 
 A working convention, one directory per run:
 
 ```
 python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
 #   paste reader-prompt.md into the Reader; save its output as runs/.../reader-output.md
-python -m dr regress --cases R1 --reader-model "<model>" --evaluator-model "<model>"     --reader-output runs/2026-11-08-R1-<model>/reader-output.md --out runs/2026-11-08-R1-<model>
-#   paste evaluator-prompt.md into the evaluator; save as runs/.../evaluator-report.md
-python -m dr regress --cases R1 --reader-model "<model>" --evaluator-model "<model>" --adjudicator-model "<model>"     --reader-output runs/.../reader-output.md --evaluator-output runs/.../evaluator-report.md --out runs/2026-11-08-R1-<model>
-#   paste adjudicator-prompt.md into the adjudicator; save as runs/.../adjudicator-report.md
 ```
 
-The directory then holds the condition (`build-manifest.json`, with every hash), the three outputs, and the prompts. Commit the manifest and the outputs; the `.gitignore` drops the prompt files from `runs/`, since they regenerate from the manifest and each set is several megabytes. The first thing to read in any `reader-output.md` is its loading report against the case's repeated LOAD SET.
+The directory then holds the condition (`build-manifest.json`, with every hash), the output, and the prompt. Commit the manifest and the output; the `.gitignore` drops the prompt files from `runs/`, since they regenerate from the manifest and each is several megabytes. The first thing to read in any `reader-output.md` is its loading report against the case's repeated LOAD SET.
+
+For a run that does not mean pasting several hundred kilobytes by hand, see `tools/README.md`: the framework is attached as files and only the wrapper is pasted, which is about 3 percent of the prompt.
 
 ## Case manifests
 
@@ -95,7 +90,7 @@ R9 changed in this revision from an image-scan test to the canon-scan test the s
 
 Each target prompt's first required output is the LOAD SET table copied out with every file marked used or unused, and any file the apparatus names that is not in the table named as absent. The table is repeated directly before the operator request so the report is written against it. Two things in the prompt look like inventories and are not: the boot's Module Registry, which lists sixteen files whatever the condition, and the kernel's cross-references to `0b`, `0c`, `12`, and `13`. A report that lists either as loaded is the RECONSTRUCT failure the suite exists to catch.
 
-R10-A is narrower than its title suggests. The kernel's Voice Slot Matrix names all five designations and its Designation Policy states the rule, so a verdict labelled ASSAY is possible with `0c` withheld; what the absent file governs is the leak-tier procedure and the calibration-collision rule. The evaluator and adjudicator prompts for R10-A say so, and the target is scored on whether it reported that split.
+R10-A is narrower than its title suggests. The kernel's Voice Slot Matrix names all five designations and its Designation Policy states the rule, so a verdict labelled ASSAY is possible with `0c` withheld; what the absent file governs is the leak-tier procedure and the calibration-collision rule. R10-A's card in `prompt-regime` says so under Scoring focus and Verification focus, and the target is scored on whether it reported that split.
 
 ## Isolation
 

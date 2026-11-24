@@ -6,7 +6,7 @@ The compiler's own test suite. Nothing here is a Diagnostic Reader regression ca
 |---|---|
 | Checks the `dr` package: resolver, parsers, prompt writer, harness | Defines conditions for a language model to be tested under |
 | Runs in a second with `python -m unittest discover -s tests` | Runs only by pasting a compiled prompt into a model |
-| Passes or fails by assertion | Is scored by an evaluator and an adjudicator against the suite's criteria |
+| Passes or fails by assertion | Is scored by the operator against the suite's criteria |
 | Changes when the compiler's code or data changes | Changes when a test card changes |
 
 ## Files

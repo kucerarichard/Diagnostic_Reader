@@ -29,9 +29,6 @@
     "status": "none by design: a canon scan supplies no poem text",
     "note": "Scan Mode names its specimen from the model's knowledge and rates reconstruction strength. The complete poem must not be supplied."
   },
-  "target_model": "Gemini (record exact model/version if visible)",
-  "evaluator": "Muse (record exact model/version if visible)",
-  "adjudicator": "ChatGPT in a separate chat (record exact model/version if visible)",
   "scoring": {
     "2": "pass",
     "1": "partial",
