@@ -327,9 +327,12 @@ def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot, m
             "especially R10."
         ) if len(cases) > 1 else "Single-case prompt: no cross-case context exposure.",
         "handoff_slots": {
-            "evaluator": "reader output embedded" if reader_output else "paste reader output at the marked slot",
-            "adjudicator_reader": "reader output embedded" if reader_output else "paste reader output at the marked slot",
-            "adjudicator_evaluator": "evaluator report embedded" if evaluator_output else "paste evaluator report at the marked slot",
+            k: v for k, v in {
+                "evaluator": "reader output embedded" if reader_output else "paste reader output at the marked slot",
+                "adjudicator_reader": "reader output embedded" if reader_output else "paste reader output at the marked slot",
+                "adjudicator_evaluator": "evaluator report embedded" if evaluator_output else "paste evaluator report at the marked slot",
+            }.items()
+            if ("evaluator-prompt.md" in prompts if k == "evaluator" else "adjudicator-prompt.md" in prompts)
         },
     }
 
@@ -338,8 +341,14 @@ def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot, m
 
 def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snapshot,
                   models: Dict[str, str], reader_output: Optional[str] = None,
-                  evaluator_output: Optional[str] = None, max_tokens: Optional[int] = None):
-    """Returns (cases, prompts, build_manifest). Raises RegressionError when any case cannot compile."""
+                  evaluator_output: Optional[str] = None, max_tokens: Optional[int] = None,
+                  reader_only: bool = False):
+    """Returns (cases, prompts, build_manifest). Raises RegressionError when any case cannot compile.
+
+    reader_only drops the evaluator and adjudicator prompts before the manifest is built, so
+    the manifest records hashes only for what was written. The condition is unchanged: the
+    reader prompt is byte-identical either way.
+    """
     ids = [c.upper() for c in case_ids]
     if len(set(ids)) != len(ids):
         raise RegressionError("duplicate case IDs")
@@ -355,6 +364,8 @@ def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snaps
     ev = _read(reg_dir / "prompts" / "evaluator-master.md", "evaluator master")
     ad = _read(reg_dir / "prompts" / "adjudicator-master.md", "adjudicator master")
     prompts = build_prompts(cases, snap, suite, regime, ev, ad, reader_output, evaluator_output, models)
+    if reader_only:
+        prompts = {"reader-prompt.md": prompts["reader-prompt.md"]}
     manifest = build_manifest(cases, prompts, snap, models, reader_output, evaluator_output)
     return cases, prompts, manifest
 

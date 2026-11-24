@@ -1,0 +1,95 @@
+{
+  "cases": {
+    "R1": {
+      "account_sha256": null,
+      "files": [
+        {
+          "name": "0-poetics-boot-hollow-v0_18.md",
+          "reasons": [
+            "entry point"
+          ],
+          "sha256": "ab05bfe1171438868672289a775455c3978057b5a6d000cbe49169a3a1874829",
+          "step": 0,
+          "version": "0.18"
+        },
+        {
+          "name": "0a-portable-poetics-kernel-v0_3_19.md",
+          "reasons": [
+            "task Full reading"
+          ],
+          "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+          "step": 1,
+          "version": "0.3.19"
+        },
+        {
+          "name": "0c-voice-designations-v0_7.md",
+          "reasons": [
+            "task Full reading"
+          ],
+          "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+          "step": 2,
+          "version": "0.7"
+        },
+        {
+          "name": "7-device-inventory-extended-v0_4.md",
+          "reasons": [
+            "task Full reading"
+          ],
+          "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+          "step": 4,
+          "version": "0.4"
+        },
+        {
+          "name": "1-rother-voice-module-v0_3_1.md",
+          "reasons": [
+            "voice ASSAY"
+          ],
+          "sha256": "39e47be1b787f0e81667fe1a3bdc98b5be965d0b11269dd0f4ef612a3d2279b0",
+          "step": 5,
+          "version": "0.3.1"
+        }
+      ],
+      "framework_bytes": 887635,
+      "full_monty_state": "absent",
+      "request": {
+        "task": "sidecar",
+        "voices": [
+          "ASSAY"
+        ]
+      },
+      "request_line": "Full sidecar. ASSAY verdict.",
+      "specimen_sha256": "f115345237e15c49116904ea7f3bde94ccf6688012c325e0c828132e351777cb",
+      "token_estimate": 221908,
+      "warnings": [],
+      "withheld": []
+    }
+  },
+  "generator": "dr regress",
+  "generator_version": "0.2.0",
+  "handoff_slots": {
+    "adjudicator_evaluator": "paste evaluator report at the marked slot",
+    "adjudicator_reader": "paste reader output at the marked slot",
+    "evaluator": "paste reader output at the marked slot"
+  },
+  "model_assignments": {
+    "adjudicator": "Z (not specified)",
+    "evaluator": "Y (not specified)",
+    "reader": "Claude Sonnet 5.5"
+  },
+  "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
+  "prompt_chars": {
+    "adjudicator-prompt.md": 984751,
+    "evaluator-prompt.md": 984033,
+    "reader-prompt.md": 887328
+  },
+  "prompt_sha256": {
+    "adjudicator-prompt.md": "cb98a405a2377582a5d0766c66012ed388294952a335238d4e170aa662c2a25f",
+    "evaluator-prompt.md": "f100f1f292bda9af4bdfb5a0e661cbc95b4b8b2e8659ac626f2b3fbc6bf4fa8a",
+    "reader-prompt.md": "71b07d1f801cc000e8204f0cd831e02a43d0a315f9dda493fce224309a6ecb18"
+  },
+  "selected_cases": [
+    "R1"
+  ],
+  "snapshot": "C:\\Users\\kucerar\\Documents\\CLAUDE2\\Diagnostic_Reader",
+  "snapshot_sha256": null
+}

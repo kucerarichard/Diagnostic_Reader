@@ -1,0 +1,80 @@
+{
+  "cases": {
+    "R9": {
+      "account_sha256": null,
+      "files": [
+        {
+          "name": "0-poetics-boot-hollow-v0_18.md",
+          "reasons": [
+            "entry point"
+          ],
+          "sha256": "ab05bfe1171438868672289a775455c3978057b5a6d000cbe49169a3a1874829",
+          "step": 0,
+          "version": "0.18"
+        },
+        {
+          "name": "0a-portable-poetics-kernel-v0_3_19.md",
+          "reasons": [
+            "task Scan Mode"
+          ],
+          "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+          "step": 1,
+          "version": "0.3.19"
+        },
+        {
+          "name": "0c-voice-designations-v0_7.md",
+          "reasons": [
+            "task Scan Mode"
+          ],
+          "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+          "step": 2,
+          "version": "0.7"
+        },
+        {
+          "name": "7-device-inventory-extended-v0_4.md",
+          "reasons": [
+            "task Scan Mode"
+          ],
+          "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+          "step": 4,
+          "version": "0.4"
+        }
+      ],
+      "framework_bytes": 252248,
+      "full_monty_state": "absent",
+      "request": {
+        "scan_category": "A",
+        "scan_devices": [
+          "apostrophe"
+        ],
+        "scan_source": "canon",
+        "task": "scan"
+      },
+      "request_line": "Scan canon A for apostrophe",
+      "specimen_sha256": null,
+      "token_estimate": 63062,
+      "warnings": [],
+      "withheld": []
+    }
+  },
+  "generator": "dr regress",
+  "generator_version": "0.2.0",
+  "handoff_slots": {},
+  "model_assignments": {
+    "adjudicator": "Z (not specified)",
+    "evaluator": "Y (not specified)",
+    "reader": "X (not specified)"
+  },
+  "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
+  "prompt_chars": {
+    "reader-prompt.md": 258612
+  },
+  "prompt_sha256": {
+    "reader-prompt.md": "771125e058ed57f12448e3acb2ddb47cd0374a697ca89fd7c6c31f3d498aa6d7"
+  },
+  "selected_cases": [
+    "R9"
+  ],
+  "snapshot": "C:\\Users\\kucerar\\Documents\\CLAUDE2\\Diagnostic_Reader\\tier1-snapshot",
+  "snapshot_sha256": null
+}

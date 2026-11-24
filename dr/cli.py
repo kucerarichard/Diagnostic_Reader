@@ -173,6 +173,8 @@ def build_parser() -> argparse.ArgumentParser:
     rg.add_argument("--reader-model", default="X (not specified)")
     rg.add_argument("--evaluator-model", default="Y (not specified)")
     rg.add_argument("--adjudicator-model", default="Z (not specified)")
+    rg.add_argument("--reader-only", action="store_true",
+                    help="write only reader-prompt.md; skip the evaluator and adjudicator prompts")
     rg.add_argument("--max-tokens", type=int, default=None, help="per-case budget on the framework set")
     rg.add_argument("--explain", action="store_true", help="show each case's load plan and write nothing")
     add_global(rg, top=False)
@@ -495,7 +497,8 @@ def do_regress(a: argparse.Namespace, reg: Registry, snap: Snapshot, framework: 
                 print()
                 code = code or (0 if case.ok else 1)
             return code
-        cases, prompts, manifest = compile_cases(a.cases, reg_dir, reg, snap, models, ro, eo, a.max_tokens)
+        cases, prompts, manifest = compile_cases(a.cases, reg_dir, reg, snap, models, ro, eo, a.max_tokens,
+                                                 reader_only=a.reader_only)
         written = write_regression(a.out, prompts, manifest)
     except (RegressionError, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

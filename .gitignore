@@ -6,3 +6,4 @@ run-*/
 runs/**/prompt*.md
 runs/**/*-prompt.md
 .DS_Store
+tier1-snapshot/
