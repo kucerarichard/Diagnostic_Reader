@@ -115,7 +115,7 @@ python -m dr read --specimen poems/apple-picking.txt --out runs/2026-11-08-apple
 A working convention: one directory per run under `runs/`, named by date and subject. Paste `prompt.md` into the model, then save the model's reply beside it as `reading.md`. The directory is then a complete record: what was asked, what was loaded, what was read, and what came back. For a regression case the same convention holds with the three role prompts and their outputs:
 
 ```
-python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
+python -m dr regress --cases R1 --out runs/2026-11-24-R1-<model>
 ```
 
 then `reader-output.md` saved beside the prompt, and the operator's reading of it against the case manifest and the suite's criteria. `regression/README.md` has the procedure, and `regression/tools/README.md` has the cheaper form of it, where the framework is attached as files and only the wrapper is pasted.

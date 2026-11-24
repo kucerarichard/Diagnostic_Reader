@@ -209,7 +209,7 @@ def condition_sections(case: Case, snap: Snapshot) -> str:
     return out
 
 
-def build_prompts(cases: List[Case], snap: Snapshot, models: Dict[str, str]) -> Dict[str, str]:
+def build_prompts(cases: List[Case], snap: Snapshot) -> Dict[str, str]:
     ids = ", ".join(c.id for c in cases)
     multi = len(cases) > 1
     isolation = (
@@ -219,7 +219,7 @@ def build_prompts(cases: List[Case], snap: Snapshot, models: Dict[str, str]) -> 
 
     reader = (
         "# DIAGNOSTIC READER: REGRESSION READER PROMPT\n\n"
-        f"Generator: dr {__version__}\nSelected cases: {ids}\nReader model: {models['reader']}\n\n"
+        f"Generator: dr {__version__}\nSelected cases: {ids}\n\n"
         "You are the Reader, the test subject. For each case, the compiler has performed the load step: the "
         "framework files under that case's LOAD SET are the complete file set for that condition, in the "
         "boot's load order. Treat each as loaded from the point it appears, resolve cross-references against "
@@ -237,13 +237,11 @@ def build_prompts(cases: List[Case], snap: Snapshot, models: Dict[str, str]) -> 
     return {"reader-prompt.md": reader.rstrip() + "\n"}
 
 
-def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot,
-                   models: Dict[str, str]) -> dict:
+def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot) -> dict:
     return {
         "generator": "dr regress",
         "generator_version": __version__,
         "selected_cases": [c.id for c in cases],
-        "model_assignments": models,
         "snapshot": snapshot_label(snap.source),
         "snapshot_sha256": sha256(snap.source.read_bytes()) if snap.is_zip else None,
         "cases": {
@@ -274,7 +272,7 @@ def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot,
 # ---- entry ----------------------------------------------------------------------
 
 def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snapshot,
-                  models: Dict[str, str], max_tokens: Optional[int] = None):
+                  max_tokens: Optional[int] = None):
     """Returns (cases, prompts, build_manifest). Raises RegressionError when any case cannot compile."""
     ids = [c.upper() for c in case_ids]
     if len(set(ids)) != len(ids):
@@ -286,8 +284,8 @@ def compile_cases(case_ids: List[str], reg_dir: Path, reg: Registry, snap: Snaps
     problems = [e for c in cases for e in c.plan.errors + c.expect_errors]
     if problems:
         raise RegressionError("cannot compile:\n  " + "\n  ".join(problems))
-    prompts = build_prompts(cases, snap, models)
-    manifest = build_manifest(cases, prompts, snap, models)
+    prompts = build_prompts(cases, snap)
+    manifest = build_manifest(cases, prompts, snap)
     return cases, prompts, manifest
 
 

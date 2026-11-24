@@ -2,7 +2,6 @@
 
 Generator: dr 0.2.0
 Selected cases: R2
-Reader model: X (not specified)
 
 You are the Reader, the test subject. For each case, the compiler has performed the load step: the framework files under that case's LOAD SET are the complete file set for that condition, in the boot's load order. Treat each as loaded from the point it appears, resolve cross-references against that set and not against memory of other releases, and where a procedure needs a file that is not in the set, say so and switch the procedure off rather than rebuild it. Do not grade yourself. Label each case's output with its test ID and keep the outputs separate.
 

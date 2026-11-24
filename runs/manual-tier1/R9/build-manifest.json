@@ -59,15 +59,12 @@
   },
   "generator": "dr regress",
   "generator_version": "0.2.0",
-  "model_assignments": {
-    "reader": "X (not specified)"
-  },
   "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
   "prompt_chars": {
-    "reader-prompt.md": 258561
+    "reader-prompt.md": 258529
   },
   "prompt_sha256": {
-    "reader-prompt.md": "bcd4a3747a7565b6e12e4742dab149fea57bc7f1fe0c68a8e4063880b469d736"
+    "reader-prompt.md": "f15d078b0afb60a5b3c156afd69b8c08354912f4301a049711386196f9376e98"
   },
   "selected_cases": [
     "R9"

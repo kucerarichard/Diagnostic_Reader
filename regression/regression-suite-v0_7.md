@@ -152,7 +152,9 @@ Before running any test, record:
 
 Use a clean session for each run. Do not give the test subject the scoring criteria or earlier diagnoses unless the specific test is testing self-correction.
 
-`build-manifest.json` records every file's sha256, the request as parsed, the withheld list, the specimen's sha256, and the sha256 of the prompt. It does not record a commit hash, a run identifier, or a date; supply those yourself.
+`build-manifest.json` records every file's sha256, the request as parsed, the withheld list, the specimen's sha256, and the sha256 of the prompt. It does not record a commit hash, a run identifier, a date, or which model ran; supply those yourself, beside the output.
+
+Model identity is deliberately absent from the compiled prompt. The compiler runs before you choose where to paste, so any model named at compile time is a guess, and a prompt that tells the Reader it is one model while running on another has corrupted its own condition. Keeping it out also makes the prompt's sha256 a function of the condition alone, so two runs of one case against different models are comparable under section 13, and the label you record afterwards is the only one that was ever true.
 
 ### Required artifacts
 

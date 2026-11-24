@@ -66,15 +66,12 @@
   },
   "generator": "dr regress",
   "generator_version": "0.2.0",
-  "model_assignments": {
-    "reader": "Claude Sonnet 5.5"
-  },
   "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
   "prompt_chars": {
-    "reader-prompt.md": 887277
+    "reader-prompt.md": 887245
   },
   "prompt_sha256": {
-    "reader-prompt.md": "14f52973eba7e5a9d3a0f7d78c67493c593ff90096fceda39af5f40818a6b68c"
+    "reader-prompt.md": "8632e78217e92ef21c816e4bbbb8c068a1c423825a423df004b9fe56c9b5c023"
   },
   "selected_cases": [
     "R1"

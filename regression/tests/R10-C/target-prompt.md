@@ -6,7 +6,7 @@ Read the reader-facing condition manifest and the LOAD SET for this case first. 
 
 **Task:** Perform a Diagnostic Reader analysis of the supplied specimen: **The Tyger**. Use only the specimen text supplied under this case's SPECIMEN section; its edition and sha256 are in the condition manifest.
 
-**Test focus:** Exercise DATUM while provenance grading extension is withheld; do not invent grades.
+**Test focus:** Detect the unavailable provenance-grading extension; do not invent grades, and do not reconstruct DATUM.
 
 **Requirements:**
 - Follow the applicable procedures and dependencies in the supplied Diagnostic Reader files.
@@ -19,7 +19,7 @@ Read the reader-facing condition manifest and the LOAD SET for this case first. 
 
 DEPENDENCY FAULT INJECTION CONDITION
 The WITHHELD FILES section names the file intentionally absent. Do not assume it exists or reconstruct its contents from memory. Verify availability from the LOAD SET. State which procedures are unavailable and limit claims accordingly.
-The withheld dependency is the provenance-grading extension. Use the DATUM voice/task only to the extent the supplied remaining files permit; do not invent provenance grades or the meaning of unavailable rules.
+The withheld dependency is the provenance-grading extension. Apply provenance grading only to the extent the supplied remaining files permit; do not invent provenance grades or the meaning of unavailable rules.
 
 ## Test-card requirements (verbatim from the supplied prompt regime)
 
@@ -38,7 +38,7 @@ Use William Blake's “The Tyger” as the common poem. Perform a Diagnostic Rea
 - Mark any provenance-dependent conclusion that cannot be validated.
 
 
-For this variant, explicitly request the DATUM voice/task so the declared hard dependency on the provenance-grading extension is actually exercised. If the dependency is unavailable, do not silently skip DATUM while presenting the run as a full DATUM reading.
+Two designations are named in the supplied files without their modules being present. The boot's Module Registry and the designation layer both name DATUM, whose module is not in this condition, and the provenance-grading extension that DATUM depends on is the withheld file. Report both as absent. Do not reconstruct either, and do not present a provenance-graded claim as validated when the grading rules are not available.
 
 ## Required output
 1. **Input and loading report:** test ID, specimen received, and the LOAD SET table copied out with each file marked used or unused. A file the apparatus mentions that is not in the LOAD SET is absent; name it as absent, never as used. Then any unresolved loading or dependency issue.

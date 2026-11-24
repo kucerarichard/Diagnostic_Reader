@@ -168,7 +168,6 @@ def build_parser() -> argparse.ArgumentParser:
     rg.add_argument("--cases", nargs="+", required=True, metavar="R-ID", help="e.g. R1 R3 R10-A")
     rg.add_argument("--regression-dir", type=Path, default=None, help="default <framework>/regression")
     rg.add_argument("--out", type=Path, default=Path("compiled-regression"))
-    rg.add_argument("--reader-model", default="X (not specified)")
     rg.add_argument("--max-tokens", type=int, default=None, help="per-case budget on the framework set")
     rg.add_argument("--explain", action="store_true", help="show each case's load plan and write nothing")
     add_global(rg, top=False)
@@ -475,7 +474,6 @@ def do_regress(a: argparse.Namespace, reg: Registry, snap: Snapshot, framework: 
     if snap.is_zip and a.regression_dir is None:
         print("ERROR: with a ZIP snapshot, pass --regression-dir", file=sys.stderr)
         return 2
-    models = {"reader": a.reader_model}
     try:
         if a.explain:
             from .regress import load_case
@@ -489,7 +487,7 @@ def do_regress(a: argparse.Namespace, reg: Registry, snap: Snapshot, framework: 
                 print()
                 code = code or (0 if case.ok else 1)
             return code
-        cases, prompts, manifest = compile_cases(a.cases, reg_dir, reg, snap, models, a.max_tokens)
+        cases, prompts, manifest = compile_cases(a.cases, reg_dir, reg, snap, a.max_tokens)
         written = write_regression(a.out, prompts, manifest)
     except (RegressionError, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

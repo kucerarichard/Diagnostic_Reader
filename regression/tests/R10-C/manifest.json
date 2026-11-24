@@ -6,7 +6,7 @@
   "canonical_work": "The Tyger",
   "corpus_id": "C1",
   "test_card": "R10-C",
-  "primary_question": "Exercise DATUM while provenance grading extension is withheld; do not invent grades.",
+  "primary_question": "Detect the unavailable provenance-grading extension; do not invent grades, and do not reconstruct DATUM, whose module is also absent from this condition.",
   "request": {
     "task": "triangulate",
     "voices": [

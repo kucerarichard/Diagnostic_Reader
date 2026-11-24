@@ -5,7 +5,7 @@ Test definitions for the regression suite, compiled into reader prompts by `dr r
 The cases live under `regression/tests/R*/`. That is a different directory from `tests/` at the repository root, which holds the compiler's own unit tests and is run with `python -m unittest`; the two share a word and nothing else. A regression case is a condition for a language model; a unit test is an assertion about the `dr` package. See `tests/README.md` for the latter.
 
 ```
-python -m dr regress --cases R1 --reader-model "Model X" --out run-R1
+python -m dr regress --cases R1 --out run-R1
 ```
 
 `regression/generate_prompts.py` forwards to the same command for scripts that still call it.
@@ -35,8 +35,9 @@ Suite v0.7 removed the independent evaluator and the LLM adjudicator. One role i
 A working convention, one directory per run:
 
 ```
-python -m dr regress --cases R1 --reader-model "<model>" --out runs/2026-11-08-R1-<model>
+python -m dr regress --cases R1 --out runs/2026-11-24-R1-<model>
 #   paste reader-prompt.md into the Reader; save its output as runs/.../reader-output.md
+#   note which model you pasted into beside it; the prompt does not record it, by design
 ```
 
 The directory then holds the condition (`build-manifest.json`, with every hash), the output, and the prompt. Commit the manifest and the output; the `.gitignore` drops the prompt files from `runs/`, since they regenerate from the manifest and each is several megabytes. The first thing to read in any `reader-output.md` is its loading report against the case's repeated LOAD SET.
@@ -85,6 +86,104 @@ The R10 base loads `11-provenance-grading-extension` explicitly so that R10-C ha
 Where a case names voices, whether a voice fires on the specimen is the test and not the premise; a justified stand-down passes.
 
 R9 changed in this revision from an image-scan test to the canon-scan test the suite's section 12 defines. The harness is text only. The prompt regime's R9 card was rewritten to match; the suite's card was already right.
+
+## Looking around the cases
+
+Nothing here has been run. There is no baseline, no leaderboard, and no order you are supposed
+to go in. A case is a question someone found interesting enough to freeze, and freezing it is
+most of the work; running it is cheap and optional. Browse with the compiler, which consults no
+model:
+
+```
+python -m dr list tests                                    the fourteen cases with their titles
+python -m dr regress --explain --cases R9                  what R9 loads, and why each file is there
+python -m dr regress --explain --cases R3 R6               two cases that load the same six files
+```
+
+Sizes below are Tier 1, the voice-module headers without their corpora, which is what
+`regression/tools/make-tier1-snapshot.py` builds. Tier 3 is roughly three times larger and is
+the condition the manifests pin.
+
+### The Tyger, four ways
+
+**R1** (72k, 5 files) asks the plainest question in the suite: given five files, does the
+apparatus say which five it used? The trap is that the boot's Module Registry lists sixteen
+modules whatever the condition, so a model that confuses an inventory with a load set will
+report eleven files it never saw. Everything else in the suite depends on this one working.
+
+**R2** (72k, 5 files) is the same five files and the same poem, asking instead whether devices
+get named before they get interpreted. The device inventory holds 192 entries across seven
+categories; the question is whether the reading reaches for one that fires on the page or one
+that sounds right.
+
+**R10-A to R10-D** (63k to 82k, 6 files) take The Tyger apart by removing one file at a time
+from a two-voice triangulation. These are the most interesting cases in the suite and the
+least like literary criticism. Each asks whether the apparatus notices an absence and switches
+a procedure off, or quietly rebuilds the missing file from memory.
+
+- **R10-A** withholds the designation layer. Narrower than it looks: the kernel's own Voice
+  Slot Matrix still names all five designations, so a verdict labelled ASSAY remains possible.
+  What actually goes missing is the leak-tier procedure and the calibration-collision rule, and
+  the case is scored on whether that split gets reported.
+- **R10-B** withholds the device inventory, leaving the kernel's Device Inventory Lite. Does the
+  reading say so, or improvise an inventory and imply compliance?
+- **R10-C** withholds the provenance-grading extension. Two things are absent here, which is the
+  point: the extension itself, and DATUM, whose module this condition never loads although the
+  boot and the designation layer both name it.
+- **R10-D** withholds a voice module outright, then asks for a triangulation that needs it. The
+  failure to watch for is a second voice quietly covering the first one's zone.
+
+Compile these one at a time. Several cases in one prompt share a context, so a file withheld
+from one is visible under another.
+
+### The other poems
+
+**R3** (82k, 6 files) reads Blake's *London* with two voices and gives the closing verdict to the
+one that works at ground level. The question is whether coercion in the poem is the engine or
+the residue, which is the kernel's sharpest distinction and the easiest to get backwards.
+
+**R4** (72k, 5 files) is *Ozymandias*, which is four nested frames: a narrator, a traveller, a
+sculptor's reading of a face, and a tyrant's own words on a pedestal. Almost nothing in the poem
+is stated by the poem. Watch whether the reading keeps the layers apart or flattens them into
+one voice saying one thing about power.
+
+**R5** (82k, 6 files) is Dickinson's *Because I could not stop for Death* under two voices, one
+of which lays a measuring grid over the page. The poem will not resolve its own time scheme, and
+the case passes on preserving that rather than settling it.
+
+**R6** (82k, 6 files) is Browning's *My Last Duchess*, the standard test of whether a reader can
+tell a dramatic speaker from the poet. The Duke indicts himself in his own words; the failure is
+attributing his position to Browning, or grounding a claim about power in what the Duke is like
+rather than in what the poem puts on the page.
+
+**R7** (82k, 6 files) is *The Raven* with the plain-speech voice beside the reception voice. It
+is partly a rendering test: the poem's repetition invites a reading that reproduces great
+stretches of it, and the kernel's reassembly test says an eleven-section treatment can satisfy
+every per-quote rule and still reprint half the poem.
+
+**R8** (160k, 7 files) is Yeats's *The Second Coming*, the largest Tier 1 case because the style
+mode it loads has no corpus marker to cut. The poem is the most quoted prophecy in English and
+the case asks the reading to stay on the page: separate what the text establishes from the
+history everybody brings to it, and claim no prediction.
+
+**R9** (63k, 4 files) loads no voice and supplies no specimen. It asks the model to scan the
+benchmark corpus from memory for one device and name what it finds. Everything it produces is
+recalled rather than supplied, so the entire case is about whether reconstructed text gets
+marked as reconstructed. The cheapest case to run and the one most likely to fail in an
+interesting way.
+
+**R11** (52k, 5 files) is the smallest and the strangest. Poe wrote an essay claiming he composed
+*The Raven* by arithmetic, working backwards from an effect. The case loads the voice that
+measures an official account against a record, holds the essay at a middling provenance grade,
+and asks whether the poem on the page supports what the essay says about it. Received opinion
+has called the essay a hoax for over a century. The case is scored on measurement, not on
+agreeing with received opinion either way.
+
+### Where to start
+
+Any of them. If you want the shortest path to something surprising, R9 or R11: both are under
+64k, neither needs a long poem transcribed, and both put the apparatus somewhere it cannot
+coast. If you want to know whether the thing works at all before anything else, R1.
 
 ## The loading report
 

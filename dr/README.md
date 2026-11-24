@@ -174,8 +174,7 @@ Stems accept shorthand: `7`, `7a`, `0c`, `3-kowit`.
 ### regress
 
 ```
-python -m dr regress --cases R1 R10-A [--out DIR] [--reader-model X]
-    [--max-tokens N] [--explain] [--regression-dir DIR]
+python -m dr regress --cases R1 R10-A [--out DIR] [--max-tokens N] [--explain] [--regression-dir DIR]
 ```
 
 Compiles regression cases into `reader-prompt.md` and `build-manifest.json`. Each case's `manifest.json` carries a `request` block in the same fields as the command line, so the load set is resolved, never listed; `withhold` is the fault-injection hook and `expect` pins what must and must not be in the plan. The specimen's sha256 is checked against its pin. See `regression/README.md` for the case format and the conditions.

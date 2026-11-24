@@ -527,7 +527,6 @@ class CliCompileTests(unittest.TestCase):
 
 
 REG_DIR = ROOT / "regression"
-MODELS = {"reader": "X"}
 
 
 class RegressTests(unittest.TestCase):
@@ -570,7 +569,7 @@ class RegressTests(unittest.TestCase):
         self.assertEqual(c.specimen.sha256, load_case(REG_DIR, "R7", REG, SNAP).specimen.sha256)
         self.assertIn("5-hersh-voice-module", c.plan.stems())
         self.assertNotIn("7-device-inventory-extended", c.plan.stems())
-        _, prompts, man = compile_cases(["R11"], REG_DIR, REG, SNAP, MODELS)
+        _, prompts, man = compile_cases(["R11"], REG_DIR, REG, SNAP)
         r = prompts["reader-prompt.md"]
         self.assertIn("R11: ACCOUNT: The Philosophy of Composition", r)
         self.assertIn("Charles Dickens, in a note now lying before me", r)
@@ -607,7 +606,7 @@ class RegressTests(unittest.TestCase):
             self.assertFalse(c.ok)
             self.assertTrue(any("expected 7-device-inventory-extended loaded" in e for e in c.expect_errors))
             with self.assertRaises(RegressionError):
-                compile_cases(["R2"], d, REG, SNAP, MODELS)
+                compile_cases(["R2"], d, REG, SNAP)
 
     def test_reader_manifest_hides_scoring(self):
         c = load_case(REG_DIR, "R1", REG, SNAP)
@@ -618,7 +617,7 @@ class RegressTests(unittest.TestCase):
         self.assertNotIn("expect", rm)
 
     def test_reader_prompt(self):
-        cases, prompts, man = compile_cases(["R10-A"], REG_DIR, REG, SNAP, MODELS)
+        cases, prompts, man = compile_cases(["R10-A"], REG_DIR, REG, SNAP)
         self.assertEqual(sorted(prompts), ["reader-prompt.md"])
         r = prompts["reader-prompt.md"]
         self.assertIn("R10-A: WITHHELD FILES", r)
@@ -639,28 +638,27 @@ class RegressTests(unittest.TestCase):
 
     def test_no_grader_artifacts(self):
         """The compiler emits one role. Nothing names a grader or a handoff."""
-        _, prompts, man = compile_cases(["R1"], REG_DIR, REG, SNAP, MODELS)
+        _, prompts, man = compile_cases(["R1"], REG_DIR, REG, SNAP)
         self.assertEqual(list(prompts), ["reader-prompt.md"])
         self.assertNotIn("handoff_slots", man)
         self.assertEqual(list(man["prompt_sha256"]), ["reader-prompt.md"])
-        self.assertEqual(list(man["model_assignments"]), ["reader"])
         low = prompts["reader-prompt.md"].lower()
         for word in ("evaluator", "adjudicator", "[paste"):
             self.assertNotIn(word, low)
 
     def test_multi_case_and_determinism(self):
-        _, p1, m1 = compile_cases(["R1", "R3"], REG_DIR, REG, SNAP, MODELS)
-        _, p2, m2 = compile_cases(["R1", "R3"], REG_DIR, REG, SNAP, MODELS)
+        _, p1, m1 = compile_cases(["R1", "R3"], REG_DIR, REG, SNAP)
+        _, p2, m2 = compile_cases(["R1", "R3"], REG_DIR, REG, SNAP)
         self.assertEqual(m1["prompt_sha256"], m2["prompt_sha256"])
         self.assertIn("more than one case", p1["reader-prompt.md"])
         with self.assertRaises(RegressionError):
-            compile_cases(["R1", "R1"], REG_DIR, REG, SNAP, MODELS)
+            compile_cases(["R1", "R1"], REG_DIR, REG, SNAP)
         with self.assertRaises(RegressionError):
-            compile_cases(["R99"], REG_DIR, REG, SNAP, MODELS)
+            compile_cases(["R99"], REG_DIR, REG, SNAP)
 
     def test_write(self):
         with tempfile.TemporaryDirectory() as td:
-            _, prompts, man = compile_cases(["R9"], REG_DIR, REG, SNAP, MODELS)
+            _, prompts, man = compile_cases(["R9"], REG_DIR, REG, SNAP)
             written = write_regression(Path(td), prompts, man)
             self.assertEqual([p.name for p in written],
                              ["reader-prompt.md", "build-manifest.json"])
