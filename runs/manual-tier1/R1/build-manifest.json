@@ -82,6 +82,6 @@
   "selected_cases": [
     "R1"
   ],
-  "snapshot": "C:\\Users\\kucerar\\Documents\\CLAUDE2\\Diagnostic_Reader\\tier1-snapshot",
+  "snapshot": "tier1-snapshot",
   "snapshot_sha256": null
 }

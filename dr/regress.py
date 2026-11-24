@@ -25,7 +25,7 @@ from typing import Dict, List, Optional
 
 from . import __version__
 from .compile import (CompileError, Specimen, fence, load_specimen, section, sha256,
-                      specimen_card)
+                      snapshot_label, specimen_card)
 from .registry import Registry, RegistryError
 from .request import Request, normalize, render_request_line
 from .resolve import LoadPlan, resolve
@@ -302,7 +302,7 @@ def build_manifest(cases: List[Case], prompts: Dict[str, str], snap: Snapshot, m
         "generator_version": __version__,
         "selected_cases": [c.id for c in cases],
         "model_assignments": models,
-        "snapshot": str(snap.source),
+        "snapshot": snapshot_label(snap.source),
         "snapshot_sha256": sha256(snap.source.read_bytes()) if snap.is_zip else None,
         "cases": {
             c.id: {

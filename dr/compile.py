@@ -34,6 +34,22 @@ class CompileError(ValueError):
     pass
 
 
+def snapshot_label(source: Path) -> str:
+    """The snapshot path as the build manifest records it, without an absolute path.
+
+    An absolute path carries the operator's account name and directory layout into a file
+    the suite says to commit, and into a repository that may be public. Record the path
+    relative to the working directory when the snapshot sits inside it, and the final
+    component alone when it does not. Nothing above the working directory is recorded.
+
+    This also makes the field reproducible across machines, which an absolute path is not.
+    """
+    try:
+        return str(source.resolve().relative_to(Path.cwd().resolve()))
+    except ValueError:
+        return source.name
+
+
 def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
@@ -251,7 +267,7 @@ def build(plan: LoadPlan, reg: Registry, snap: Snapshot, specimens: List[Specime
         "request": _request_dict(plan.request),
         "request_line": plan.request_line,
         "task": reg.tasks[plan.request.task].label,
-        "snapshot": str(snap.source),
+        "snapshot": snapshot_label(snap.source),
         "snapshot_sha256": sha256(snap.source.read_bytes()) if snap.is_zip else None,
         "files": [{"step": f.load_step, "stem": f.stem, "name": f.name, "version": f.version,
                    "size": f.size, "sha256": f.sha256, "reasons": f.reasons} for f in plan.files],

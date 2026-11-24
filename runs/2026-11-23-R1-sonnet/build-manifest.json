@@ -66,11 +66,7 @@
   },
   "generator": "dr regress",
   "generator_version": "0.2.0",
-  "handoff_slots": {
-    "adjudicator_evaluator": "paste evaluator report at the marked slot",
-    "adjudicator_reader": "paste reader output at the marked slot",
-    "evaluator": "paste reader output at the marked slot"
-  },
+  "handoff_slots": {},
   "model_assignments": {
     "adjudicator": "Z (not specified)",
     "evaluator": "Y (not specified)",
@@ -78,18 +74,14 @@
   },
   "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
   "prompt_chars": {
-    "adjudicator-prompt.md": 984751,
-    "evaluator-prompt.md": 984033,
     "reader-prompt.md": 887328
   },
   "prompt_sha256": {
-    "adjudicator-prompt.md": "cb98a405a2377582a5d0766c66012ed388294952a335238d4e170aa662c2a25f",
-    "evaluator-prompt.md": "f100f1f292bda9af4bdfb5a0e661cbc95b4b8b2e8659ac626f2b3fbc6bf4fa8a",
     "reader-prompt.md": "71b07d1f801cc000e8204f0cd831e02a43d0a315f9dda493fce224309a6ecb18"
   },
   "selected_cases": [
     "R1"
   ],
-  "snapshot": "C:\\Users\\kucerar\\Documents\\CLAUDE2\\Diagnostic_Reader",
+  "snapshot": ".",
   "snapshot_sha256": null
 }

@@ -107,7 +107,7 @@ byte-identical:
 | `0a-portable-poetics-kernel-v0_3_19.md` | 2f408d84625414dd | 2f408d84625414dd |
 | `0c-voice-designations-v0_7.md` | ab0b2e67da17db4c | ab0b2e67da17db4c |
 | `7-device-inventory-extended-v0_4.md` | 4dde79df1df0c4b3 | 4dde79df1df0c4b3 |
-| `1-rother-voice-module-v0_3_1.md` | 39e47be1b787f0e8 | e9f1fae153b43c5e |
+| `1-rother-voice-module-v0_3_1.md` | 39e47be1b787f0e8 | a2fdc58df8051e7a |
 
 A snapshot is a poor substitute for a flag. `dr lint` cannot see it, the golden tests cannot see
 it, and the hash it produces means nothing to a reader without that scratch directory. A
@@ -279,7 +279,7 @@ Under `runs/`, untracked, outside the bundle:
 |---|---|
 | `runs/2026-11-23-R1-sonnet/` | Tier 3 role prompts and `build-manifest.json` for the canonical condition |
 | `runs/2026-11-23-R1-sonnet/source-verification-ledger.md` | the standard R1 should be judged against, read out of the pinned files before any artifact existed, with both hash sets and the condition change recorded |
-| `runs/2026-11-23-R1-sonnet-tier1/` | Tier 1 role prompts and manifest |
+| `runs/manual-tier1/R1/` | the Tier 1 R1 condition, reproducible from `regression/tools/` |
 
 No `reader-output.md` exists in either directory. The ledger was written before the artifact it
 was meant to judge, which is the right order and the only part of the protocol this attempt carried

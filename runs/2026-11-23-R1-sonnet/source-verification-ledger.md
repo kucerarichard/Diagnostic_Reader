@@ -112,7 +112,7 @@ The canonical-condition run was abandoned. Reason: at Tier 3 the Reader spent ~2
 ingesting 887,328 characters and had produced no artifact. Operator directed a rerun at
 Corpus Loading Tier 1.
 
-The run continues under `runs/2026-11-23-R1-sonnet-tier1/`. This is **not** the condition the
+The run continues under `runs/manual-tier1/R1/`. This is **not** the condition the
 suite pins for R1, and no score from it may be reported as a canonical R1 result.
 
 What changed, exactly one thing:
@@ -123,7 +123,7 @@ What changed, exactly one thing:
 | `0a-portable-poetics-kernel-v0_3_19.md` | 2f408d84625414dd | 2f408d84625414dd (unchanged) |
 | `0c-voice-designations-v0_7.md` | ab0b2e67da17db4c | ab0b2e67da17db4c (unchanged) |
 | `7-device-inventory-extended-v0_4.md` | 4dde79df1df0c4b3 | 4dde79df1df0c4b3 (unchanged) |
-| `1-rother-voice-module-v0_3_1.md` | 39e47be1b787f0e8 | **e9f1fae153b43c5e** |
+| `1-rother-voice-module-v0_3_1.md` | 39e47be1b787f0e8 | **a2fdc58df8051e7a** |
 
 Specimen unchanged: `f115345237e15c49…`. Request line unchanged. `expect` gate still passes.
 Token estimate 221,908 to 71,928, a 67.6 percent reduction. Framework bytes 888 KB to 288 KB.
@@ -132,8 +132,12 @@ The voice module was truncated at its own corpus marker
 (`## BEGIN CORPUS: Critical Voice Examples…`, line 676), keeping lines 1-675, the analytical
 header. The corpus was replaced by a section headed `## CORPUS: NOT LOADED (TIER 1)` which
 declares the tier, states that the absence is a tier selection rather than a loading fault,
-and instructs that corpus material must not be reconstructed from memory. The truncation is
-performed by a snapshot builder outside the repository; the repository bundle is untouched.
+and instructs that corpus material must not be reconstructed from memory. The truncation is performed by
+`regression/tools/make-tier1-snapshot.py`, which writes the snapshot to `tier1-snapshot/`;
+the repository bundle is untouched. The hash above is that script's output. An earlier
+ad-hoc build of the same snapshot, used for the attempt this ledger records, carried a
+differently worded notice and hashed to e9f1fae153b43c5e; it is not reproducible and the
+reader produced nothing under it.
 
 Authority for Tier 1 as a legitimate condition: `1-rother-voice-module` §Corpus Loading
 Tiers, "Tier 1: this header. Use for ordinary Rother-mode deployment." Tier 3, "full
