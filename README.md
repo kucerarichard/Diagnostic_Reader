@@ -1270,7 +1270,7 @@ Abstention is a completed result. A voice that holds silent, an empty device bin
 
 ## History
 
-`0d-apparatus-provenance` records how the apparatus came to its shape over about fifteen months. It began with a scratch in a new car's clearcoat caused by the writer's own glitch. Months later a deer cracked the bumper, and the damage stopped mattering while the mechanism stayed. The file traces six phases:
+`0d-apparatus-provenance` records how the apparatus came to its shape over about fifteen months. The file traces six phases:
 
 1. A private, source-heavy boot.
 2. The separation of procedure from source.
