@@ -70,6 +70,32 @@ The source's governing idea is the distinction between what an instrument makes 
 
 The whole file follows from that. A competence can fail not because the faculty is absent but because the wrong automatic was installed. The operations below look for what a poem makes automatic, and decline the system that was imposed on it.
 
+## Looking Around
+
+One tool here runs as a program. `tools/martino-transcribe.py` is standard library only and consults no model.
+
+```
+python tools/martino-transcribe.py COLTRANE TENOR --compact      the source's own worked words
+python tools/martino-transcribe.py beautiful ugly --compact      the two he plays on film
+python tools/martino-transcribe.py "Dare frame thy fearful symmetry"
+python tools/martino-transcribe.py --file regression/tests/R1/specimen.txt --max-lines 4
+python tools/martino-transcribe.py --help
+```
+
+The long form prints the notes, the scale degrees against A minor, a contour of rises and falls, the span, the landing note, and a seven-line plot. `--compact` prints the notes alone, one line per input, which is the form to use on a whole poem.
+
+Load the file into a reading with either name:
+
+```
+python -m dr explain read --extensions 15
+python -m dr explain read --extensions martino
+python -m dr explain read --extensions martino attridge-staten --voices ASSAY
+```
+
+It is a step 4 extension of 26 KB, so it costs about 6,600 tokens on top of whatever the task already loads.
+
+The rest of the tools are read and applied by hand. Tool 2 is a question about the reader rather than the poem and runs once, not per specimen. Tools 3 and 4 run on any poem with a repeating shape. Tool 5 runs at the Mixed Log. Tools 6 and 7 are checks on the reading rather than operations on the page.
+
 ## Tool 1: Letter-Scale Transcription
 
 The source maps the twenty-six letters onto the seven natural notes, cycling. A to G, then H begins again at A, and so on; twenty-six letters make three full passes of seven with five left over, and he says so in those words. A word then has a pitch sequence, and he composed from it: the title piece of one record was derived by running two words through the mapping and taking the result as a line.
@@ -102,9 +128,49 @@ What it can do is give a reader with an ear a second object to hear, derived fro
 
 Hold the output at the Mixed Log as material, never as evidence. A contour that agrees with the line's movement is a coincidence until the line's movement has been established on its own grounds.
 
+### Worked Case: What the Landing Note Finds in The Tyger
+
+`tools/martino-transcribe.py` runs the mapping. Taking the landing note of each of the twenty-four lines of Blake's *The Tyger* and pairing them by couplet:
+
+```
+bright       F   night        F   match
+eye          E   symmetry     D   <<< does not match
+skies        E   eyes         E   match
+aspire       E   fire         E   match
+art          F   heart        F   match
+beat         F   feet         F   match
+chain        G   brain        G   match
+grasp        B   clasp        B   match
+spears       E   tears        E   match
+see          E   thee         E   match
+bright       F   night        F   match
+eye          E   symmetry     D   <<< does not match
+
+12 couplets, 2 non-matching
+```
+
+Twelve couplets, two mismatches, and both are the same pair. `eye` against `symmetry` is the one rhyme in the poem that is not a rhyme, the one every commentator stops at, and it sits in the frame stanza that opens and closes the poem. The tool located it knowing nothing about poetry, rhyme, or Blake.
+
+Then the mechanism, which matters more than the result. The landing note is the note of the line's last letter, so matching landings mean the lines end in the same letter. The tool is a detector for spelling. In *The Tyger* that happens to track the rhyme scheme almost perfectly, because Blake's rhymes here are spelled alike, so the one pair that is not spelled alike is the one that stands out.
+
+On another poem it will mislead, in both directions:
+
+```
+rhymes to the ear, flagged anyway:   though/snow  A B      love/of   E F
+                                     sea/key      A D      gone/upon E G
+spelled alike, not a rhyme, missed:  love/move    E E      cough/though  A A
+                                     daughter/laughter  D D
+```
+
+So the landing note is not a rhyme test and must never be reported as one. What it is, on a poem whose orthography is regular, is a mechanical index of line endings that a reader can scan in a column without hearing anything. That is worth having when the ear is the faculty in question, and it is worth distrusting the moment the poem's spelling stops being regular.
+
+This is the whole tool in one case: it hands you something you did not intend, and the finding arrives only when you check it against what the poem does on its own grounds.
+
 ### Failure Mode
 
 Numerology. The mapping will always produce something, on any text, including a shopping list, and a reader determined to find significance will find it. The guard is the kernel's decoration rule: an output that does nothing in the reading is decoration, however pretty the shape.
+
+A second and more specific trap, from the worked case: reporting a landing-note mismatch as a rhyme finding. It is a spelling finding, and the two coincide only where the poem's orthography is regular.
 
 ## Tool 2: The Wrong Automatic
 
