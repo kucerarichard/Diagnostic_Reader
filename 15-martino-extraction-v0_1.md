@@ -79,10 +79,19 @@ python tools/martino-transcribe.py COLTRANE TENOR --compact      the source's ow
 python tools/martino-transcribe.py beautiful ugly --compact      the two he plays on film
 python tools/martino-transcribe.py "Dare frame thy fearful symmetry"
 python tools/martino-transcribe.py --file regression/tests/R1/specimen.txt --max-lines 4
+python tools/martino-transcribe.py "Dare frame thy fearful symmetry" --tonic C
 python tools/martino-transcribe.py --help
 ```
 
-The long form prints the notes, the scale degrees against A minor, a contour of rises and falls, the span, the landing note, and a seven-line plot. `--compact` prints the notes alone, one line per input, which is the form to use on a whole poem.
+The long form prints the notes, the scale degrees, the tonic and the mode it implies, a contour of rises and falls, the span, the landing note, and a seven-line plot. `--compact` prints the notes alone, one line per input, which is the form to use on a whole poem.
+
+`--tonic` takes any natural note and defaults to A, the source's own setting. The notes never move; what moves is which of them is called 1, and with it the mode, the wrap, the degrees, the span, and the contour. Run one line under two tonics to see how much of the shape was the reference rather than the letters:
+
+```
+tonic A   \///\\/\/\//\\///\=\/=\/\=      Aeolian, span 7 of 7
+tonic C   /\//\/\\//\/\/\//\=\/=\/\=      Ionian,  span 5 of 7
+tonic F   \//\/\\/\//\/\/\//=\\=/\/=      Lydian
+```
 
 Load the file into a reading with either name:
 
@@ -109,6 +118,10 @@ Prompt:
 Assign each letter its note by position in the alphabet, modulo seven, against the natural notes of A minor or C major. Transcribe a word, a line, a title, or a name. Play or hear the result.
 
 Two things can then be read. The **contour** is where the sequence rises, falls, repeats, and leaps. The **landing** is the note the sequence ends on and what that note is in the key.
+
+Both are relative to a declared tonic, and the tonic is a choice. The seven natural notes are one fixed set; calling one of them 1 picks a mode, puts the wrap from 7 back to 1 at that point, and changes the contour. The source sets A as 1 and gets the natural minor. Setting C as 1 gives the major over the same letters, and the step from G to A that fell six degrees under A now rises one. On a line of twenty-seven letters, moving the tonic changes up to fourteen of the twenty-six marks. Declare the tonic with every contour reported, because a contour without one says nothing.
+
+Nothing in the degrees constrains register. The mapping yields pitch classes, not pitches: the same sequence voices as stepwise motion or as sevenths and ninths according to where the player puts each note, and the notation has no vote. Close intervals on the page do not forbid wide ones in the air. This is the source's own rule about closure arriving one level down, and the decision belongs where he puts it.
 
 The tool produces material. It does not produce a finding. A finding arrives only when the generated contour is set against something the poem independently does, and the two are compared at an address.
 
