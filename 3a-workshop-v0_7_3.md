@@ -1,6 +1,6 @@
 # JIG WORKSHOP MODE
 
-Version: 0.7.2
+Version: 0.7.3
 Module type: source-bearing workshop mode
 Kernel requirement: Portable Poetics Kernel v0.3.19 for the lyric kind and the bar unit on the card; v0.3.17 for Found Text Compatibility, the Poetics Scan, and the unit address forms; v0.3.16 for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials and found text
 Voice module requirement: the TARE voice module, v0.3.1 or later, preferred
@@ -11,6 +11,8 @@ Required catalog extension for one section: `12-confinement-inventory`. Confinem
 Optional catalog extension: `13-speaker-dials`, for dial trials, dial overlays, the Engine Bay tuning question, and drill-derived experiments. Every other section runs without it.
 Optional directive extension: `15-martino-extraction`, for the shape and axis tests in Engine Bay and Function Bay and the automatic question before the Sound and Cadence Scan. Every section runs without it.
 Corpus status: full workshop-book corpus follows this header
+
+Revision 0.7.3: corrects the activation notice added at 0.7.2, which named the extraction and so put a calibration source's name into generated output, against that file's own rights section and the designation layer's Tier A. The notice now names the function, as every other awareness notice in this file does. The block gains the sentence that the file's name and its source's are barred from output alongside the tool names. Found by the first workshop run that loaded the extension, which suppressed the notice and recorded the conflict rather than emitting it. No other change.
 
 Revision 0.7.2: adds the Martino Extraction Awareness block, which routes four of that file's seven tools into sections this mode already has: the automatic question runs once before section 3 and asks whether a poet reporting no ear is missing a faculty or running English through a borrowed prosody; the shape test runs in Engine Bay beside Load-Bearing Parts, where one altered element in a held frame is usually the load-bearing move; the axis test runs in Function Bay beside Current Strategy; and the found-text tool runs on the card, widening what may be brought while the Poetics Scan still decides what stands up. The file's first tool is declared not to run here, because it generates material rather than findings and a treatment that spends a poet's attention on the apparatus has failed the register lock before it starts. Adds no device names, so the Device Resolution Map is unchanged. No change to the stance, the output-form numbering, the register lock, the trials, or the corpus.
 
@@ -208,7 +210,7 @@ Its Tool 1, Letter-Scale Transcription, does not run in a workshop. It is an exe
 
 Its Tools 5 and 6 are checks on a reading and have workshop equivalents already: closure is governed here by the output gate, and the position outside a pair is the Mode Stance.
 
-The Workshop Register Lock still governs surface language. Tool names never surface. Say the finding in workshop speech.
+The Workshop Register Lock still governs surface language. Tool names never surface, and neither does the file's name or its calibration source's: that file's rights section bars the source's name from generated output, and an activation notice is output. Say the finding in workshop speech.
 
 `absent`: section 3 runs on the standard craft category, Engine Bay and Function Bay run their own lists, and the card runs as this file states. Do not reconstruct the tools from memory of the file or of its calibration source. A shape called a parental form without the identity test is a resemblance with a borrowed name.
 
@@ -219,7 +221,7 @@ This extension carries no device names and changes no section's device resolutio
 Include this notice only when the tools change the output:
 
 ```text
-Martino Extraction: loaded. Shape and axis tests available in Engine Bay and Function Bay.
+Shape and Axis Tests: loaded. Held-frame and both-axis tests run in Engine Bay and Function Bay.
 ```
 
 Omit the notice when the tools do not change the output.

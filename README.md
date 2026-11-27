@@ -132,7 +132,7 @@ Core and policy:
 
 | Stem | Version | Role | Load when |
 |---|---|---|---|
-| `0-poetics-boot-hollow` | 0.20 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
+| `0-poetics-boot-hollow` | 0.21 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
 | `0a-portable-poetics-kernel` | 0.3.19 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan | Always, first |
 | `0c-voice-designations` | 0.7 | Designation set, leak tiers, calibration-collision rule for voices, modes, and calibrated extensions, take versus specimen | Always, with any voice, mode, or `13` |
 | `0b-voice-slot-registry` | 0.6 | Slot matrix, voice test, candidate log, reopen conditions | Only when slot status is in question |
@@ -149,7 +149,7 @@ Voices and modes:
 | `3-perloff-voice-module` | 0.3.1 | RETICLE voice | Procedural or avant-garde specimens |
 | `5-hersh-voice-module` | 0.1 | DATUM voice | A specimen's account of itself against a record; needs `11` |
 | `4-gonzo-mode` | 0.3.1 | VISE style mode; rides any voice | On request |
-| `3a-workshop` | 0.7.2 | JIG workshop mode, with found-text treatment and named contrast trials | Workshop requests |
+| `3a-workshop` | 0.7.3 | JIG workshop mode, with found-text treatment and named contrast trials | Workshop requests |
 
 Extensions and notes:
 
@@ -216,14 +216,14 @@ Snapshot:      /path/to/Diagnostic_Reader
 Specimens:     draft.txt
 
 step file                                             version      size  why
-0    0-poetics-boot-hollow-v0_20.md                   0.20        20 KB  entry point
+0    0-poetics-boot-hollow-v0_21.md                   0.21        20 KB  entry point
 1    0a-portable-poetics-kernel-v0_3_19.md            0.3.19     126 KB  task Workshop
 2    0c-voice-designations-v0_7.md                    0.7         22 KB  task Workshop
 4    7-device-inventory-extended-v0_4.md              0.4         85 KB  task Workshop
 4    12-confinement-inventory-v0_16.md                0.16       431 KB  task Workshop
 4    13-speaker-dials-v0_3.md                         0.3         53 KB  dial trial or dial overlay requested
 5    3-kowit-voice-module-v0_3_1.md                   0.3.1      189 KB  task Workshop; voice TARE
-6    3a-workshop-v0_7_2.md                            0.7.2      660 KB  task Workshop; JIG workshop
+6    3a-workshop-v0_7_3.md                            0.7.3      660 KB  task Workshop; JIG workshop
 
 Full Monty State: absent
 Total: 1.58 MB across 8 files; ~396,182 tokens at 4 chars/token

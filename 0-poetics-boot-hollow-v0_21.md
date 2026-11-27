@@ -1,9 +1,11 @@
 # Diagnostic Reader Hollow Boot
 
-Version: 0.20
+Version: 0.21
 Kernel: `0a-portable-poetics-kernel`, v0.3.19 or later
 Source policy: no embedded raw source
 Status: shareable loader wrapper
+
+v0.21 changes: registers the workshop at 0.7.3, which corrects the activation notice added at 0.7.2 from the extraction's name to its function, after the first run that loaded it reported the notice as a Tier A leak and declined to emit it. No other file changes. The plugin registry is unchanged.
 
 v0.20 changes: registers the workshop at 0.7.2, which adds a Martino Extraction Awareness block and so gives `15-martino-extraction` a consumer. Four of its seven tools route into workshop sections that already exist, its first tool is declared not to run there, and no device resolution changes. Closes one of the three Outstanding items added at v0.19 only in part: the tools now have a declared site in a mode, and none has yet been exercised on a live specimen. No other file changes. The plugin registry is unchanged.
 
@@ -64,7 +66,7 @@ Versions current as of the v0.18 sweep. References use unversioned stems per the
 | `3-kowit-voice-module` | 0.3.1 | voice module | TARE |
 | `3-perloff-voice-module` | 0.3.1 | voice module | RETICLE |
 | `5-hersh-voice-module` | 0.1 | voice module | DATUM |
-| `3a-workshop` | 0.7.2 | workshop mode | JIG |
+| `3a-workshop` | 0.7.3 | workshop mode | JIG |
 | `4-gonzo-mode` | 0.3.1 | style mode | VISE |
 | `7-device-inventory-extended` | 0.4 | device extension | none |
 | `8-frye-extraction` | 0.6 | directive extension | none |

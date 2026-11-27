@@ -1,0 +1,156 @@
+{
+  "chars_per_token": 4.0,
+  "excluded": [],
+  "files": [
+    {
+      "name": "0-poetics-boot-hollow-v0_20.md",
+      "reasons": [
+        "entry point"
+      ],
+      "sha256": "014727d09547cd90807db452b2637abf01eee5233ce133d0dc2174caafe75fc3",
+      "size": 20839,
+      "stem": "0-poetics-boot-hollow",
+      "step": 0,
+      "version": "0.20"
+    },
+    {
+      "name": "0a-portable-poetics-kernel-v0_3_19.md",
+      "reasons": [
+        "task Full reading"
+      ],
+      "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+      "size": 125728,
+      "stem": "0a-portable-poetics-kernel",
+      "step": 1,
+      "version": "0.3.19"
+    },
+    {
+      "name": "0c-voice-designations-v0_7.md",
+      "reasons": [
+        "task Full reading"
+      ],
+      "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+      "size": 21638,
+      "stem": "0c-voice-designations",
+      "step": 2,
+      "version": "0.7"
+    },
+    {
+      "name": "7-device-inventory-extended-v0_4.md",
+      "reasons": [
+        "task Full reading"
+      ],
+      "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+      "size": 85427,
+      "stem": "7-device-inventory-extended",
+      "step": 4,
+      "version": "0.4"
+    },
+    {
+      "name": "15-martino-extraction-v0_1.md",
+      "reasons": [
+        "--extensions martino"
+      ],
+      "sha256": "4da749a30586dda2461a8fd8adb94d1a2a1d0add5aee0778342b1f3931e9c4bf",
+      "size": 28788,
+      "stem": "15-martino-extraction",
+      "step": 4,
+      "version": "0.1"
+    },
+    {
+      "name": "1-rother-voice-module-v0_3_1.md",
+      "reasons": [
+        "voice ASSAY"
+      ],
+      "sha256": "a2fdc58df8051e7a28952b15a7c9993812d690632fc8fcd613f4c187371e9761",
+      "size": 35394,
+      "stem": "1-rother-voice-module",
+      "step": 5,
+      "version": "0.3.1"
+    }
+  ],
+  "framework_bytes": 317814,
+  "full_monty_state": "absent",
+  "generator": "dr",
+  "generator_version": "0.2.0",
+  "max_tokens": null,
+  "parts": [
+    {
+      "chars": 318892,
+      "name": "prompt.md",
+      "sha256": "6f9365ca4bd8f7e58d3712786a84bd2bc32ce32a613e66405294ed748767e08d"
+    }
+  ],
+  "plugins": [],
+  "prompt_chars": 318892,
+  "request": {
+    "account": false,
+    "account_path": null,
+    "ars_poetica": false,
+    "ask": null,
+    "author": null,
+    "battery": false,
+    "contrast_at": null,
+    "copyright": null,
+    "corpus": [],
+    "counter_voices": [],
+    "date": null,
+    "dial_trial": null,
+    "edition": null,
+    "exclude": [],
+    "extensions": [
+      "martino"
+    ],
+    "feedback_bridge": false,
+    "found_by": null,
+    "hermetic": false,
+    "include": [],
+    "kind": "poem",
+    "no_boot": false,
+    "no_dial_trials": false,
+    "plugins": [],
+    "provenance": null,
+    "rewrite_at": [],
+    "rewrite_under": [],
+    "rewrites": null,
+    "scan_category": null,
+    "scan_devices": [],
+    "scan_or": false,
+    "scan_source": null,
+    "specimens": [
+      "runs\\2026-11-27-slab\\specimen.txt"
+    ],
+    "spine": null,
+    "task": "sidecar",
+    "title": null,
+    "unit": "line",
+    "verdict": null,
+    "vise": false,
+    "voices": [
+      "ASSAY"
+    ],
+    "withhold": []
+  },
+  "request_line": "Full sidecar. ASSAY verdict.",
+  "snapshot": "tier1-snapshot",
+  "snapshot_sha256": null,
+  "specimens": [
+    {
+      "meta": {
+        "author": "unknown",
+        "copyright": "unknown",
+        "kind": "poem",
+        "provenance": "supplied by the operator, who does not know the author or the source",
+        "title": "Took Cab To See Dull and Drab Cold Slab",
+        "unit": "line"
+      },
+      "path": "runs\\2026-11-27-slab\\specimen.txt",
+      "role": "specimen",
+      "sha256": "f3b886bc49025d5e6c71fe3251862386abb7c5479295913c11626d9533e3aa33"
+    }
+  ],
+  "task": "Full reading",
+  "token_estimate": 79723,
+  "warnings": [],
+  "withheld": []
+}

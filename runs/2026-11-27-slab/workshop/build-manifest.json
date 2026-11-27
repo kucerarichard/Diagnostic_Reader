@@ -1,0 +1,180 @@
+{
+  "chars_per_token": 4.0,
+  "excluded": [],
+  "files": [
+    {
+      "name": "0-poetics-boot-hollow-v0_20.md",
+      "reasons": [
+        "entry point"
+      ],
+      "sha256": "014727d09547cd90807db452b2637abf01eee5233ce133d0dc2174caafe75fc3",
+      "size": 20839,
+      "stem": "0-poetics-boot-hollow",
+      "step": 0,
+      "version": "0.20"
+    },
+    {
+      "name": "0a-portable-poetics-kernel-v0_3_19.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+      "size": 125728,
+      "stem": "0a-portable-poetics-kernel",
+      "step": 1,
+      "version": "0.3.19"
+    },
+    {
+      "name": "0c-voice-designations-v0_7.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+      "size": 21638,
+      "stem": "0c-voice-designations",
+      "step": 2,
+      "version": "0.7"
+    },
+    {
+      "name": "7-device-inventory-extended-v0_4.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+      "size": 85427,
+      "stem": "7-device-inventory-extended",
+      "step": 4,
+      "version": "0.4"
+    },
+    {
+      "name": "12-confinement-inventory-v0_16.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "a88aa7ee1cf54d67ef5f105b60553dbba7990d8c9d585e77dac67d62c7029b5d",
+      "size": 430799,
+      "stem": "12-confinement-inventory",
+      "step": 4,
+      "version": "0.16"
+    },
+    {
+      "name": "15-martino-extraction-v0_1.md",
+      "reasons": [
+        "--extensions martino"
+      ],
+      "sha256": "4da749a30586dda2461a8fd8adb94d1a2a1d0add5aee0778342b1f3931e9c4bf",
+      "size": 28788,
+      "stem": "15-martino-extraction",
+      "step": 4,
+      "version": "0.1"
+    },
+    {
+      "name": "3-kowit-voice-module-v0_3_1.md",
+      "reasons": [
+        "task Workshop",
+        "voice TARE"
+      ],
+      "sha256": "5eae31f763ef6c9a6a86851ae04f1897565772c0e24699368cdc13a6daad3767",
+      "size": 40431,
+      "stem": "3-kowit-voice-module",
+      "step": 5,
+      "version": "0.3.1"
+    },
+    {
+      "name": "3a-workshop-v0_7_2.md",
+      "reasons": [
+        "task Workshop",
+        "JIG workshop"
+      ],
+      "sha256": "ce55201b9b3c8ddea572bb61996915d679f340dbecdafd28781f8f9c4f388f68",
+      "size": 79247,
+      "stem": "3a-workshop",
+      "step": 6,
+      "version": "0.7.2"
+    }
+  ],
+  "framework_bytes": 832897,
+  "full_monty_state": "absent",
+  "generator": "dr",
+  "generator_version": "0.2.0",
+  "max_tokens": null,
+  "parts": [
+    {
+      "chars": 833200,
+      "name": "prompt.md",
+      "sha256": "f7903f2ee5f2f31206d4b741a70aee95d5d606d257ce957bdb1bf92875939ee6"
+    }
+  ],
+  "plugins": [],
+  "prompt_chars": 833200,
+  "request": {
+    "account": false,
+    "account_path": null,
+    "ars_poetica": false,
+    "ask": null,
+    "author": null,
+    "battery": false,
+    "contrast_at": null,
+    "copyright": null,
+    "corpus": [],
+    "counter_voices": [],
+    "date": null,
+    "dial_trial": null,
+    "edition": null,
+    "exclude": [],
+    "extensions": [
+      "martino"
+    ],
+    "feedback_bridge": false,
+    "found_by": null,
+    "hermetic": false,
+    "include": [],
+    "kind": "poem",
+    "no_boot": false,
+    "no_dial_trials": false,
+    "plugins": [],
+    "provenance": null,
+    "rewrite_at": [],
+    "rewrite_under": [],
+    "rewrites": null,
+    "scan_category": null,
+    "scan_devices": [],
+    "scan_or": false,
+    "scan_source": null,
+    "specimens": [
+      "runs\\2026-11-27-slab\\specimen.txt"
+    ],
+    "spine": null,
+    "task": "workshop",
+    "title": null,
+    "unit": "line",
+    "verdict": null,
+    "vise": false,
+    "voices": [
+      "TARE"
+    ],
+    "withhold": []
+  },
+  "request_line": "workshop this specimen",
+  "snapshot": "tier1-snapshot",
+  "snapshot_sha256": null,
+  "specimens": [
+    {
+      "meta": {
+        "author": "unknown",
+        "copyright": "unknown",
+        "kind": "poem",
+        "provenance": "supplied by the operator, who does not know the author or the source",
+        "title": "Took Cab To See Dull and Drab Cold Slab",
+        "unit": "line"
+      },
+      "path": "runs\\2026-11-27-slab\\specimen.txt",
+      "role": "specimen",
+      "sha256": "f3b886bc49025d5e6c71fe3251862386abb7c5479295913c11626d9533e3aa33"
+    }
+  ],
+  "task": "Workshop",
+  "token_estimate": 208300,
+  "warnings": [],
+  "withheld": []
+}

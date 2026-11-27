@@ -32,12 +32,17 @@ import sys
 from pathlib import Path
 
 # stem prefix -> the line its corpus begins at. Matched with startswith on a stripped line.
+# Every file here declares its own tiers and names Tier 1 as the header alone. The workshop
+# puts it plainest: "The tiering is a cost rule. Do not load the full corpus when the header
+# carries the task."
 CORPUS_MARKERS = {
     "1-rother-voice-module": "## BEGIN CORPUS:",
     "2-harris-voice-module": "## CORPUS —",
     "3-kowit-voice-module": "## Kowit Corpus.",
     "3-perloff-voice-module": "### MARJ OVERVIEW:",
     "5-hersh-voice-module": "## CORPUS —",
+    "3a-workshop": "## Corpus Boundary",
+    "4-gonzo-mode": "## Corpus Boundary",
 }
 
 NOTICE = """## CORPUS: NOT LOADED (TIER 1)
