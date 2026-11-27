@@ -21,7 +21,7 @@ Kernel requirement: Portable Poetics Kernel v0.3
 
 Private-core requirement: none
 
-Consumer: any reading. Tool 1 also runs outside a reading, as an exercise.
+Consumer: any reading. `3a-workshop` at 0.7.2 or later declares a Martino Extraction Awareness block and routes Tools 2, 3, 4, and 7 into sections it already has; unlike the other extractions, that consumer imports this file rather than only being written into. Tool 1 does not run in a workshop and also runs outside a reading, as an exercise.
 
 Source status: the autobiography is in copyright; the filmed demonstration is the source's own speech, transcribed. This module paraphrases operations and names tools. It reproduces no passage of either.
 
@@ -399,4 +399,4 @@ Extracted from the two sources named at the head of this file by an operator rea
 
 Tool 3's worked case on *The Tyger* is the apparatus's own and was checked against the specimen pinned in `regression/tests/R1/specimen.txt`. Tool 1's arithmetic was checked against the source's stated figures: twenty-six letters as three sets of seven and one of five, and his two worked words.
 
-Outstanding: no tool in this file has been exercised on a live specimen inside a full reading. Tool 1's usefulness to a reader is argued and not demonstrated. The phoneme mapping named in the first doctrinal seam is unbuilt.
+Outstanding: no tool in this file has been exercised on a live specimen inside a full reading. Four now have a declared site in the workshop, which is a site and not a use. Tool 1's usefulness to a reader is argued and not demonstrated. The phoneme mapping named in the first doctrinal seam is unbuilt.

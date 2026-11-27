@@ -1,9 +1,11 @@
 # Diagnostic Reader Hollow Boot
 
-Version: 0.19
+Version: 0.20
 Kernel: `0a-portable-poetics-kernel`, v0.3.19 or later
 Source policy: no embedded raw source
 Status: shareable loader wrapper
+
+v0.20 changes: registers the workshop at 0.7.2, which adds a Martino Extraction Awareness block and so gives `15-martino-extraction` a consumer. Four of its seven tools route into workshop sections that already exist, its first tool is declared not to run there, and no device resolution changes. Closes one of the three Outstanding items added at v0.19 only in part: the tools now have a declared site in a mode, and none has yet been exercised on a live specimen. No other file changes. The plugin registry is unchanged.
 
 v0.19 changes: registers `15-martino-extraction` at 0.1, a source extraction on the model of `8`, `9`, and `14`, after checking identifier 15 free against this registry, against `dr/framework-registry.json`, and against every file on disk. The source is a jazz guitarist rather than a critic, which is new for an extraction here and is why the file argues each operation instead of citing a reading. Adds three Outstanding items: no tool exercised on a live specimen, the first tool's usefulness argued and not demonstrated, and the phoneme mapping its first doctrinal seam names left unbuilt. No other file changes. The plugin registry is unchanged.
 
@@ -62,7 +64,7 @@ Versions current as of the v0.18 sweep. References use unversioned stems per the
 | `3-kowit-voice-module` | 0.3.1 | voice module | TARE |
 | `3-perloff-voice-module` | 0.3.1 | voice module | RETICLE |
 | `5-hersh-voice-module` | 0.1 | voice module | DATUM |
-| `3a-workshop` | 0.7.1 | workshop mode | JIG |
+| `3a-workshop` | 0.7.2 | workshop mode | JIG |
 | `4-gonzo-mode` | 0.3.1 | style mode | VISE |
 | `7-device-inventory-extended` | 0.4 | device extension | none |
 | `8-frye-extraction` | 0.6 | directive extension | none |

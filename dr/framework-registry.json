@@ -3,7 +3,7 @@
   "description": "Machine mirror of 0-poetics-boot-hollow (Load Order, Module Registry, Plugin Registry) and the README's hard dependencies and minimal sets by task. The boot stays the human-readable inventory; `dr lint` checks this file against it and against the files on disk.",
   "mirrors": {
     "boot_stem": "0-poetics-boot-hollow",
-    "boot_version": "0.19",
+    "boot_version": "0.20",
     "readme": "README.md"
   },
 

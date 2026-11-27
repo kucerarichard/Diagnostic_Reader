@@ -1,6 +1,6 @@
 # JIG WORKSHOP MODE
 
-Version: 0.7.1
+Version: 0.7.2
 Module type: source-bearing workshop mode
 Kernel requirement: Portable Poetics Kernel v0.3.19 for the lyric kind and the bar unit on the card; v0.3.17 for Found Text Compatibility, the Poetics Scan, and the unit address forms; v0.3.16 for Speaker Dial Compatibility and the trial-text exemption; v0.3.14 for every section except dial trials and found text
 Voice module requirement: the TARE voice module, v0.3.1 or later, preferred
@@ -9,7 +9,10 @@ Optional full-monty enhancement: yes
 Optional device-extension enhancement: yes. When the Extended Device Inventory is loaded, workshop diagnostics name devices at extended-inventory resolution; otherwise they use the standard craft categories in this file.
 Required catalog extension for one section: `12-confinement-inventory`. Confinement Bay does not run without it. Every other section runs as before.
 Optional catalog extension: `13-speaker-dials`, for dial trials, dial overlays, the Engine Bay tuning question, and drill-derived experiments. Every other section runs without it.
+Optional directive extension: `15-martino-extraction`, for the shape and axis tests in Engine Bay and Function Bay and the automatic question before the Sound and Cadence Scan. Every section runs without it.
 Corpus status: full workshop-book corpus follows this header
+
+Revision 0.7.2: adds the Martino Extraction Awareness block, which routes four of that file's seven tools into sections this mode already has: the automatic question runs once before section 3 and asks whether a poet reporting no ear is missing a faculty or running English through a borrowed prosody; the shape test runs in Engine Bay beside Load-Bearing Parts, where one altered element in a held frame is usually the load-bearing move; the axis test runs in Function Bay beside Current Strategy; and the found-text tool runs on the card, widening what may be brought while the Poetics Scan still decides what stands up. The file's first tool is declared not to run here, because it generates material rather than findings and a treatment that spends a poet's attention on the apparatus has failed the register lock before it starts. Adds no device names, so the Device Resolution Map is unchanged. No change to the stance, the output-form numbering, the register lock, the trials, or the corpus.
 
 Revision 0.7.1: adds Feedback Bridge as output-form section 13, after the verdict, with a procedure, one output-gate line, two failure modes, and one activation notice. The bridge converts a full treatment into what one peer can say to the poet in the room the poem was posted in: time spent and the frame the piece works in first, one image drawn from the poem's own material, one observation the poet can verify by counting, one suggestion sized to a word or a move, and the rest withheld. Occasioned by an operator who compared a treatment with the feedback they then posted: the two agreed on the finding, the treatment was too long and too severe to say out loud, and no gate had asked whether a peer could say any of it. The kernel has a sayability test for poems and had none for critique. Also takes the kernel's `lyric` kind and `bar` unit at 0.3.19 onto the card, and section 4 reads the bar end when the unit is bar; the first lyric specimen was read as a page poem, and the Kind Policing failure mode records it as its first case. Nothing renumbers. No change to the stance, the register lock, the trials, or the corpus.
 
@@ -189,6 +192,37 @@ Speaker Dials: loaded. Dial trials available on command.
 ```
 
 Omit the notice when the dials do not change the output.
+
+## Martino Extraction Awareness
+
+At the start of a workshop task, check whether `15-martino-extraction` is loaded.
+
+`loaded`: four of its seven tools bear on a workshop and run on warrant, not on command.
+
+- **The Wrong Automatic**, its Tool 2, runs once before section 3, the Sound and Cadence Scan, and not per draft. It asks whether a poet reporting no ear for their own line is missing a faculty or running a system borrowed from a neighbouring art. Metrical feet are the borrowed system in English. Where the answer is the borrowed system, work section 3 at the phrase rather than the foot: the stretch the poet would say in one breath without deciding to, and whether the unit's break falls with it or against it. This is a diagnosis of the reader, so it is said to the poet only when it changes what the treatment asks them to hear, and it never appears as a judgment of their ear.
+- **Parental Form**, its Tool 3, runs in Engine Bay beside Load-Bearing Parts. Where the draft repeats a shape without altering it, name the shape and the single element that was moved inside it. One altered element in a held frame is usually load-bearing, and Tuning Before Swap should ask whether the draft's problem is the shape or that one element before any engine is swapped.
+- **Horizontal and Vertical**, its Tool 4, runs in Function Bay beside Current Strategy. Test a recurring shape on both axes, within the unit and down the poem, and say which axis it holds on. A shape holding on one axis only is a local strategy and is named as one.
+- **All Things Sing**, its Tool 7, runs on the Supplied Specimen Card. A kind the workshop would not have thought to treat is still a specimen with a kind and a unit, and the kernel's Poetics Scan grades it before the treatment. The tool widens what may be brought; the Scan decides what stands up.
+
+Its Tool 1, Letter-Scale Transcription, does not run in a workshop. It is an exercise for a reader and generates material rather than findings, and a treatment that hands a poet a melody derived from their spelling has spent the poet's attention on the apparatus. An operator may run it outside the treatment.
+
+Its Tools 5 and 6 are checks on a reading and have workshop equivalents already: closure is governed here by the output gate, and the position outside a pair is the Mode Stance.
+
+The Workshop Register Lock still governs surface language. Tool names never surface. Say the finding in workshop speech.
+
+`absent`: section 3 runs on the standard craft category, Engine Bay and Function Bay run their own lists, and the card runs as this file states. Do not reconstruct the tools from memory of the file or of its calibration source. A shape called a parental form without the identity test is a resemblance with a borrowed name.
+
+Load order is tolerant. If the file arrives later in the chat, the tools run from the next workshop turn.
+
+This extension carries no device names and changes no section's device resolution, so it adds no row to the Device Resolution Map.
+
+Include this notice only when the tools change the output:
+
+```text
+Martino Extraction: loaded. Shape and axis tests available in Engine Bay and Function Bay.
+```
+
+Omit the notice when the tools do not change the output.
 
 ## Extended Device Inventory Awareness
 
