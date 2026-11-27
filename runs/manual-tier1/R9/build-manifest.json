@@ -4,13 +4,13 @@
       "account_sha256": null,
       "files": [
         {
-          "name": "0-poetics-boot-hollow-v0_18.md",
+          "name": "0-poetics-boot-hollow-v0_19.md",
           "reasons": [
             "entry point"
           ],
-          "sha256": "ab05bfe1171438868672289a775455c3978057b5a6d000cbe49169a3a1874829",
+          "sha256": "0e4e511b6b7e128a6256090f334f3608ade04d7029c5702935dbdbf09264f0c5",
           "step": 0,
-          "version": "0.18"
+          "version": "0.19"
         },
         {
           "name": "0a-portable-poetics-kernel-v0_3_19.md",
@@ -40,7 +40,7 @@
           "version": "0.4"
         }
       ],
-      "framework_bytes": 252248,
+      "framework_bytes": 253106,
       "full_monty_state": "absent",
       "request": {
         "scan_category": "A",
@@ -52,7 +52,7 @@
       },
       "request_line": "Scan canon A for apostrophe",
       "specimen_sha256": null,
-      "token_estimate": 63062,
+      "token_estimate": 63276,
       "warnings": [],
       "withheld": []
     }
@@ -61,10 +61,10 @@
   "generator_version": "0.2.0",
   "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
   "prompt_chars": {
-    "reader-prompt.md": 258529
+    "reader-prompt.md": 259384
   },
   "prompt_sha256": {
-    "reader-prompt.md": "f15d078b0afb60a5b3c156afd69b8c08354912f4301a049711386196f9376e98"
+    "reader-prompt.md": "ba16de7675f2ec0558d91137a162facf97bcb6aac51d319464bb73a7b0f0289e"
   },
   "selected_cases": [
     "R9"

@@ -95,7 +95,7 @@ R9: LOAD SET
 
 ```text
 step file                                               version  sha256          
-0    0-poetics-boot-hollow-v0_18.md                     0.18     ab05bfe117143886
+0    0-poetics-boot-hollow-v0_19.md                     0.19     0e4e511b6b7e128a
 1    0a-portable-poetics-kernel-v0_3_19.md              0.3.19   2f408d84625414dd
 2    0c-voice-designations-v0_7.md                      0.7      ab0b2e67da17db4c
 4    7-device-inventory-extended-v0_4.md                0.4      4dde79df1df0c4b3
@@ -115,7 +115,7 @@ The complete file set for R9, as at the top of the case. A file the apparatus na
 
 ```text
 step file                                               version  sha256          
-0    0-poetics-boot-hollow-v0_18.md                     0.18     ab05bfe117143886
+0    0-poetics-boot-hollow-v0_19.md                     0.19     0e4e511b6b7e128a
 1    0a-portable-poetics-kernel-v0_3_19.md              0.3.19   2f408d84625414dd
 2    0c-voice-designations-v0_7.md                      0.7      ab0b2e67da17db4c
 4    7-device-inventory-extended-v0_4.md                0.4      4dde79df1df0c4b3

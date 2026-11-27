@@ -1,9 +1,11 @@
 # Diagnostic Reader Hollow Boot
 
-Version: 0.18
+Version: 0.19
 Kernel: `0a-portable-poetics-kernel`, v0.3.19 or later
 Source policy: no embedded raw source
 Status: shareable loader wrapper
+
+v0.19 changes: registers `15-martino-extraction` at 0.1, a source extraction on the model of `8`, `9`, and `14`, after checking identifier 15 free against this registry, against `dr/framework-registry.json`, and against every file on disk. The source is a jazz guitarist rather than a critic, which is new for an extraction here and is why the file argues each operation instead of citing a reading. Adds three Outstanding items: no tool exercised on a live specimen, the first tool's usefulness argued and not demonstrated, and the phoneme mapping its first doctrinal seam names left unbuilt. No other file changes. The plugin registry is unchanged.
 
 v0.18 changes: registers the kernel at 0.3.19 and the workshop at 0.7.1, and raises this file's kernel floor to 0.3.19, which the workshop's card now needs. The kernel adds the `lyric` kind and the `bar` unit, with `B` address forms and an absent-carrier clause in Rendering Conditions, occasioned by a rap verse read as a page poem. The workshop adds Feedback Bridge as output-form section 13, which converts a treatment into what one peer can say in the thread the poem was posted in, with a procedure, a gate line, two failure modes, and a notice. Adds three Outstanding items: lyric devices not added to `7-device-inventory-extended`, the bridge exercised on one specimen, and the Poetics Scan's behavior on a lyric. No other file changes. The plugin registry is unchanged.
 
@@ -38,7 +40,7 @@ It is also the apparatus's only complete inventory. Nothing else lists every fil
 1. Load `0a-portable-poetics-kernel`.
 2. Load `0c-voice-designations`. Without it, every voice module emits a label built from its calibration source's name, and the apparatus is out of policy from the first verdict.
 3. Load `0b-voice-slot-registry` when slot status, the voice test, or the candidate log is in question. It is not needed to run a reading.
-4. Load device and catalog extensions the task requires. `11-provenance-grading-extension` is a hard dependency of the DATUM module and is optional for everything else; `12-confinement-inventory` writes its stake levels on that ladder and reads without it. `12-confinement-inventory` is a hard dependency of the workshop's Confinement Bay and is optional for everything else. `13-speaker-dials` is a hard dependency of the workshop's dial trials and dial overlays and is optional for everything else; it needs kernel 0.3.16 and names its devices from `7-device-inventory-extended` at 0.2 or later. `8-frye-extraction` loads by default when a specimen's kind is not poem, per the kernel's Found Text Compatibility at 0.3.17, and is optional for poems. `14-attridge-staten-extraction` loads on request for a reading that wants its tools; it fires on warrant and is optional for everything.
+4. Load device and catalog extensions the task requires. `11-provenance-grading-extension` is a hard dependency of the DATUM module and is optional for everything else; `12-confinement-inventory` writes its stake levels on that ladder and reads without it. `12-confinement-inventory` is a hard dependency of the workshop's Confinement Bay and is optional for everything else. `13-speaker-dials` is a hard dependency of the workshop's dial trials and dial overlays and is optional for everything else; it needs kernel 0.3.16 and names its devices from `7-device-inventory-extended` at 0.2 or later. `8-frye-extraction` loads by default when a specimen's kind is not poem, per the kernel's Found Text Compatibility at 0.3.17, and is optional for poems. `14-attridge-staten-extraction` loads on request for a reading that wants its tools; it fires on warrant and is optional for everything. `15-martino-extraction` loads on the same terms and is optional for everything; its first tool also runs outside a reading, as an exercise.
 5. Load the voice modules the task needs.
 6. Load style or workshop modes last, since both ride a voice.
 7. Load one or more full monty plugins only when source-bearing calibration is needed.
@@ -68,6 +70,7 @@ Versions current as of the v0.18 sweep. References use unversioned stems per the
 | `12-confinement-inventory` | 0.16 | catalog extension | none |
 | `13-speaker-dials` | 0.3 | catalog extension | none |
 | `14-attridge-staten-extraction` | 0.2 | directive extension | none |
+| `15-martino-extraction` | 0.1 | directive extension | none |
 
 Referenced by the apparatus and not held here: `9-casanova-extraction`, `10-monadology-foundations`, the Compartmentalization Engine module, and `0-poetics-boot`, the private core, which loads as a legacy full monty plugin. The Compartmentalization Engine module's identifier is not recorded anywhere this file can see, so `6` looks free and is not known to be; check the disk before building on it.
 

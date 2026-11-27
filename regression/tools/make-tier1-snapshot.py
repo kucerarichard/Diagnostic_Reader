@@ -75,7 +75,8 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
 
     src, dst = a.framework.resolve(), a.out.resolve()
-    if not (src / "0-poetics-boot-hollow-v0_18.md").exists():
+    # Match by stem, never by versioned filename: the boot's version moves.
+    if not any(src.glob("0-poetics-boot-hollow*.md")) or not any(src.glob("0a-portable-poetics-kernel*.md")):
         print(f"ERROR: {src} does not look like a framework bundle", file=sys.stderr)
         return 2
     if dst == src:

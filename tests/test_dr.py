@@ -85,7 +85,9 @@ class SnapshotTests(unittest.TestCase):
         self.assertEqual(SNAP.version_of("0a-portable-poetics-kernel"), "0.3.19")
         self.assertEqual(SNAP.version_of("2-harris-voice-module"), "0.3.1")
         self.assertEqual(SNAP.version_of("12-confinement-inventory"), "0.16")
-        self.assertEqual(len(SNAP.files), 29)
+        self.assertEqual(SNAP.version_of("0-poetics-boot-hollow"), "0.19")
+        self.assertEqual(SNAP.version_of("15-martino-extraction"), "0.1")
+        self.assertEqual(len(SNAP.files), 30)
         self.assertIn("README.md", SNAP.skipped)
         self.assertNotIn("regression/README.md", SNAP.by_name)
 
@@ -98,7 +100,7 @@ class SnapshotTests(unittest.TestCase):
                 zf.writestr("Some Folder/regression/README.md", "not runtime")
             snap = load_snapshot(zpath, REG)
             self.assertEqual(snap.root, "Some Folder")
-            self.assertEqual(len(snap.files), 29)
+            self.assertEqual(len(snap.files), 30)
             self.assertEqual(snap.get("0c-voice-designations").read_text()[:7], "# VOICE")
 
     def test_duplicate_release_picks_newer(self):

@@ -132,7 +132,7 @@ Core and policy:
 
 | Stem | Version | Role | Load when |
 |---|---|---|---|
-| `0-poetics-boot-hollow` | 0.18 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
+| `0-poetics-boot-hollow` | 0.19 | Boot: load order, module registry, plugin registry, Outstanding and Closed lists | Always |
 | `0a-portable-poetics-kernel` | 0.3.19 | Kernel: register, reading procedures, checkpoints, directives, designation and source policy, output formats, bay contracts, found text, Poetics Scan | Always, first |
 | `0c-voice-designations` | 0.7 | Designation set, leak tiers, calibration-collision rule for voices, modes, and calibrated extensions, take versus specimen | Always, with any voice, mode, or `13` |
 | `0b-voice-slot-registry` | 0.6 | Slot matrix, voice test, candidate log, reopen conditions | Only when slot status is in question |
@@ -164,6 +164,7 @@ Extensions and notes:
 | `compartmentalization-engine` | 0.1 | An engine type and a constrained opt-in lens | A poem built around a wound it walls off rather than resolves |
 | `12-confinement-inventory` | 0.16 | Confinement catalog | Confinement Bay; catalog work |
 | `13-speaker-dials` | 0.3 | Speaker dial catalog: nine dials, four checks, trial forms, eleven experiments | Workshop dial trials; needs kernel 0.3.16 and `3a` |
+| `15-martino-extraction` | 0.1 | Seven operations from a musician's rebuilt system; fires on warrant | On request |
 | `14-attridge-staten-extraction` | 0.2 | Fourteen reading operations from a dialogue between two critics, with a refusal ledger. No voice zone | Any reading that wants its tools; fires on warrant |
 | `session-record-2026-10-08.md` | none | Record of the October 2026 session: the found-text widening, extraction 14 and its ruling, and the Hồ Xuân Hương recurrence | Never loaded; read for history |
 
@@ -215,7 +216,7 @@ Snapshot:      /path/to/Diagnostic_Reader
 Specimens:     draft.txt
 
 step file                                             version      size  why
-0    0-poetics-boot-hollow-v0_18.md                   0.18        19 KB  entry point
+0    0-poetics-boot-hollow-v0_19.md                   0.19        20 KB  entry point
 1    0a-portable-poetics-kernel-v0_3_19.md            0.3.19     126 KB  task Workshop
 2    0c-voice-designations-v0_7.md                    0.7         22 KB  task Workshop
 4    7-device-inventory-extended-v0_4.md              0.4         85 KB  task Workshop

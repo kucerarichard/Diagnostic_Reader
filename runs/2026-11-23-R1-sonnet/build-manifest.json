@@ -4,13 +4,13 @@
       "account_sha256": null,
       "files": [
         {
-          "name": "0-poetics-boot-hollow-v0_18.md",
+          "name": "0-poetics-boot-hollow-v0_19.md",
           "reasons": [
             "entry point"
           ],
-          "sha256": "ab05bfe1171438868672289a775455c3978057b5a6d000cbe49169a3a1874829",
+          "sha256": "0e4e511b6b7e128a6256090f334f3608ade04d7029c5702935dbdbf09264f0c5",
           "step": 0,
-          "version": "0.18"
+          "version": "0.19"
         },
         {
           "name": "0a-portable-poetics-kernel-v0_3_19.md",
@@ -49,7 +49,7 @@
           "version": "0.3.1"
         }
       ],
-      "framework_bytes": 887635,
+      "framework_bytes": 888493,
       "full_monty_state": "absent",
       "request": {
         "task": "sidecar",
@@ -59,7 +59,7 @@
       },
       "request_line": "Full sidecar. ASSAY verdict.",
       "specimen_sha256": "f115345237e15c49116904ea7f3bde94ccf6688012c325e0c828132e351777cb",
-      "token_estimate": 221908,
+      "token_estimate": 222123,
       "warnings": [],
       "withheld": []
     }
@@ -68,10 +68,10 @@
   "generator_version": "0.2.0",
   "multi_case_context_warning": "Single-case prompt: no cross-case context exposure.",
   "prompt_chars": {
-    "reader-prompt.md": 887245
+    "reader-prompt.md": 888100
   },
   "prompt_sha256": {
-    "reader-prompt.md": "8632e78217e92ef21c816e4bbbb8c068a1c423825a423df004b9fe56c9b5c023"
+    "reader-prompt.md": "83714f0446cf1c0aa32dba868bc3758d8f67857e33718fa32cc2494f59848309"
   },
   "selected_cases": [
     "R1"
