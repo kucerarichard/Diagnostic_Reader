@@ -1,0 +1,28 @@
+Title: The Couriers
+Author: Sylvia Plath
+Date: 1962
+Edition: not supplied by the operator; the poem collected in Ariel, 1965
+Provenance: supplied by the operator as a single block of thirteen lines with no stanza breaks; the breaks here are the compiler operator's, restored to six couplets and a closing single line, and are not verified against an edition
+Copyright: in copyright
+Kind: poem
+Unit: line
+
+The word of a snail on the plate of a leaf?
+It is not mine. Do not accept it.
+
+Acetic acid in a sealed tin?
+Do not accept it. It is not genuine.
+
+A ring of gold with the sun in it?
+Lies. Lies and a grief.
+
+Frost on a leaf, the immaculate
+Cauldron, talking and crackling
+
+All to itself on the top of each
+Of nine black Alps,
+
+A disturbance in mirrors,
+The sea shattering its grey one——
+
+Love, love, my season.

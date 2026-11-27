@@ -1,0 +1,170 @@
+{
+  "chars_per_token": 4.0,
+  "excluded": [],
+  "files": [
+    {
+      "name": "0-poetics-boot-hollow-v0_21.md",
+      "reasons": [
+        "entry point"
+      ],
+      "sha256": "9db3c56e6e3f227252d6e331bad98d1dc85a40100f4531bd365617c5ecb8888a",
+      "size": 21140,
+      "stem": "0-poetics-boot-hollow",
+      "step": 0,
+      "version": "0.21"
+    },
+    {
+      "name": "0a-portable-poetics-kernel-v0_3_19.md",
+      "reasons": [
+        "task Triangulated reading"
+      ],
+      "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+      "size": 125728,
+      "stem": "0a-portable-poetics-kernel",
+      "step": 1,
+      "version": "0.3.19"
+    },
+    {
+      "name": "0c-voice-designations-v0_7.md",
+      "reasons": [
+        "task Triangulated reading"
+      ],
+      "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+      "size": 21638,
+      "stem": "0c-voice-designations",
+      "step": 2,
+      "version": "0.7"
+    },
+    {
+      "name": "7-device-inventory-extended-v0_4.md",
+      "reasons": [
+        "task Triangulated reading"
+      ],
+      "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+      "size": 85427,
+      "stem": "7-device-inventory-extended",
+      "step": 4,
+      "version": "0.4"
+    },
+    {
+      "name": "15-martino-extraction-v0_1.md",
+      "reasons": [
+        "--extensions martino"
+      ],
+      "sha256": "4da749a30586dda2461a8fd8adb94d1a2a1d0add5aee0778342b1f3931e9c4bf",
+      "size": 28788,
+      "stem": "15-martino-extraction",
+      "step": 4,
+      "version": "0.1"
+    },
+    {
+      "name": "1-rother-voice-module-v0_3_1.md",
+      "reasons": [
+        "voice ASSAY"
+      ],
+      "sha256": "a2fdc58df8051e7a28952b15a7c9993812d690632fc8fcd613f4c187371e9761",
+      "size": 35394,
+      "stem": "1-rother-voice-module",
+      "step": 5,
+      "version": "0.3.1"
+    },
+    {
+      "name": "3-perloff-voice-module-v0_3_1.md",
+      "reasons": [
+        "voice RETICLE"
+      ],
+      "sha256": "6c039183cec6a0c9bff9fe3112d14698936a12fd03ed59e7813e19b10df48c16",
+      "size": 40620,
+      "stem": "3-perloff-voice-module",
+      "step": 5,
+      "version": "0.3.1"
+    }
+  ],
+  "framework_bytes": 358735,
+  "full_monty_state": "absent",
+  "generator": "dr",
+  "generator_version": "0.2.0",
+  "max_tokens": null,
+  "parts": [
+    {
+      "chars": 359319,
+      "name": "prompt.md",
+      "sha256": "a8f381e5be1a3f9fd4c07c8e158125e2de6fa01682ec2deec4baaf66281e048c"
+    }
+  ],
+  "plugins": [],
+  "prompt_chars": 359319,
+  "request": {
+    "account": false,
+    "account_path": null,
+    "ars_poetica": false,
+    "ask": null,
+    "author": null,
+    "battery": false,
+    "contrast_at": null,
+    "copyright": null,
+    "corpus": [],
+    "counter_voices": [],
+    "date": null,
+    "dial_trial": null,
+    "edition": null,
+    "exclude": [],
+    "extensions": [
+      "martino"
+    ],
+    "feedback_bridge": false,
+    "found_by": null,
+    "hermetic": false,
+    "include": [],
+    "kind": "poem",
+    "no_boot": false,
+    "no_dial_trials": false,
+    "plugins": [],
+    "provenance": null,
+    "rewrite_at": [],
+    "rewrite_under": [],
+    "rewrites": null,
+    "scan_category": null,
+    "scan_devices": [],
+    "scan_or": false,
+    "scan_source": null,
+    "specimens": [
+      "runs\\2026-11-27-couriers\\specimen.txt"
+    ],
+    "spine": null,
+    "task": "triangulate",
+    "title": null,
+    "unit": "line",
+    "verdict": null,
+    "vise": false,
+    "voices": [
+      "ASSAY",
+      "RETICLE"
+    ],
+    "withhold": []
+  },
+  "request_line": "Triangulate ASSAY and RETICLE.",
+  "snapshot": "tier1-snapshot",
+  "snapshot_sha256": null,
+  "specimens": [
+    {
+      "meta": {
+        "author": "Sylvia Plath",
+        "copyright": "in copyright",
+        "date": "1962",
+        "edition": "not supplied by the operator; the poem collected in Ariel, 1965",
+        "kind": "poem",
+        "provenance": "supplied by the operator as a single block of thirteen lines with no stanza breaks; the breaks here are the compiler operator's, restored to six couplets and a closing single line, and are not verified against an edition",
+        "title": "The Couriers",
+        "unit": "line"
+      },
+      "path": "runs\\2026-11-27-couriers\\specimen.txt",
+      "role": "specimen",
+      "sha256": "6a224abc8cc7a5aeba9bc1f9c551dea0f7658b07bb3d193e27238a38417071db"
+    }
+  ],
+  "task": "Triangulated reading",
+  "token_estimate": 89829,
+  "warnings": [],
+  "withheld": []
+}

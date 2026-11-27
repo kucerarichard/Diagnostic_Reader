@@ -1,0 +1,182 @@
+{
+  "chars_per_token": 4.0,
+  "excluded": [],
+  "files": [
+    {
+      "name": "0-poetics-boot-hollow-v0_21.md",
+      "reasons": [
+        "entry point"
+      ],
+      "sha256": "9db3c56e6e3f227252d6e331bad98d1dc85a40100f4531bd365617c5ecb8888a",
+      "size": 21140,
+      "stem": "0-poetics-boot-hollow",
+      "step": 0,
+      "version": "0.21"
+    },
+    {
+      "name": "0a-portable-poetics-kernel-v0_3_19.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "2f408d84625414ddc53ce4f6e4c30021c40f0b23a05aa113385a589d338761ff",
+      "size": 125728,
+      "stem": "0a-portable-poetics-kernel",
+      "step": 1,
+      "version": "0.3.19"
+    },
+    {
+      "name": "0c-voice-designations-v0_7.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "ab0b2e67da17db4c0501bebb83cf549f4e755c393ca6cd50caa46c2565f36e29",
+      "size": 21638,
+      "stem": "0c-voice-designations",
+      "step": 2,
+      "version": "0.7"
+    },
+    {
+      "name": "7-device-inventory-extended-v0_4.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "4dde79df1df0c4b32290b694d4f451e73da42dd81f1f50e48613c929be576e44",
+      "size": 85427,
+      "stem": "7-device-inventory-extended",
+      "step": 4,
+      "version": "0.4"
+    },
+    {
+      "name": "12-confinement-inventory-v0_16.md",
+      "reasons": [
+        "task Workshop"
+      ],
+      "sha256": "a88aa7ee1cf54d67ef5f105b60553dbba7990d8c9d585e77dac67d62c7029b5d",
+      "size": 430799,
+      "stem": "12-confinement-inventory",
+      "step": 4,
+      "version": "0.16"
+    },
+    {
+      "name": "15-martino-extraction-v0_1.md",
+      "reasons": [
+        "--extensions martino"
+      ],
+      "sha256": "4da749a30586dda2461a8fd8adb94d1a2a1d0add5aee0778342b1f3931e9c4bf",
+      "size": 28788,
+      "stem": "15-martino-extraction",
+      "step": 4,
+      "version": "0.1"
+    },
+    {
+      "name": "3-kowit-voice-module-v0_3_1.md",
+      "reasons": [
+        "task Workshop",
+        "voice TARE"
+      ],
+      "sha256": "5eae31f763ef6c9a6a86851ae04f1897565772c0e24699368cdc13a6daad3767",
+      "size": 40431,
+      "stem": "3-kowit-voice-module",
+      "step": 5,
+      "version": "0.3.1"
+    },
+    {
+      "name": "3a-workshop-v0_7_3.md",
+      "reasons": [
+        "task Workshop",
+        "JIG workshop"
+      ],
+      "sha256": "bb619d6554329273c2357127ea90fb58198d654ccc11ee7add8819dba80e67fa",
+      "size": 80011,
+      "stem": "3a-workshop",
+      "step": 6,
+      "version": "0.7.3"
+    }
+  ],
+  "framework_bytes": 833962,
+  "full_monty_state": "absent",
+  "generator": "dr",
+  "generator_version": "0.2.0",
+  "max_tokens": null,
+  "parts": [
+    {
+      "chars": 834057,
+      "name": "prompt.md",
+      "sha256": "d85b7ad74b76a183566c5aeec5f785f3323afd410f1421902e385ac60694bc74"
+    }
+  ],
+  "plugins": [],
+  "prompt_chars": 834057,
+  "request": {
+    "account": false,
+    "account_path": null,
+    "ars_poetica": false,
+    "ask": null,
+    "author": null,
+    "battery": false,
+    "contrast_at": null,
+    "copyright": null,
+    "corpus": [],
+    "counter_voices": [],
+    "date": null,
+    "dial_trial": null,
+    "edition": null,
+    "exclude": [],
+    "extensions": [
+      "martino"
+    ],
+    "feedback_bridge": false,
+    "found_by": null,
+    "hermetic": false,
+    "include": [],
+    "kind": "poem",
+    "no_boot": false,
+    "no_dial_trials": false,
+    "plugins": [],
+    "provenance": null,
+    "rewrite_at": [],
+    "rewrite_under": [],
+    "rewrites": null,
+    "scan_category": null,
+    "scan_devices": [],
+    "scan_or": false,
+    "scan_source": null,
+    "specimens": [
+      "runs\\2026-11-27-couriers\\specimen.txt"
+    ],
+    "spine": null,
+    "task": "workshop",
+    "title": null,
+    "unit": "line",
+    "verdict": null,
+    "vise": false,
+    "voices": [
+      "TARE"
+    ],
+    "withhold": []
+  },
+  "request_line": "workshop this specimen",
+  "snapshot": "tier1-snapshot",
+  "snapshot_sha256": null,
+  "specimens": [
+    {
+      "meta": {
+        "author": "Sylvia Plath",
+        "copyright": "in copyright",
+        "date": "1962",
+        "edition": "not supplied by the operator; the poem collected in Ariel, 1965",
+        "kind": "poem",
+        "provenance": "supplied by the operator as a single block of thirteen lines with no stanza breaks; the breaks here are the compiler operator's, restored to six couplets and a closing single line, and are not verified against an edition",
+        "title": "The Couriers",
+        "unit": "line"
+      },
+      "path": "runs\\2026-11-27-couriers\\specimen.txt",
+      "role": "specimen",
+      "sha256": "6a224abc8cc7a5aeba9bc1f9c551dea0f7658b07bb3d193e27238a38417071db"
+    }
+  ],
+  "task": "Workshop",
+  "token_estimate": 208514,
+  "warnings": [],
+  "withheld": []
+}
