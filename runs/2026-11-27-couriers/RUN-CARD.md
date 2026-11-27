@@ -142,6 +142,12 @@ In both outputs the longest contiguous run of the poem reproduced anywhere is fo
 figure was ten words of eighty-three; a looser count that includes incidental overlap in
 discussion prose reaches about twenty, still inside the quarter ceiling.
 
+## Operator note
+
+`operator-note.md` beside this file records what the run produced in a reader rather than
+on disk: an observation about the poem that neither output states, and what followed from
+it. It is not a finding, carries no score, and amends neither output.
+
 ## Limitations
 
 The stanza division is a restoration and any claim resting on the couplet as a unit rests on
